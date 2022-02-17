@@ -29,6 +29,12 @@
         "jestConfig": "packages/local-signing-manager/jest.config.js",
         "passWithNoTests": true
       }
+    },
+    "release": {
+      "executor": "@nrwl/workspace:run-script",
+      "options": {
+        "script": "semantic-release-plus"
+      }
     }
   },
   "tags": []
