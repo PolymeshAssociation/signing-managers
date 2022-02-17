@@ -1,0 +1,35 @@
+{
+  "root": "packages/local-signing-manager",
+  "sourceRoot": "packages/local-signing-manager/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/local-signing-manager",
+        "tsConfig": "packages/local-signing-manager/tsconfig.lib.json",
+        "packageJson": "packages/local-signing-manager/package.json",
+        "main": "packages/local-signing-manager/src/index.ts",
+        "assets": ["packages/local-signing-manager/*.md"],
+        "srcRootForCompilationRoot": "packages/local-signing-manager/src"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/local-signing-manager/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/local-signing-manager"],
+      "options": {
+        "jestConfig": "packages/local-signing-manager/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
