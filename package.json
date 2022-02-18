@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "prepare": "is-ci || husky install"
+    "prepare": "is-ci || husky install",
+    "nx": "npx nx"
   },
   "private": true,
   "dependencies": {
