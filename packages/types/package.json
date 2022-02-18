@@ -1,4 +1,7 @@
 {
   "name": "@polymathnetwork/signing-manager-types",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  }
 }
