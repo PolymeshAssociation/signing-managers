@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/local-signing-manager@1.0.0...@polymathnetwork/local-signing-manager@1.0.1) (2022-02-18)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymathnetwork/signing-manager-types to 1.0.1 [skip ci] ([e9d49eb](https://github.com/PolymathNetwork/signing-managers/commit/e9d49eb92a42cc9018138aeeb0e361ac298758c5))
+
 # 1.0.0 (2022-02-18)
 
 
