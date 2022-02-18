@@ -31,9 +31,11 @@
       }
     },
     "release": {
-      "executor": "@nrwl/workspace:run-script",
-      "options": {
-        "script": "semantic-release-plus"
+      "builder": "@ng-easy/builders:semantic-release",
+      "configurations": {
+        "local": {
+          "force": true
+        }
       }
     }
   },

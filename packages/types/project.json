@@ -5,7 +5,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/node:package",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{options.outputPath}"],      
       "options": {
         "outputPath": "dist/packages/types",
         "tsConfig": "packages/types/tsconfig.lib.json",
@@ -28,12 +28,14 @@
       "options": {
         "jestConfig": "packages/types/jest.config.js",
         "passWithNoTests": true
-      }
+      }      
     },
     "release": {
-      "executor": "@nrwl/workspace:run-script",
-      "options": {
-        "script": "semantic-release-plus"
+      "executor": "@ng-easy/builders:semantic-release",
+      "configurations": {
+        "local": {
+          "force": true
+        }
       }
     }
   },
