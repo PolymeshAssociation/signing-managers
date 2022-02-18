@@ -20,7 +20,7 @@ jobs:
       - name: lint and test
         uses: mansagroup/nrwl-nx-action@v2
         with:
-          targets: [lint, test]
+          targets: lint,test
           maxParallel: 3
 
   release:
