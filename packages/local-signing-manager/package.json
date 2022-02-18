@@ -5,6 +5,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@polymathnetwork/signing-manager-types": "^1.0.0"
+    "@polymathnetwork/signing-manager-types": "^1.0.1"
   }
 }
