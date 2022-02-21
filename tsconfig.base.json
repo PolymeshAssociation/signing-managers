@@ -15,9 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@polymathnetwork/local-signing-manager": [
-        "packages/local-signing-manager/src"
+      "@polymathnetwork/browser-extension-signing-manager": [
+        "packages/browser-extension-signing-manager/src"
       ],
+      "@polymathnetwork/local-signing-manager": ["packages/local-signing-manager/src"],
       "@polymathnetwork/signing-manager-types": ["packages/types/src"]
     }
   },

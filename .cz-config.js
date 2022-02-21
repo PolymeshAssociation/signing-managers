@@ -47,6 +47,9 @@ module.exports = {
     {
       name: 'local-signing-manager',
     },
+    {
+      name: 'browser-extension-signing-manager',
+    },
   ],
   allowTicketNumber: false,
   isTicketNumberRequired: false,

@@ -1,0 +1,43 @@
+{
+  "root": "packages/browser-extension-signing-manager",
+  "sourceRoot": "packages/browser-extension-signing-manager/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/browser-extension-signing-manager",
+        "tsConfig": "packages/browser-extension-signing-manager/tsconfig.lib.json",
+        "packageJson": "packages/browser-extension-signing-manager/package.json",
+        "main": "packages/browser-extension-signing-manager/src/index.ts",
+        "assets": ["packages/browser-extension-signing-manager/*.md"],
+        "srcRootForCompilationRoot": "packages/browser-extension-signing-manager/src"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/browser-extension-signing-manager/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/browser-extension-signing-manager"],
+      "options": {
+        "jestConfig": "packages/browser-extension-signing-manager/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "release": {
+      "builder": "@ng-easy/builders:semantic-release",
+      "configurations": {
+        "local": {
+          "force": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
