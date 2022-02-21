@@ -5,10 +5,15 @@
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
   "cSpell.words": [
+    "breakline",
+    "buildable",
+    "commitlint",
+    "hashicorp",
     "nrwl",
     "Polkadot",
     "polymathnetwork",
     "Polymesh",
+    "sonarcloud",
     "tscpaths"
   ],
   "cSpell.ignorePaths": [

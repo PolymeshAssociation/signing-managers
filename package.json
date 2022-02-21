@@ -4,7 +4,11 @@
   "license": "MIT",
   "scripts": {
     "prepare": "is-ci || husky install",
-    "nx": "npx nx"
+    "nx": "npx nx",
+    "generate:signing-manager": "nx workspace-generator signing-manager",
+    "lint": "nx lint",
+    "test": "nx test",
+    "build": "nx build"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +29,7 @@
     "@commitlint/config-nx-scopes": "^16.2.1",
     "@ng-easy/builders": "^5.1.1",
     "@nrwl/cli": "13.8.2",
+    "@nrwl/devkit": "13.8.2",
     "@nrwl/eslint-plugin-nx": "13.8.2",
     "@nrwl/jest": "13.8.2",
     "@nrwl/js": "13.8.2",
@@ -34,9 +39,11 @@
     "@nrwl/workspace": "13.8.2",
     "@types/jest": "27.0.2",
     "@types/node": "16.11.7",
+    "@types/require-from-string": "^1.2.1",
     "@typescript-eslint/eslint-plugin": "~5.10.0",
     "@typescript-eslint/parser": "~5.10.0",
     "commitizen": "^4.2.4",
+    "commitlint-config-cz": "^0.13.3",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.3.0",
     "eslint": "~8.7.0",
@@ -46,15 +53,10 @@
     "jest": "27.2.3",
     "lint-staged": "^12.3.4",
     "prettier": "^2.5.1",
+    "require-from-string": "^2.0.2",
     "rxjs": "~6.6.7",
     "ts-jest": "27.0.5",
     "typescript": "~4.5.2"
-  },
-  "peerDependencies": {
-    "@polkadot/api": "5.1.1",
-    "@polkadot/util": "^7.0.2",
-    "@polkadot/util-crypto": "^7.0.2",
-    "@polymathnetwork/polymesh-sdk": ">=13.0.0"
   },
   "workspaces": [
     "packages/**"

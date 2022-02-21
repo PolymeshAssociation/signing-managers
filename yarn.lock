@@ -3102,6 +3102,11 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
+"@types/require-from-string@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@types/require-from-string/-/require-from-string-1.2.1.tgz#50292d824e2244628c0b961c6a1a583fdc494554"
+  integrity sha512-mIDK7lTHc0uW67SxPIqkwCrxmdKBV5aAET560hyZnT8c6Ekp9Aah3GPqe8Pl1Yzn/i2NMYmYv+HiMLwjGDCIAQ==
+
 "@types/retry@^0.12.0":
   version "0.12.1"
   resolved "https://registry.yarnpkg.com/@types/retry/-/retry-0.12.1.tgz#d8f1c0d0dc23afad6dc16a9e993a0865774b4065"
@@ -3623,6 +3628,11 @@ anymatch@^3.0.3, anymatch@~3.1.2:
   dependencies:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
+
+app-root-path@~3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-3.0.0.tgz#210b6f43873227e18a4b810a032283311555d5ad"
+  integrity sha512-qMcx+Gy2UZynHjOHOIXPNvpf+9cjvk3cWrBBK7zg4gH9+clobJRb9NGzcT7mQTcV/6Gm/1WelUtqxVXnNlrwcw==
 
 aproba@^1.0.3:
   version "1.2.0"
@@ -4668,6 +4678,14 @@ commitizen@^4.0.3, commitizen@^4.2.4:
     minimist "1.2.5"
     strip-bom "4.0.0"
     strip-json-comments "3.0.1"
+
+commitlint-config-cz@^0.13.3:
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/commitlint-config-cz/-/commitlint-config-cz-0.13.3.tgz#a3e00bf2b98626f98a7e92c142ce081b1d6d179b"
+  integrity sha512-6LmCvGiFDTVSmLF0mzVVp1etMM8lAqLmPRlU7Oml1J8J9oOLadf+2g4uMTchdxOvvYLgll99SESFUHgmc6oATA==
+  dependencies:
+    app-root-path "~3.0.0"
+    lodash.clonedeep "~4.5.0"
 
 common-ancestor-path@^1.0.1:
   version "1.0.1"
@@ -8813,6 +8831,11 @@ lodash.capitalize@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/lodash.capitalize/-/lodash.capitalize-4.2.1.tgz#f826c9b4e2a8511d84e3aca29db05e1a4f3b72a9"
   integrity sha1-+CbJtOKoUR2E46yinbBeGk87cqk=
+
+lodash.clonedeep@~4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
 
 lodash.debounce@^4.0.8:
   version "4.0.8"
