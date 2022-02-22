@@ -16,9 +16,11 @@ The package should be called `<something>-signing-manager` (i.e. `hashicorp-vaul
 
 ## Commits
 
-This repo uses [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/). For automated release versions to work properly, commits must have the affected package name as a scope. For example, if adding a new feature to the `local-signing-manager` package, the commit message should be `feat(local-signing-manager): sign raw messages`. Commits that affect all packages can use `*` as a scope.
+This repo uses [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 In order to ensure commits are properly formatted, we use husky to hijack the `git commit` command, so that it launches the commitizen CLI. Additionally, commit messages are validated with commitlint.
+
+For automated release versions to work properly, commits must have the affected package name as a scope. For example, if adding a new feature to the `local-signing-manager` package, the commit message should be `feat(local-signing-manager): sign raw messages`. Multiple comma-separated scopes are supported if a commit affects more than one package. Since the commitizen CLI does not support multiple scopes, they would have to be added in the editor when confirming the message. Commits that affect all packages can use `*` as a scope.
 
 ## PR Requirements
 
