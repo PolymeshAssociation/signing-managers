@@ -22,7 +22,7 @@ describe('LocalSigningManager Class', () => {
       },
       {
         privateKey: {
-          uri: 'zone earth dad evidence club text roast claim decorate satoshi dress seven//it',
+          uri: 'zone earth dad evidence club text roast claim decorate satoshi dress seven//test',
         },
         address: '5HQLVKFYkytr9HisQRWoUArUWw8YNWUmhLdXztRFjqysiNUx',
         publicKey: hexToU8a('0xec2624ca769be5bc57cd23f0f1d8c06a0f68ac06a57e00355361d45000af7c28'),
@@ -51,6 +51,16 @@ describe('LocalSigningManager Class', () => {
 
       expect(result).toEqual(accounts.map(({ address }) => address));
     });
+
+    it("should throw an error if the Signing Manager doesn't have a SS58 format", async () => {
+      signingManager = await LocalSigningManager.create({
+        accounts: accounts.map(({ privateKey }) => privateKey),
+      });
+
+      expect(signingManager.getAccounts()).rejects.toThrow(
+        "Cannot call 'getAccounts' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
+      );
+    });
   });
 
   describe('method: getExternalSigner', () => {
@@ -69,15 +79,18 @@ describe('LocalSigningManager Class', () => {
       expect(result).toBe('5FcF7cEA4e3yg8FJmu6UZZeh96dEV5AF84cih4WV9bhKsWjw');
     });
 
-    it("should throw an error if the Signing Manager doesn't have a SS58 format", () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (signingManager as any).hasFormat = false;
+    it("should throw an error if the Signing Manager doesn't have a SS58 format", async () => {
+      signingManager = await LocalSigningManager.create({
+        accounts: accounts.map(({ privateKey }) => privateKey),
+      });
 
       expect(() =>
         signingManager.addAccount({
           seed: '0xb5da7610352f87452fe5fa4d9af35a3fbb613e7afee2c72056333db0b94d6f98',
         })
-      ).toThrow('Cannot add Accounts before calling `setSs58Format`');
+      ).toThrow(
+        "Cannot call 'addAccount' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
+      );
     });
   });
 });
