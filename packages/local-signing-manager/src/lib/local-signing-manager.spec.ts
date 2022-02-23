@@ -22,7 +22,7 @@ describe('LocalSigningManager Class', () => {
       },
       {
         privateKey: {
-          uri: 'zone earth dad evidence club text roast claim decorate satoshi dress seven//test',
+          uri: 'zone earth dad evidence club text roast claim decorate satoshi dress seven//it',
         },
         address: '5HQLVKFYkytr9HisQRWoUArUWw8YNWUmhLdXztRFjqysiNUx',
         publicKey: hexToU8a('0xec2624ca769be5bc57cd23f0f1d8c06a0f68ac06a57e00355361d45000af7c28'),
@@ -46,7 +46,7 @@ describe('LocalSigningManager Class', () => {
   });
 
   describe('method: getAccounts', () => {
-    test('should return all Accounts held in the keyring', async () => {
+    it('should return all Accounts held in the keyring', async () => {
       const result = await signingManager.getAccounts();
 
       expect(result).toEqual(accounts.map(({ address }) => address));
@@ -54,14 +54,14 @@ describe('LocalSigningManager Class', () => {
   });
 
   describe('method: getExternalSigner', () => {
-    test('should return a Keyring Signer', () => {
+    it('should return a Keyring Signer', () => {
       const signer = signingManager.getExternalSigner();
       expect(signer instanceof KeyringSigner).toBe(true);
     });
   });
 
   describe('method: addAccount', () => {
-    test('should add a new Account and return its address', () => {
+    it('should add a new Account and return its address', () => {
       const result = signingManager.addAccount({
         seed: '0xb5da7610352f87452fe5fa4d9af35a3fbb613e7afee2c72056333db0b94d6f98',
       });
@@ -69,7 +69,7 @@ describe('LocalSigningManager Class', () => {
       expect(result).toBe('5FcF7cEA4e3yg8FJmu6UZZeh96dEV5AF84cih4WV9bhKsWjw');
     });
 
-    test("should throw an error if the Signing Manager doesn't have a SS58 format", () => {
+    it("should throw an error if the Signing Manager doesn't have a SS58 format", () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (signingManager as any).hasFormat = false;
 
@@ -102,7 +102,7 @@ describe('class KeyringSigner', () => {
   });
 
   describe('method signPayload', () => {
-    test('should return a signed payload and an incremental ID', async () => {
+    it('should return a signed payload and an incremental ID', async () => {
       const payload = {
         specVersion: '0x00000bb9',
         transactionVersion: '0x00000002',
@@ -144,7 +144,7 @@ describe('class KeyringSigner', () => {
       expect(signatureVerify(rawPayload, result.signature, address).isValid).toBe(true);
     });
 
-    test('should throw an error if the payload address is not present in the keyring', () => {
+    it('should throw an error if the payload address is not present in the keyring', () => {
       return expect(
         signer.signPayload({
           address: '5Ef2XHepJvTUJLhhx39Nf5iqu6AACrfFAmc6AW8a3hKF4Rdc',
@@ -152,7 +152,7 @@ describe('class KeyringSigner', () => {
       ).rejects.toThrow('The signer cannot sign transactions on behalf of the calling Account');
     });
 
-    test('should throw any errors thrown by the keyring', () => {
+    it('should throw any errors thrown by the keyring', () => {
       return expect(
         signer.signPayload({
           address: 'whatever',
@@ -162,7 +162,7 @@ describe('class KeyringSigner', () => {
   });
 
   describe('method signRaw', () => {
-    test('should return signed raw data and an incremental ID', async () => {
+    it('should return signed raw data and an incremental ID', async () => {
       const data = u8aToHex(stringToU8a('Hello, my name is Alice'));
       const raw = {
         address,
@@ -181,7 +181,7 @@ describe('class KeyringSigner', () => {
       expect(signatureVerify(data, result.signature, address).isValid).toBe(true);
     });
 
-    test('should throw an error if the payload address is not present in the keyring', () => {
+    it('should throw an error if the payload address is not present in the keyring', () => {
       return expect(
         signer.signRaw({
           address: '5Ef2XHepJvTUJLhhx39Nf5iqu6AACrfFAmc6AW8a3hKF4Rdc',
@@ -189,7 +189,7 @@ describe('class KeyringSigner', () => {
       ).rejects.toThrow('The signer cannot sign transactions on behalf of the calling Account');
     });
 
-    test('should throw any errors thrown by the keyring', () => {
+    it('should throw any errors thrown by the keyring', () => {
       return expect(
         signer.signRaw({
           address: 'whatever',
