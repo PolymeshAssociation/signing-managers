@@ -191,7 +191,7 @@ export class LocalSigningManager implements SigningManager {
 
     if (!hasFormat) {
       throw new Error(
-        `Cannot call ${methodName} before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?`
+        `Cannot call '${methodName}' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?`
       );
     }
   }
