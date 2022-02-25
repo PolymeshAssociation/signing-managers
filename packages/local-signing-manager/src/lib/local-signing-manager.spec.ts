@@ -140,6 +140,11 @@ describe('class KeyringSigner', () => {
       };
       /*
        * I had to go to hell and back to get this value, but trust me, it's a raw version of the above payload.
+       * In order to re-generate both, you must:
+       *   - create a script that uses the Polymesh SDK with a signing manager to reserve a ticker (or any other simple extrinsic)
+       *   - open `node_modules/@polkadot/api/submittable/createClass.js` (it might be createClass.cjs. Do both to be sure)
+       *   - go to the definition of `_signViaSigner`, log both `payload.toJson()` and `payload.toRaw()`
+       *   - run the script and pick the values from the terminal
        * Since sr25519 signatures are non-deterministic, the only way to verify that stuff is signed properly is via `signatureVerify`,
        * Which only handles raw data
        */
