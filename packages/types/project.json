@@ -37,6 +37,14 @@
           "force": true
         }
       }
+    },
+    "run-local": {
+      "executor": "./tools/executors/run-local:run-local",
+      "options": {
+        "runInBrowser": false,        
+        "path": "packages/types/sandbox/index.ts",
+        "port": 9000
+      }
     }
   },
   "tags": []

@@ -17,4 +17,16 @@ This project was generated using [Nx](https://nx.dev).
 - Testing: `yarn test <packageName>`
 - Building: `yarn build <packageName>`
 
+### Manual Testing
+
+In order to test your code manually before releasing:
+
+- Create a `sandbox/index.ts` file in the root of the package you want to test (i.e. `packages/local-signing-manager/sandbox/index.ts`). Write your test script there. The sandbox directory is ignored by git
+- Run `yarn run-local <projectName>` in the terminal. This will run the sandbox script in a `ts-node` instance. If you wish to test browser related functionality, you can pass `--runInBrowser` to the command. This will open a browser tab with empty HTML and your sandbox script will run on it. Console output will be shown in the browser dev tools
+
+Examples:
+
+- `yarn run-local browser-extension-signing-manager --runInBrowser`
+- `yarn run-local local-signing-manager`
+
 You can also use nx commands directly with `yarn nx` (i.e. `yarn nx affected --targets=lint,test`)

@@ -51,11 +51,20 @@ export default async function (tree: Tree, schema: Schema) {
     };
 
     projectConfig.targets.release = {
-      builder: '@ng-easy/builders:semantic-release',
+      executor: '@ng-easy/builders:semantic-release',
       configurations: {
         local: {
           force: true,
         },
+      },
+    };
+
+    projectConfig.targets['run-local'] = {
+      executor: './tools/executors/run-local:run-local',
+      options: {
+        runInBrowser: false,
+        path: `${projectPath}/sandbox/index.ts`,
+        port: 9000,
       },
     };
 
@@ -94,18 +103,6 @@ export default async function (tree: Tree, schema: Schema) {
     };
 
     return tsConfigBase;
-  });
-
-  // add the package name to the allowed commit scopes
-  updateJsConfig(tree, '.cz-config.js', czConfig => {
-    czConfig.scopes = [
-      ...czConfig.scopes,
-      {
-        name,
-      },
-    ];
-
-    return czConfig;
   });
 
   await formatFiles(tree);
