@@ -79,7 +79,7 @@ export class KeyringSigner implements PolkadotSigner {
     try {
       return keyring.getPair(address);
     } catch (err) {
-      if (err instanceof Error && err.message.indexOf('Unable to retrieve keypair') > -1) {
+      if (err instanceof Error && err.message.includes('Unable to retrieve keypair')) {
         throw new Error('The signer cannot sign transactions on behalf of the calling Account');
       } else {
         throw err;
