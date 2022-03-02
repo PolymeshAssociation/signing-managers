@@ -1,6 +1,6 @@
-# local-signing-manager
+# browser-extension-signing-manager
 
-Polymesh SDK (v13+) compatible signing manager that manages accounts and signs via a polkadot compatible browser wallet extension.
+Polymesh SDK (14+) compatible signing manager that manages accounts and signs via a polkadot compatible browser wallet extension.
 
 This library was generated with [Nx](https://nx.dev).
 
