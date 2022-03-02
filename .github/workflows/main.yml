@@ -37,8 +37,9 @@ jobs:
       - name: build and release
         uses: mansagroup/nrwl-nx-action@v2
         env:
+          CI: true
           GITHUB_TOKEN: ${{ secrets.JERE_RELEASE_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           targets: release
-          maxParallel: 3
+          maxParallel: 1
