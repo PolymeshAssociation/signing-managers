@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/signing-manager-types@1.0.2...@polymathnetwork/signing-manager-types@1.0.3) (2022-03-02)
+
+
+### Bug Fixes
+
+* bump all versions ([79307bb](https://github.com/PolymathNetwork/signing-managers/commit/79307bb7aa18ef8abdd94865da7eed53997fe267))
+* bump versions ([af3a6dc](https://github.com/PolymathNetwork/signing-managers/commit/af3a6dc9336bfa5d9d5fbe14d91165d056567165))
+
 ## [1.0.2](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/signing-manager-types@1.0.1...@polymathnetwork/signing-manager-types@1.0.2) (2022-03-02)
 
 

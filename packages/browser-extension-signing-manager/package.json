@@ -1,11 +1,11 @@
 {
   "name": "@polymathnetwork/browser-extension-signing-manager",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@polymathnetwork/signing-manager-types": "^1.0.2"
+    "@polymathnetwork/signing-manager-types": "^1.0.3"
   },
   "peerDependencies": {
     "@polymathnetwork/polymesh-sdk": ">=13.0.0"
