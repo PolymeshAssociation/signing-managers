@@ -30,3 +30,7 @@ Examples:
 - `yarn run-local local-signing-manager`
 
 You can also use nx commands directly with `yarn nx` (i.e. `yarn nx affected --targets=lint,test`)
+
+## Contributing
+
+Refer to the [Contribution Guidelines](CONTRIBUTING.md).
