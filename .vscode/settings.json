@@ -1,5 +1,5 @@
 {
-  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.importModuleSpecifier": "project-relative",
   "typescript.preferences.quoteStyle": "single",
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.tabSize": 2,
@@ -10,11 +10,16 @@
     "commitlint",
     "hashicorp",
     "nrwl",
+    "Parens",
+    "pathinfo",
     "Polkadot",
     "polymathnetwork",
     "Polymesh",
+    "polywallet",
+    "satoshi",
     "sonarcloud",
-    "tscpaths"
+    "tscpaths",
+    "Unsub"
   ],
   "cSpell.ignorePaths": [
     "package.json",

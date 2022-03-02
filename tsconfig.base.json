@@ -9,17 +9,22 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
-    "module": "esnext",
+    "module": "commonjs",
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@polymathnetwork/local-signing-manager": [
-        "packages/local-signing-manager/src"
+      "@polymathnetwork/browser-extension-signing-manager": [
+        "packages/browser-extension-signing-manager/src"
       ],
+      "@polymathnetwork/local-signing-manager": ["packages/local-signing-manager/src"],
       "@polymathnetwork/signing-manager-types": ["packages/types/src"]
-    }
+    },
+    "esModuleInterop": true
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
 }

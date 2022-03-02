@@ -46,22 +46,32 @@ describe('LocalSigningManager Class', () => {
   });
 
   describe('method: getAccounts', () => {
-    test('should return all Accounts held in the keyring', async () => {
+    it('should return all Accounts held in the keyring', async () => {
       const result = await signingManager.getAccounts();
 
       expect(result).toEqual(accounts.map(({ address }) => address));
     });
+
+    it("should throw an error if the Signing Manager doesn't have a SS58 format", async () => {
+      signingManager = await LocalSigningManager.create({
+        accounts: accounts.map(({ privateKey }) => privateKey),
+      });
+
+      expect(signingManager.getAccounts()).rejects.toThrow(
+        "Cannot call 'getAccounts' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
+      );
+    });
   });
 
   describe('method: getExternalSigner', () => {
-    test('should return a Keyring Signer', () => {
+    it('should return a Keyring Signer', () => {
       const signer = signingManager.getExternalSigner();
       expect(signer instanceof KeyringSigner).toBe(true);
     });
   });
 
   describe('method: addAccount', () => {
-    test('should add a new Account and return its address', () => {
+    it('should add a new Account and return its address', () => {
       const result = signingManager.addAccount({
         seed: '0xb5da7610352f87452fe5fa4d9af35a3fbb613e7afee2c72056333db0b94d6f98',
       });
@@ -69,15 +79,18 @@ describe('LocalSigningManager Class', () => {
       expect(result).toBe('5FcF7cEA4e3yg8FJmu6UZZeh96dEV5AF84cih4WV9bhKsWjw');
     });
 
-    test("should throw an error if the Signing Manager doesn't have a SS58 format", () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (signingManager as any).hasFormat = false;
+    it("should throw an error if the Signing Manager doesn't have a SS58 format", async () => {
+      signingManager = await LocalSigningManager.create({
+        accounts: accounts.map(({ privateKey }) => privateKey),
+      });
 
       expect(() =>
         signingManager.addAccount({
           seed: '0xb5da7610352f87452fe5fa4d9af35a3fbb613e7afee2c72056333db0b94d6f98',
         })
-      ).toThrow('Cannot add Accounts before calling `setSs58Format`');
+      ).toThrow(
+        "Cannot call 'addAccount' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
+      );
     });
   });
 });
@@ -102,7 +115,7 @@ describe('class KeyringSigner', () => {
   });
 
   describe('method signPayload', () => {
-    test('should return a signed payload and an incremental ID', async () => {
+    it('should return a signed payload and an incremental ID', async () => {
       const payload = {
         specVersion: '0x00000bb9',
         transactionVersion: '0x00000002',
@@ -127,6 +140,11 @@ describe('class KeyringSigner', () => {
       };
       /*
        * I had to go to hell and back to get this value, but trust me, it's a raw version of the above payload.
+       * In order to re-generate both, you must:
+       *   - create a script that uses the Polymesh SDK with a signing manager to reserve a ticker (or any other simple extrinsic)
+       *   - open `node_modules/@polkadot/api/submittable/createClass.js` (it might be createClass.cjs. Do both to be sure)
+       *   - go to the definition of `_signViaSigner`, log both `payload.toJson()` and `payload.toRaw()`
+       *   - run the script and pick the values from the terminal
        * Since sr25519 signatures are non-deterministic, the only way to verify that stuff is signed properly is via `signatureVerify`,
        * Which only handles raw data
        */
@@ -144,7 +162,7 @@ describe('class KeyringSigner', () => {
       expect(signatureVerify(rawPayload, result.signature, address).isValid).toBe(true);
     });
 
-    test('should throw an error if the payload address is not present in the keyring', () => {
+    it('should throw an error if the payload address is not present in the keyring', () => {
       return expect(
         signer.signPayload({
           address: '5Ef2XHepJvTUJLhhx39Nf5iqu6AACrfFAmc6AW8a3hKF4Rdc',
@@ -152,7 +170,7 @@ describe('class KeyringSigner', () => {
       ).rejects.toThrow('The signer cannot sign transactions on behalf of the calling Account');
     });
 
-    test('should throw any errors thrown by the keyring', () => {
+    it('should throw any errors thrown by the keyring', () => {
       return expect(
         signer.signPayload({
           address: 'whatever',
@@ -162,7 +180,7 @@ describe('class KeyringSigner', () => {
   });
 
   describe('method signRaw', () => {
-    test('should return signed raw data and an incremental ID', async () => {
+    it('should return signed raw data and an incremental ID', async () => {
       const data = u8aToHex(stringToU8a('Hello, my name is Alice'));
       const raw = {
         address,
@@ -181,7 +199,7 @@ describe('class KeyringSigner', () => {
       expect(signatureVerify(data, result.signature, address).isValid).toBe(true);
     });
 
-    test('should throw an error if the payload address is not present in the keyring', () => {
+    it('should throw an error if the payload address is not present in the keyring', () => {
       return expect(
         signer.signRaw({
           address: '5Ef2XHepJvTUJLhhx39Nf5iqu6AACrfFAmc6AW8a3hKF4Rdc',
@@ -189,7 +207,7 @@ describe('class KeyringSigner', () => {
       ).rejects.toThrow('The signer cannot sign transactions on behalf of the calling Account');
     });
 
-    test('should throw any errors thrown by the keyring', () => {
+    it('should throw any errors thrown by the keyring', () => {
       return expect(
         signer.signRaw({
           address: 'whatever',
