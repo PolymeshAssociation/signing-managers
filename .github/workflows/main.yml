@@ -42,4 +42,5 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           targets: release
+          all: true
           maxParallel: 1
