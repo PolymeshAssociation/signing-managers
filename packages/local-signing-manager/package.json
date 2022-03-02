@@ -5,7 +5,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@polymathnetwork/signing-manager-types": "^1.0.2"
+    "@polymathnetwork/signing-manager-types": "^1.0.3"
   },
   "peerDependencies": {
     "@polkadot/api": "5.1.1",
