@@ -1,3 +1,18 @@
+## [1.0.2](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/local-signing-manager@1.0.1...@polymathnetwork/local-signing-manager@1.0.2) (2022-03-02)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymathnetwork/signing-manager-types to 1.0.2 [skip ci] ([ce8c2ab](https://github.com/PolymathNetwork/signing-managers/commit/ce8c2ab617ae77cbe29240fada338c28039e1de3))
+* **local-signing-manager:** enclose method name in single quotes ([1028267](https://github.com/PolymathNetwork/signing-managers/commit/1028267b9c5ab8a7f6bb4b277b30525beacacdde))
+* **local-signing-manager:** refine error messages when SS58 format isn't set ([f7db481](https://github.com/PolymathNetwork/signing-managers/commit/f7db4811a46814b10a27c1e22251b9205a4df0c5))
+
+
+### Documentation
+
+* fix broken link in readme ([63b7274](https://github.com/PolymathNetwork/signing-managers/commit/63b7274e78b99a712d5a92c3add52f067ba2cec8))
+* update contribution guidelines ([6abdf96](https://github.com/PolymathNetwork/signing-managers/commit/6abdf96151f69584824a050e0bef13de0338acde))
+
 ## [1.0.1](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/local-signing-manager@1.0.0...@polymathnetwork/local-signing-manager@1.0.1) (2022-02-18)
 
 
