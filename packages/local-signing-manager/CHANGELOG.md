@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/local-signing-manager@1.0.2...@polymathnetwork/local-signing-manager@1.0.3) (2022-03-02)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** bump version ([b34235f](https://github.com/PolymathNetwork/signing-managers/commit/b34235f24d328b4d64ac4487425b0eaa2cf996d4))
+* **local-signing-manager:** trigger release ([6b2439f](https://github.com/PolymathNetwork/signing-managers/commit/6b2439fb3b21f30474d38c0621e1c3aa000312c2))
+
 ## [1.0.2](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/local-signing-manager@1.0.1...@polymathnetwork/local-signing-manager@1.0.2) (2022-03-02)
 
 

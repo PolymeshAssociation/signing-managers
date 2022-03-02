@@ -1,6 +1,6 @@
 {
   "name": "@polymathnetwork/local-signing-manager",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publishConfig": {
     "access": "public"
   },
