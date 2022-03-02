@@ -105,6 +105,18 @@ export default async function (tree: Tree, schema: Schema) {
     return tsConfigBase;
   });
 
+  // add the new package to the accepted commit scopes
+  updateJsConfig(tree, 'commitlint.config.js', commitlintConfig => {
+    const { rules } = commitlintConfig;
+    const scopeEnumRule = rules['scope-enum'];
+    commitlintConfig.rules = {
+      ...rules,
+      'scope-enum': [scopeEnumRule[0], scopeEnumRule[1], [...scopeEnumRule[2], name]],
+    };
+
+    return commitlintConfig;
+  });
+
   await formatFiles(tree);
   return () => {
     installPackagesTask(tree);
