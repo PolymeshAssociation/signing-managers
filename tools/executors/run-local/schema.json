@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "cli": "nx",
+  "properties": {
+    "runInBrowser": {
+      "type": "boolean",
+      "description": "If true, it will open a browser tab and run the script on the page. If false, it will run the script using ts-node on the terminal"
+    },
+    "path": {
+      "type": "string",
+      "description": "Path to the script (from the workspace root) to be run"
+    },
+    "port": {
+      "type": "number",
+      "description": "Port in which to serve the script. Only applicable if 'runInBrowser' is true"
+    }
+  }
+}

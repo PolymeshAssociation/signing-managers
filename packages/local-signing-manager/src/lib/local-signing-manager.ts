@@ -79,7 +79,7 @@ export class KeyringSigner implements PolkadotSigner {
     try {
       return keyring.getPair(address);
     } catch (err) {
-      if (err instanceof Error && err.message.indexOf('Unable to retrieve keypair') > -1) {
+      if (err instanceof Error && err.message.includes('Unable to retrieve keypair')) {
         throw new Error('The signer cannot sign transactions on behalf of the calling Account');
       } else {
         throw err;
@@ -136,7 +136,7 @@ export class LocalSigningManager implements SigningManager {
    * @throws if called before calling `setSs58Format`. Normally, `setSs58Format` will be called by the SDK when instantiated
    */
   public async getAccounts(): Promise<string[]> {
-    this.assertFormatSet();
+    this.assertFormatSet('getAccounts');
     return this.keyring.getPairs().map(({ address }) => address);
   }
 
@@ -157,7 +157,7 @@ export class LocalSigningManager implements SigningManager {
    *   If Accounts need to be pre-loaded, it should be done by passing them to the `create` method
    */
   public addAccount(account: PrivateKey): string {
-    this.assertFormatSet();
+    this.assertFormatSet('addAccount');
 
     return this._addAccount(account);
   }
@@ -186,12 +186,12 @@ export class LocalSigningManager implements SigningManager {
    *
    * Throw an error if the SS58 format hasn't been set yet
    */
-  private assertFormatSet(): void {
+  private assertFormatSet(methodName: string): void {
     const { hasFormat } = this;
 
     if (!hasFormat) {
       throw new Error(
-        'Cannot add Accounts before calling `setSs58Format`. Did you forget to use this Signing Manager to connect with the Polymesh SDK?'
+        `Cannot call '${methodName}' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?`
       );
     }
   }

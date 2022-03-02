@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "run-local": {
+      "implementation": "./impl",
+      "schema": "./schema.json",
+      "description": "Runs a script locally for manual testing"
+    }
+  }
+}
