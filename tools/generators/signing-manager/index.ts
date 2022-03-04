@@ -30,7 +30,7 @@ export default async function (tree: Tree, schema: Schema) {
     };
     contents.peerDependencies = {
       ...contents.peerDependencies,
-      '@polymathnetwork/polymesh-sdk': '>=13.0.0',
+      '@polymathnetwork/polymesh-sdk': '>=14.0.0',
     };
 
     return contents;
@@ -91,8 +91,16 @@ export default async function (tree: Tree, schema: Schema) {
       allowJs: true,
       esModuleInterop: true,
     };
+    testTsConfig.include = [...testTsConfig.include, '**/mocks.ts'];
 
     return testTsConfig;
+  });
+
+  // modify build tsconfig
+  updateJson(tree, `${projectPath}/tsconfig.lib.json`, buildTsConfig => {
+    buildTsConfig.exclude = [...buildTsConfig.exclude, '**/mocks.ts', 'sandbox'];
+
+    return buildTsConfig;
   });
 
   // modify import paths in base tsconfig
@@ -103,6 +111,18 @@ export default async function (tree: Tree, schema: Schema) {
     };
 
     return tsConfigBase;
+  });
+
+  // add the new package to the accepted commit scopes
+  updateJsConfig(tree, 'commitlint.config.js', commitlintConfig => {
+    const { rules } = commitlintConfig;
+    const scopeEnumRule = rules['scope-enum'];
+    commitlintConfig.rules = {
+      ...rules,
+      'scope-enum': [scopeEnumRule[0], scopeEnumRule[1], [...scopeEnumRule[2], name]],
+    };
+
+    return commitlintConfig;
   });
 
   await formatFiles(tree);

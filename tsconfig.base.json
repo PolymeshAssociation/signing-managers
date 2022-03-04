@@ -18,6 +18,9 @@
       "@polymathnetwork/browser-extension-signing-manager": [
         "packages/browser-extension-signing-manager/src"
       ],
+      "@polymathnetwork/hashicorp-vault-signing-manager": [
+        "packages/hashicorp-vault-signing-manager/src"
+      ],
       "@polymathnetwork/local-signing-manager": ["packages/local-signing-manager/src"],
       "@polymathnetwork/signing-manager-types": ["packages/types/src"]
     },

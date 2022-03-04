@@ -1,6 +1,6 @@
 # local-signing-manager
 
-Polymesh SDK (v13+) compatible signing manager that stores private keys in memory.
+Polymesh SDK (v14+) compatible signing manager that stores private keys in memory.
 
 This library was generated with [Nx](https://nx.dev).
 
