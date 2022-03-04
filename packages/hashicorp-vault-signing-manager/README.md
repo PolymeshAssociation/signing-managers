@@ -11,7 +11,7 @@ import { HashicorpVaultSigningManager } from '@polymathnetwork/hashicorp-vault-s
 import { Polymesh } from '@polymathnetwork/polymesh-sdk';
 
 // setup
-const signingManager = await HashicorpVaultSigningManager.create({
+const signingManager = new HashicorpVaultSigningManager({
   // URL where the vault is hosted
   url: 'https://my-hosted-vault.io',
   // authentication token
