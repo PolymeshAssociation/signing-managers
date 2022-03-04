@@ -1,7 +1,8 @@
 import { web3Enable } from '@polkadot/extension-dapp';
 import { PolkadotSigner, SigningManager } from '@polymathnetwork/signing-manager-types';
-import { changeAddressFormat } from '../utils';
+
 import { Extension, NetworkInfo, UnsubCallback } from '../types';
+import { changeAddressFormat } from '../utils';
 
 export class BrowserExtensionSigningManager implements SigningManager {
   private _ss58Format?: number;
@@ -66,7 +67,7 @@ export class BrowserExtensionSigningManager implements SigningManager {
   }
 
   /**
-   * Return a signer object that uses the underlying keyring pairs to sign
+   * Return a signer object that uses the extension Accounts to sign
    */
   public getExternalSigner(): PolkadotSigner {
     return this.extension.signer;
@@ -105,6 +106,8 @@ export class BrowserExtensionSigningManager implements SigningManager {
   }
 
   /**
+   * @hidden
+   *
    * @throws if the SS58 format hasn't been set yet
    */
   private getSs58Format(methodName: string): number {

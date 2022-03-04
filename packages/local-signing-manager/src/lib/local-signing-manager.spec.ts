@@ -4,8 +4,8 @@ import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
 import { hexToU8a, stringToU8a, u8aToHex } from '@polkadot/util';
 import { cryptoWaitReady, signatureVerify } from '@polkadot/util-crypto';
 
-import { KeyringSigner, LocalSigningManager } from './local-signing-manager';
 import { PrivateKey } from '../types';
+import { KeyringSigner, LocalSigningManager } from './local-signing-manager';
 
 describe('LocalSigningManager Class', () => {
   let signingManager: LocalSigningManager;
