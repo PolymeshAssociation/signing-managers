@@ -35,12 +35,8 @@ jobs:
       - name: install dependencies
         run: yarn --frozen-lockfile
       - name: build and release
-        uses: mansagroup/nrwl-nx-action@v2
+        run: nx run-many --all --target=release --parallel=1
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.JERE_RELEASE_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        with:
-          targets: release
-          all: true
-          maxParallel: 1
