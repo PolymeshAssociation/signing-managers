@@ -1,5 +1,5 @@
 import fetch from 'cross-fetch';
-import { flatten, map, trim } from 'lodash';
+import { flatten, map } from 'lodash';
 
 import {
   GetKeyResponse,

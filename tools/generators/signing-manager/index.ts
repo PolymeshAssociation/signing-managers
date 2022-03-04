@@ -1,4 +1,4 @@
-import { Tree, formatFiles, installPackagesTask, updateJson } from '@nrwl/devkit';
+import { formatFiles, installPackagesTask, readJson, Tree, updateJson } from '@nrwl/devkit';
 import { libraryGenerator } from '@nrwl/node';
 import requireFromString from 'require-from-string';
 
@@ -21,12 +21,15 @@ export default async function (tree: Tree, schema: Schema) {
 
   // add types dependency and publish config
   updateJson(tree, `${projectPath}/package.json`, contents => {
+    // fetch latest types version
+    const { version: typesVersion } = readJson(tree, 'packages/types/package.json');
+
     contents.publishConfig = {
       access: 'public',
     };
     contents.dependencies = {
       ...contents.dependencies,
-      '@polymathnetwork/signing-manager-types': '*',
+      '@polymathnetwork/signing-manager-types': `^${typesVersion}`,
     };
     contents.peerDependencies = {
       ...contents.peerDependencies,

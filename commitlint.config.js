@@ -2,6 +2,7 @@ module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
     'scope-empty': [2, 'never'],
+    'header-max-length': 120,
     'scope-enum': [
       2,
       'always',
