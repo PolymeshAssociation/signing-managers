@@ -91,6 +91,7 @@ export default async function (tree: Tree, schema: Schema) {
       allowJs: true,
       esModuleInterop: true,
     };
+    testTsConfig.include = [...testTsConfig.include, '**/mocks.ts'];
 
     return testTsConfig;
   });
