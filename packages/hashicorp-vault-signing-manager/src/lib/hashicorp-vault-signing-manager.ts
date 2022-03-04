@@ -51,6 +51,7 @@ export class VaultSigner implements PolkadotSigner {
   private async signData(name: string, version: number, data: Uint8Array): Promise<SignerResult> {
     const body = {
       input: Buffer.from(data).toString('base64'),
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       key_version: version,
     };
 
@@ -138,14 +139,14 @@ export class HashicorpVaultSigningManager implements SigningManager {
    * @throws if the SS58 format hasn't been set yet
    */
   private getSs58Format(methodName: string): number {
-    const { _ss58Format } = this;
+    const { _ss58Format: format } = this;
 
-    if (_ss58Format === undefined) {
+    if (format === undefined) {
       throw new Error(
         `Cannot call '${methodName}' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?`
       );
     }
 
-    return _ss58Format;
+    return format;
   }
 }

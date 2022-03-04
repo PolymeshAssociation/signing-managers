@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /**
  * Response for LIST /keys
  */
@@ -63,6 +64,7 @@ export interface SignRequestPayload {
    */
   key_version: number;
 }
+/* eslint-enable @typescript-eslint/naming-convention */
 
 /**
  * Outward facing data for a key

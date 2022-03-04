@@ -111,14 +111,14 @@ export class BrowserExtensionSigningManager implements SigningManager {
    * @throws if the SS58 format hasn't been set yet
    */
   private getSs58Format(methodName: string): number {
-    const { _ss58Format } = this;
+    const { _ss58Format: format } = this;
 
-    if (_ss58Format === undefined) {
+    if (format === undefined) {
       throw new Error(
         `Cannot call '${methodName}' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?`
       );
     }
 
-    return _ss58Format;
+    return format;
   }
 }

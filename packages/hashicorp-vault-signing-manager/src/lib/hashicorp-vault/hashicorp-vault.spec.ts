@@ -46,6 +46,7 @@ describe('HashicorpVault class', () => {
             },
           })
         )
+        /* eslint-disable @typescript-eslint/naming-convention */
         .mockResolvedValueOnce(
           createMockResponse(200, 'Ok', {
             data: {
@@ -71,6 +72,7 @@ describe('HashicorpVault class', () => {
             },
           })
         );
+      /* eslint-enable @typescript-eslint/naming-convention */
 
       const result = await vault.fetchAllKeys();
 
@@ -96,12 +98,14 @@ describe('HashicorpVault class', () => {
         createMockResponse(200, 'Ok', {
           data: {
             keys: {
+              /* eslint-disable @typescript-eslint/naming-convention */
               '1': {
                 public_key: 'cqWlP2oERZqOjtJmzASNt/jI0/qsAgT5ntWTQAutY2w=',
               },
               '2': {
                 public_key: '7CYkynab5bxXzSPw8djAag9orAalfgA1U2HUUACvfCg=',
               },
+              /* eslint-enable @typescript-eslint/naming-convention */
             },
           },
         })
@@ -135,6 +139,7 @@ describe('HashicorpVault class', () => {
       const result = await vault.signData('Alice', {
         // cSpell: disable-next-line
         input: 'adba32==',
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         key_version: 2,
       });
 

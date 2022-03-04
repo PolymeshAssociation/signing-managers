@@ -7,6 +7,7 @@ import { mockHashicorpVault } from './hashicorp-vault/mocks';
 import { HashicorpVaultSigningManager, VaultSigner } from './hashicorp-vault-signing-manager';
 
 jest.mock('./hashicorp-vault', () => ({
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   HashicorpVault: function () {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     return require('./hashicorp-vault/mocks').mockHashicorpVault;

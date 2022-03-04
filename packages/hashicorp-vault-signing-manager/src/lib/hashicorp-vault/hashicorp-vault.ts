@@ -71,8 +71,8 @@ export class HashicorpVault {
       data: { keys },
     }: GetKeyResponse = await response.json();
 
-    return map(keys, ({ public_key }, version) => {
-      const hexKey = Buffer.from(public_key, 'base64').toString('hex');
+    return map(keys, ({ public_key: publicKey }, version) => {
+      const hexKey = Buffer.from(publicKey, 'base64').toString('hex');
 
       return {
         publicKey: `0x${hexKey}`,

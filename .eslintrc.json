@@ -25,7 +25,54 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "default",
+            "format": ["strictCamelCase"]
+          },
+          {
+            "selector": "variable",
+            "format": ["strictCamelCase", "UPPER_CASE"]
+          },
+          {
+            "selector": "parameter",
+            "format": ["strictCamelCase"],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "enumMember",
+            "format": ["strictCamelCase", "StrictPascalCase"]
+          },
+          {
+            "selector": "typeLike",
+            "format": ["StrictPascalCase"]
+          },
+          {
+            "selector": "typeProperty",
+            "format": ["StrictPascalCase", "strictCamelCase"],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "memberLike",
+            "modifiers": ["private"],
+            "format": ["strictCamelCase"],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "memberLike",
+            "modifiers": ["protected"],
+            "format": ["strictCamelCase"],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "objectLiteralProperty",
+            "format": ["camelCase", "PascalCase"],
+            "leadingUnderscore": "allow"
+          }
+        ]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
