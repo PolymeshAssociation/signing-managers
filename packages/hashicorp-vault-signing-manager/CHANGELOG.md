@@ -3,6 +3,14 @@
 
 ### Bug Fixes
 
+* **hashicorp-vault-signing-manager,browser-extension-signing-manager:** bump version ([6fa1bb6](https://github.com/PolymathNetwork/signing-managers/commit/6fa1bb6ad185040503df0ab7965bf5df93c3fe2e))
+* **local-signing-manager,browser-extension-signing-manager,hashicorp-vault-signing-manager:** use proper types version ([41ccc15](https://github.com/PolymathNetwork/signing-managers/commit/41ccc15678c2a017474d9eef64eaf4c47366ecf3))
+
+## [1.0.1](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/hashicorp-vault-signing-manager@1.0.0...@polymathnetwork/hashicorp-vault-signing-manager@1.0.1) (2022-03-04)
+
+
+### Bug Fixes
+
 * **local-signing-manager,browser-extension-signing-manager,hashicorp-vault-signing-manager:** use proper types version ([41ccc15](https://github.com/PolymathNetwork/signing-managers/commit/41ccc15678c2a017474d9eef64eaf4c47366ecf3))
 
 # 1.0.0 (2022-03-04)
