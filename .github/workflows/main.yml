@@ -43,5 +43,4 @@ jobs:
         with:
           targets: release
           all: true
-          parallel: false
           maxParallel: 1
