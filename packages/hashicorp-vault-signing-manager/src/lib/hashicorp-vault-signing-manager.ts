@@ -96,7 +96,7 @@ export class HashicorpVaultSigningManager implements SigningManager {
   /**
    * Create an instance of the Hashicorp Vault Signing Manager
    *
-   * @param args.url - points to where the vault is hosted
+   * @param args.url - points to where the Vault's transit engine is hosted (usually `<base-url>/v1/transit`)
    * @param args.token - authentication token used for signing
    */
   public constructor(args: { url: string; token: string }) {

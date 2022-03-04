@@ -37,7 +37,7 @@ describe('HashicorpVault class', () => {
   });
 
   describe('method: fetchAllKeys', () => {
-    it('should return all keys stored in the vault', async () => {
+    it('should return all keys stored in the Vault', async () => {
       fetchStub
         .mockResolvedValueOnce(
           createMockResponse(200, 'Ok', {
@@ -79,7 +79,7 @@ describe('HashicorpVault class', () => {
       expect(result).toEqual(expectedKeys);
     });
 
-    it('should throw any errors returned by the vault API', () => {
+    it('should throw any errors returned by the Vault API', () => {
       fetchStub.mockResolvedValue(
         createMockResponse(400, 'Bad Request', {
           errors: ['Something went wrong'],
@@ -116,7 +116,7 @@ describe('HashicorpVault class', () => {
       expect(result).toEqual([expectedKeys[0], expectedKeys[1]]);
     });
 
-    it('should throw any errors returned by the vault API', () => {
+    it('should throw any errors returned by the Vault API', () => {
       fetchStub.mockResolvedValue(createMockResponse(400, 'Bad Request', {}));
 
       return expect(vault.fetchAllKeys()).rejects.toThrow(
@@ -148,7 +148,7 @@ describe('HashicorpVault class', () => {
       );
     });
 
-    it('should throw any errors returned by the vault API', () => {
+    it('should throw any errors returned by the Vault API', () => {
       fetchStub.mockResolvedValue(
         createMockResponse(400, 'Bad Request', {
           errors: ['THE END IS NIGH'],

@@ -12,8 +12,8 @@ import { Polymesh } from '@polymathnetwork/polymesh-sdk';
 
 // setup
 const signingManager = new HashicorpVaultSigningManager({
-  // URL where the vault is hosted
-  url: 'https://my-hosted-vault.io',
+  // URL of the Vault's transit engine
+  url: 'https://my-hosted-vault.io/v1/transit',
   // authentication token
   token: 'willNeverTell',
 });

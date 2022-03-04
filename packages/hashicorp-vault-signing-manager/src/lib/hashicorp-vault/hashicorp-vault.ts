@@ -1,5 +1,5 @@
 import fetch from 'cross-fetch';
-import { flatten, map } from 'lodash';
+import { flatten, map, trim } from 'lodash';
 
 import {
   GetKeyResponse,
@@ -122,7 +122,9 @@ export class HashicorpVault {
 
     if (![200, 204].includes(status)) {
       const { errors = [] } = await res.json();
-      const reasons = errors.length ? `. Reason(s): "${errors.join('", "')}"` : '';
+      const reasons = errors.length
+        ? `. Reason(s): "${errors.join('", "').replace(/[\n\t*]/g, '')}"`
+        : '';
       throw new Error(`Vault response error: ${status} - ${statusText}${reasons}`);
     }
   }
