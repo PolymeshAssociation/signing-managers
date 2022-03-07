@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/local-signing-manager@1.0.4...@polymathnetwork/local-signing-manager@1.0.5) (2022-03-07)
+
+
+### Bug Fixes
+
+* **local-signing-manager,hashicorp-vault-signing-manager:** test simultaneous multi release ([d5dd185](https://github.com/PolymathNetwork/signing-managers/commit/d5dd185080d97bb52396974c0019839094ae4d15))
+
 ## [1.0.4](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/local-signing-manager@1.0.3...@polymathnetwork/local-signing-manager@1.0.4) (2022-03-04)
 
 
