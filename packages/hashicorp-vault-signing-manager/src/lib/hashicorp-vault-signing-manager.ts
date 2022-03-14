@@ -121,7 +121,6 @@ export class HashicorpVaultSigningManager implements SigningManager {
    */
   public async getAccounts(): Promise<string[]> {
     const ss58Format = this.getSs58Format('getAccounts');
-    this.getSs58Format('getAccounts');
 
     const keys = await this.vault.fetchAllKeys();
 
@@ -137,6 +136,8 @@ export class HashicorpVaultSigningManager implements SigningManager {
 
   /**
    * Return the information about each key available to sign extrinsics with in the Hashicorp Vault.
+   *
+   * @throws if called before calling `setSs58Format`. Normally, `setSs58Format` will be called by the SDK when instantiated
    */
   public async getVaultKeys(): Promise<AddressedVaultKey[]> {
     const ss58Format = this.getSs58Format('getVaultKeys');
