@@ -4,6 +4,7 @@ import { hexToU8a, u8aToHex } from '@polkadot/util';
 import { decodeAddress, encodeAddress } from '@polkadot/util-crypto';
 import { PolkadotSigner, SigningManager } from '@polymathnetwork/signing-manager-types';
 
+import { AddressedVaultKey } from '../types';
 import { HashicorpVault, VaultKey } from './hashicorp-vault';
 
 export class VaultSigner implements PolkadotSigner {
@@ -120,6 +121,7 @@ export class HashicorpVaultSigningManager implements SigningManager {
    */
   public async getAccounts(): Promise<string[]> {
     const ss58Format = this.getSs58Format('getAccounts');
+    this.getSs58Format('getAccounts');
 
     const keys = await this.vault.fetchAllKeys();
 
@@ -131,6 +133,18 @@ export class HashicorpVaultSigningManager implements SigningManager {
    */
   public getExternalSigner(): PolkadotSigner {
     return this.externalSigner;
+  }
+
+  /**
+   * Return the information about each key available to sign extrinsics with in the Hashicorp Vault.
+   */
+  public async getVaultKeys(): Promise<AddressedVaultKey[]> {
+    const ss58Format = this.getSs58Format('getVaultKeys');
+    const keys = await this.vault.fetchAllKeys();
+    return keys.map(key => ({
+      ...key,
+      address: encodeAddress(key.publicKey, ss58Format),
+    }));
   }
 
   /**

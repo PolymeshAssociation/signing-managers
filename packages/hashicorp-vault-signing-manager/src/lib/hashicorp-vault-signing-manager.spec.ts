@@ -84,6 +84,13 @@ describe('HashicorpVaultSigningManager Class', () => {
       expect(signer instanceof VaultSigner).toBe(true);
     });
   });
+
+  describe('method: getVaultKeys', () => {
+    it('should return the vault keys', async () => {
+      const result = await signingManager.getVaultKeys();
+      expect(result).toEqual(accounts);
+    });
+  });
 });
 
 describe('class VaultSigner', () => {
