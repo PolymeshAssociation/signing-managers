@@ -66,13 +66,13 @@ describe('HashicorpVaultSigningManager Class', () => {
       expect(result).toEqual(accounts.map(({ address }) => address));
     });
 
-    it("should throw an error if the Signing Manager doesn't have a SS58 format", async () => {
+    it("should throw an error if the Signing Manager doesn't have a SS58 format", () => {
       signingManager = new HashicorpVaultSigningManager({
         url,
         token,
       });
 
-      expect(signingManager.getAccounts()).rejects.toThrow(
+      return expect(signingManager.getAccounts()).rejects.toThrow(
         "Cannot call 'getAccounts' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
       );
     });
@@ -82,6 +82,23 @@ describe('HashicorpVaultSigningManager Class', () => {
     it('should return a Vault Signer', () => {
       const signer = signingManager.getExternalSigner();
       expect(signer instanceof VaultSigner).toBe(true);
+    });
+  });
+
+  describe('method: getVaultKeys', () => {
+    it('should return the vault keys', async () => {
+      const result = await signingManager.getVaultKeys();
+      expect(result).toEqual(accounts);
+    });
+
+    it("should throw an error if the Signing Manager doesn't have a SS58 format", () => {
+      signingManager = new HashicorpVaultSigningManager({
+        url,
+        token,
+      });
+      return expect(signingManager.getVaultKeys()).rejects.toThrowError(
+        "Cannot call 'getVaultKeys' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
+      );
     });
   });
 });

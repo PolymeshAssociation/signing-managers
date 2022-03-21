@@ -4,6 +4,7 @@ import { hexToU8a, u8aToHex } from '@polkadot/util';
 import { decodeAddress, encodeAddress } from '@polkadot/util-crypto';
 import { PolkadotSigner, SigningManager } from '@polymathnetwork/signing-manager-types';
 
+import { AddressedVaultKey } from '../types';
 import { HashicorpVault, VaultKey } from './hashicorp-vault';
 
 export class VaultSigner implements PolkadotSigner {
@@ -131,6 +132,20 @@ export class HashicorpVaultSigningManager implements SigningManager {
    */
   public getExternalSigner(): PolkadotSigner {
     return this.externalSigner;
+  }
+
+  /**
+   * Return the information about each key available to sign extrinsics with in the Hashicorp Vault.
+   *
+   * @throws if called before calling `setSs58Format`. Normally, `setSs58Format` will be called by the SDK when instantiated
+   */
+  public async getVaultKeys(): Promise<AddressedVaultKey[]> {
+    const ss58Format = this.getSs58Format('getVaultKeys');
+    const keys = await this.vault.fetchAllKeys();
+    return keys.map(key => ({
+      ...key,
+      address: encodeAddress(key.publicKey, ss58Format),
+    }));
   }
 
   /**
