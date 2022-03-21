@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/hashicorp-vault-signing-manager@1.0.2...@polymathnetwork/hashicorp-vault-signing-manager@1.1.0) (2022-03-21)
+
+
+### Features
+
+* **hashicorp-vault-signing-manager:** add method to expose vault key info ([d9c3913](https://github.com/PolymathNetwork/signing-managers/commit/d9c3913ebc4b87dfe597edf393f0780442a8a2cf))
+
 ## [1.0.2](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/hashicorp-vault-signing-manager@1.0.1...@polymathnetwork/hashicorp-vault-signing-manager@1.0.2) (2022-03-07)
 
 
