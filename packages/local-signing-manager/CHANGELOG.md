@@ -1,3 +1,20 @@
+# [1.1.0](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/local-signing-manager@1.0.5...@polymathnetwork/local-signing-manager@1.1.0) (2022-05-30)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymathnetwork/signing-manager-types to 2.0.0 [skip ci] ([5cb8559](https://github.com/PolymathNetwork/signing-managers/commit/5cb855938227e3d352cb87aabb4aca04c8209aeb))
+
+
+### Features
+
+* **local-signing-manager,hashicorp-vault-signing-manager,browser-extension-signing-manager:** update SDK peer deps ([830ab06](https://github.com/PolymathNetwork/signing-managers/commit/830ab06373d5e516aba8f8868682ccaae08886e0))
+
+
+### BREAKING CHANGES
+
+* **local-signing-manager,hashicorp-vault-signing-manager,browser-extension-signing-manager:** support SDK v15
+
 ## [1.0.5](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/local-signing-manager@1.0.4...@polymathnetwork/local-signing-manager@1.0.5) (2022-03-07)
 
 
