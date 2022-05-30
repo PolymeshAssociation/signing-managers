@@ -33,7 +33,7 @@ export default async function (tree: Tree, schema: Schema) {
     };
     contents.peerDependencies = {
       ...contents.peerDependencies,
-      '@polymathnetwork/polymesh-sdk': '>=14.0.0',
+      '@polymathnetwork/polymesh-sdk': '>=15.0.0',
     };
 
     return contents;
