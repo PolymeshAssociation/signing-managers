@@ -1,3 +1,5 @@
+# [2.0.0](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/signing-manager-types@1.0.3...@polymathnetwork/signing-manager-types@2.0.0) (2022-05-30)
+
 ## [1.0.3](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/signing-manager-types@1.0.2...@polymathnetwork/signing-manager-types@1.0.3) (2022-03-02)
 
 
