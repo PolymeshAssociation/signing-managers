@@ -11,6 +11,6 @@
     "@polkadot/api": "5.1.1",
     "@polkadot/util": "^7.0.2",
     "@polkadot/util-crypto": "^7.0.2",
-    "@polymathnetwork/polymesh-sdk": ">=14.0.0"
+    "@polymathnetwork/polymesh-sdk": ">=15.0.0"
   }
 }
