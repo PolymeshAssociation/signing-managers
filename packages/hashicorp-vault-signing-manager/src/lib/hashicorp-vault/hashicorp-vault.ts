@@ -1,3 +1,4 @@
+import { HexString } from '@polkadot/util/types';
 import fetch from 'cross-fetch';
 import { flatten, map } from 'lodash';
 
@@ -89,7 +90,7 @@ export class HashicorpVault {
    * @param version - version of the named key to use
    * @param data - data that will be signed
    */
-  public async signData(name: string, data: SignRequestPayload): Promise<string> {
+  public async signData(name: string, data: SignRequestPayload): Promise<HexString> {
     const { headers } = this;
 
     const response = await fetch(this.getUrl('sign', name), {
