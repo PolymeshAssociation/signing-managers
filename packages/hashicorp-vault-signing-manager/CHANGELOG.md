@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/hashicorp-vault-signing-manager@1.2.0...@polymathnetwork/hashicorp-vault-signing-manager@1.3.0) (2022-05-31)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** use proper return type for `signData` ([96b0eeb](https://github.com/PolymathNetwork/signing-managers/commit/96b0eeb9d1bc7c09946be27bea4ac6a11e3bd9c3))
+
+
+### Features
+
+* **local-signing-manager,hashicorp-vault-signing-manager,browser-extension-signing-manager:** update polkadot peer deps ([2906b08](https://github.com/PolymathNetwork/signing-managers/commit/2906b088981de1e7a5f5e0041c2a06607fba5bfb))
+
 # [1.2.0](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/hashicorp-vault-signing-manager@1.1.0...@polymathnetwork/hashicorp-vault-signing-manager@1.2.0) (2022-05-30)
 
 
