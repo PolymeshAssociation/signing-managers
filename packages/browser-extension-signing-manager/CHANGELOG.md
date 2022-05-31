@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/browser-extension-signing-manager@1.1.0...@polymathnetwork/browser-extension-signing-manager@1.2.0) (2022-05-31)
+
+
+### Features
+
+* **local-signing-manager,hashicorp-vault-signing-manager,browser-extension-signing-manager:** update polkadot peer deps ([2906b08](https://github.com/PolymathNetwork/signing-managers/commit/2906b088981de1e7a5f5e0041c2a06607fba5bfb))
+
 # [1.1.0](https://github.com/PolymathNetwork/signing-managers/compare/@polymathnetwork/browser-extension-signing-manager@1.0.1...@polymathnetwork/browser-extension-signing-manager@1.1.0) (2022-05-30)
 
 
