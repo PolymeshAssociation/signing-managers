@@ -1,13 +1,13 @@
 {
-  "name": "@polymathnetwork/browser-extension-signing-manager",
+  "name": "@polymeshassociation/browser-extension-signing-manager",
   "version": "1.2.0",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@polymathnetwork/signing-manager-types": "^2.0.0"
+    "@polymeshassociation/signing-manager-types": "^2.0.0"
   },
   "peerDependencies": {
-    "@polymathnetwork/polymesh-sdk": ">=15.0.0"
+    "@polymeshassociation/polymesh-sdk": ">=15.0.0"
   }
 }

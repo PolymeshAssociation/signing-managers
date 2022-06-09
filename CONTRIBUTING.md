@@ -8,7 +8,7 @@ We accept PRs with all kinds of contributions, including the creation of custom 
 
 ## Custom Signing Managers
 
-To create a new signing manager, run `yarn generate:signing-manager <name>`. This will create a `packages/<name>` directory with all the necessary configuration to build/test/release an npm package called `@polymathnetwork/<name>`. Unit tests must be written using the [jest](https://jestjs.io/) testing framework.
+To create a new signing manager, run `yarn generate:signing-manager <name>`. This will create a `packages/<name>` directory with all the necessary configuration to build/test/release an npm package called `@polymeshassociation/<name>`. Unit tests must be written using the [jest](https://jestjs.io/) testing framework.
 
 ### Naming
 

@@ -2,7 +2,7 @@ import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw, SignerResult } from '@polkadot/types/types';
 import { hexToU8a, u8aToHex } from '@polkadot/util';
 import { decodeAddress, encodeAddress } from '@polkadot/util-crypto';
-import { PolkadotSigner, SigningManager } from '@polymathnetwork/signing-manager-types';
+import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
 
 import { AddressedVaultKey } from '../types';
 import { HashicorpVault, VaultKey } from './hashicorp-vault';

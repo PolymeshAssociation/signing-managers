@@ -8,7 +8,7 @@ interface Schema {
 
 export default async function (tree: Tree, schema: Schema) {
   const { name } = schema;
-  const importPath = `@polymathnetwork/${name}`;
+  const importPath = `@polymeshassociation/${name}`;
   const projectPath = `packages/${name}`;
   const srcPath = `${projectPath}/src`;
 
@@ -29,11 +29,11 @@ export default async function (tree: Tree, schema: Schema) {
     };
     contents.dependencies = {
       ...contents.dependencies,
-      '@polymathnetwork/signing-manager-types': `^${typesVersion}`,
+      '@polymeshassociation/signing-manager-types': `^${typesVersion}`,
     };
     contents.peerDependencies = {
       ...contents.peerDependencies,
-      '@polymathnetwork/polymesh-sdk': '>=15.0.0',
+      '@polymeshassociation/polymesh-sdk': '>=15.0.0',
     };
 
     return contents;
