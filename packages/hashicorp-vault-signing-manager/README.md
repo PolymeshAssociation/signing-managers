@@ -7,8 +7,8 @@ This library was generated with [Nx](https://nx.dev).
 ## Usage
 
 ```typescript
-import { HashicorpVaultSigningManager } from '@polymathnetwork/hashicorp-vault-signing-manager';
-import { Polymesh } from '@polymathnetwork/polymesh-sdk';
+import { HashicorpVaultSigningManager } from '@polymeshassociation/hashicorp-vault-signing-manager';
+import { Polymesh } from '@polymeshassociation/polymesh-sdk';
 
 // setup
 const signingManager = new HashicorpVaultSigningManager({

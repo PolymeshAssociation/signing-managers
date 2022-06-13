@@ -1,5 +1,5 @@
 import { web3Enable } from '@polkadot/extension-dapp';
-import { PolkadotSigner, SigningManager } from '@polymathnetwork/signing-manager-types';
+import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
 
 import { Extension, NetworkInfo, UnsubCallback } from '../types';
 import { changeAddressFormat } from '../utils';

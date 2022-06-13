@@ -39,4 +39,4 @@ jobs:
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.JERE_RELEASE_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.ASSOCIATION_NPM_TOKEN }}
