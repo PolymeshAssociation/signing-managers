@@ -2984,10 +2984,10 @@
     "@types/websocket" "^1.0.5"
     websocket "^1.0.34"
 
-"@polymathnetwork/signing-manager-types@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@polymathnetwork/signing-manager-types/-/signing-manager-types-2.0.0.tgz#67a7b4e1f549877a6c974b6923402cfbfa68af23"
-  integrity sha512-1WSNW8GFv56hCrOomg2KCNZMnmEjEmObZH6W16d7xMwVjoArP6f0/StP1ixWQNG7RmfBd8kWS+E6c8JecC9Glw==
+"@polymathnetwork/signing-manager-types@^1.0.0":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@polymathnetwork/signing-manager-types/-/signing-manager-types-1.0.3.tgz#80f8696c34e6e1a6a570e2d25ae967b614f5822a"
+  integrity sha512-4o0gxlvDAgS08MlnAkxqJJ6B9CGTj47/rhjUdPoH1GJ1AbnLAX3TCoZvr/qgBZe+7SLKPd8fur2o2x1m4KtSfw==
 
 "@scure/base@1.0.0":
   version "1.0.0"
