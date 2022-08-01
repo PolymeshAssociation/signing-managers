@@ -2,14 +2,20 @@ import { Keyring } from '@polkadot/api';
 import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
 import { hexToU8a, stringToU8a, u8aToHex } from '@polkadot/util';
-import { cryptoWaitReady, signatureVerify } from '@polkadot/util-crypto';
+import { cryptoWaitReady, mnemonicGenerate, signatureVerify } from '@polkadot/util-crypto';
 
 import { PrivateKey } from '../types';
 import { KeyringSigner, LocalSigningManager } from './local-signing-manager';
 
+jest.mock('@polkadot/util-crypto', () => ({
+  ...jest.requireActual('@polkadot/util-crypto'),
+  mnemonicGenerate: jest.fn(),
+}));
+
 describe('LocalSigningManager Class', () => {
   let signingManager: LocalSigningManager;
   let accounts: { privateKey: PrivateKey; address: string; publicKey: Uint8Array }[];
+  const mnemonicGenerateStub = mnemonicGenerate as jest.MockedFunction<typeof mnemonicGenerate>;
 
   beforeAll(() => {
     accounts = [
@@ -90,6 +96,32 @@ describe('LocalSigningManager Class', () => {
         })
       ).toThrow(
         "Cannot call 'addAccount' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
+      );
+    });
+  });
+
+  describe('method: createAndAddAccount', () => {
+    it('should add a create a new Account and return its mnemonics and key pair', () => {
+      const mockMnemonic =
+        'risk topple twice merry intact slot plunge jeans penalty consider secret owner';
+
+      mnemonicGenerateStub.mockReturnValue(mockMnemonic);
+      const {
+        mnemonic,
+        keyringPair: { address },
+      } = signingManager.createAndAddAccount();
+
+      expect(mnemonic).toBe(mockMnemonic);
+      expect(address).toBe('5ESKtLYgMCYGSZvtYEDoQsfUk4KxPNRqa6DEALWqBXtiGwRX');
+    });
+
+    it("should throw an error if the Signing Manager doesn't have a SS58 format", async () => {
+      signingManager = await LocalSigningManager.create({
+        accounts: accounts.map(({ privateKey }) => privateKey),
+      });
+
+      expect(() => signingManager.createAndAddAccount()).toThrow(
+        "Cannot call 'createAndAddAccount' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
       );
     });
   });

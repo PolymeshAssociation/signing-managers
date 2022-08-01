@@ -7,7 +7,7 @@ import {
   SignerResult,
 } from '@polkadot/types/types';
 import { hexToU8a, u8aToHex } from '@polkadot/util';
-import { cryptoWaitReady } from '@polkadot/util-crypto';
+import { cryptoWaitReady, mnemonicGenerate } from '@polkadot/util-crypto';
 import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
 
 import { PrivateKey } from '../types';
@@ -108,6 +108,21 @@ export class LocalSigningManager implements SigningManager {
   }
 
   /**
+   * Create an instance of the Local Signing Manager and populates it with a newly generated Account
+   */
+  public static async generate(): Promise<{
+    mnemonic: string;
+    keyringPair: IKeyringPair;
+    signingManager: LocalSigningManager;
+  }> {
+    await cryptoWaitReady();
+
+    const signingManager = new LocalSigningManager([]);
+    const newAccount = signingManager._createAndAddAccount();
+    return { ...newAccount, signingManager };
+  }
+
+  /**
    * @hidden
    */
   private constructor(accounts: PrivateKey[]) {
@@ -179,6 +194,33 @@ export class LocalSigningManager implements SigningManager {
     }
 
     return address;
+  }
+
+  /**
+   * Add a new Account to the Signing Manager via newly generated mnemonics
+   *
+   * @returns the mnemonic of the added Account along its keyring pair
+   *
+   * @throws if called before calling `setSs58Format`. Normally, `setSs58Format` will be called by the SDK when instantiated.
+   *   If Accounts need to be pre-loaded, it should be done by passing them to the `create` method or you can use the `generate` method to create and pre-load an Account
+   */
+  public createAndAddAccount(): { mnemonic: string; keyringPair: IKeyringPair } {
+    this.assertFormatSet('createAndAddAccount');
+
+    return this._createAndAddAccount();
+  }
+
+  /**
+   * @hidden
+   */
+  private _createAndAddAccount(): { mnemonic: string; keyringPair: IKeyringPair } {
+    const mnemonic = mnemonicGenerate();
+    const address = this._addAccount({ mnemonic });
+
+    return {
+      mnemonic,
+      keyringPair: this.keyring.getPair(address),
+    };
   }
 
   /**
