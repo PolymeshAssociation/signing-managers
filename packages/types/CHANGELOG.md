@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.0.0...@polymeshassociation/signing-manager-types@1.1.0) (2022-08-10)
+
+
+### Features
+
+* use association npm for dependencies ([64ac247](https://github.com/PolymeshAssociation/signing-managers/commit/64ac247ffc67fdd359bf1da73ad2df39d0b536ad))
+
 # 1.0.0 (2022-06-13)
 
 
