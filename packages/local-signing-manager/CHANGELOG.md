@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.0.0...@polymeshassociation/local-signing-manager@1.1.0) (2022-08-10)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.1.0 [skip ci] ([44dcf46](https://github.com/PolymeshAssociation/signing-managers/commit/44dcf46f31baf67e1ecd2b5057762fda535007c8))
+
+
+### Features
+
+* use association npm for dependencies ([64ac247](https://github.com/PolymeshAssociation/signing-managers/commit/64ac247ffc67fdd359bf1da73ad2df39d0b536ad))
+
 # 1.0.0 (2022-06-13)
 
 

@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.0.0...@polymeshassociation/hashicorp-vault-signing-manager@1.1.0) (2022-08-10)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.1.0 [skip ci] ([5cbc4db](https://github.com/PolymeshAssociation/signing-managers/commit/5cbc4dbd38722fe3ca028f356a35fd14d2f85e22))
+
+
+### Features
+
+* use association npm for dependencies ([64ac247](https://github.com/PolymeshAssociation/signing-managers/commit/64ac247ffc67fdd359bf1da73ad2df39d0b536ad))
+
 # 1.0.0 (2022-06-13)
 
 
