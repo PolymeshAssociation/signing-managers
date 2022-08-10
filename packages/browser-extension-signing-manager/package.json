@@ -8,6 +8,6 @@
     "@polymeshassociation/signing-manager-types": "^1.0.0"
   },
   "peerDependencies": {
-    "@polymathnetwork/polymesh-sdk": ">=14.0.0"
+    "@polymeshassociation/polymesh-sdk": ">=15.0.0"
   }
 }
