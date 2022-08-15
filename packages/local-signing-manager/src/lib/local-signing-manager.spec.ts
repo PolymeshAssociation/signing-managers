@@ -100,29 +100,15 @@ describe('LocalSigningManager Class', () => {
     });
   });
 
-  describe('method: createAndAddAccount', () => {
-    it('should add a create a new Account and return its mnemonics and key pair', () => {
+  describe('method: generateAccount', () => {
+    it('should generate a new Account and return its mnemonic', () => {
       const mockMnemonic =
         'risk topple twice merry intact slot plunge jeans penalty consider secret owner';
 
       mnemonicGenerateStub.mockReturnValue(mockMnemonic);
-      const {
-        mnemonic,
-        keyringPair: { address },
-      } = signingManager.createAndAddAccount();
+      const mnemonic = LocalSigningManager.generateAccount();
 
       expect(mnemonic).toBe(mockMnemonic);
-      expect(address).toBe('5ESKtLYgMCYGSZvtYEDoQsfUk4KxPNRqa6DEALWqBXtiGwRX');
-    });
-
-    it("should throw an error if the Signing Manager doesn't have a SS58 format", async () => {
-      signingManager = await LocalSigningManager.create({
-        accounts: accounts.map(({ privateKey }) => privateKey),
-      });
-
-      expect(() => signingManager.createAndAddAccount()).toThrow(
-        "Cannot call 'createAndAddAccount' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
-      );
     });
   });
 });
