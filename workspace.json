@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "browser-extension-signing-manager": "packages/browser-extension-signing-manager",
+    "hashicorp-vault-signing-manager": "packages/hashicorp-vault-signing-manager",
     "local-signing-manager": "packages/local-signing-manager",
     "types": "packages/types"
   }

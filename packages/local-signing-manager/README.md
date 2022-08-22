@@ -1,14 +1,14 @@
 # local-signing-manager
 
-Polymesh SDK (v13+) compatible signing manager that stores private keys in memory.
+Polymesh SDK (v14+) compatible signing manager that stores private keys in memory.
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Usage
 
 ```typescript
-import { LocalSigningManager } from '@polymathnetwork/local-signing-manager';
-import { Polymesh } from '@polymathnetwork/polymesh-sdk';
+import { LocalSigningManager } from '@polymeshassociation/local-signing-manager';
+import { Polymesh } from '@polymeshassociation/polymesh-sdk';
 
 // setup
 const signingManager = await LocalSigningManager.create({

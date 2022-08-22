@@ -15,11 +15,14 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@polymathnetwork/browser-extension-signing-manager": [
+      "@polymeshassociation/browser-extension-signing-manager": [
         "packages/browser-extension-signing-manager/src"
       ],
-      "@polymathnetwork/local-signing-manager": ["packages/local-signing-manager/src"],
-      "@polymathnetwork/signing-manager-types": ["packages/types/src"]
+      "@polymeshassociation/hashicorp-vault-signing-manager": [
+        "packages/hashicorp-vault-signing-manager/src"
+      ],
+      "@polymeshassociation/local-signing-manager": ["packages/local-signing-manager/src"],
+      "@polymeshassociation/signing-manager-types": ["packages/types/src"]
     },
     "esModuleInterop": true
   },

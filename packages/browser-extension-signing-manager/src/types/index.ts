@@ -1,5 +1,5 @@
 import { web3Enable } from '@polkadot/extension-dapp';
-import { PolkadotSigner } from '@polymathnetwork/signing-manager-types';
+import { PolkadotSigner } from '@polymeshassociation/signing-manager-types';
 
 export type UnsubCallback = () => void;
 

@@ -8,8 +8,8 @@ import {
 } from '@polkadot/types/types';
 import { hexToU8a, u8aToHex } from '@polkadot/util';
 import { cryptoWaitReady } from '@polkadot/util-crypto';
+import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
 
-import { SigningManager, PolkadotSigner } from '@polymathnetwork/signing-manager-types';
 import { PrivateKey } from '../types';
 
 /**

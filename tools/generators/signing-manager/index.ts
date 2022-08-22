@@ -1,4 +1,4 @@
-import { Tree, formatFiles, installPackagesTask, updateJson } from '@nrwl/devkit';
+import { formatFiles, installPackagesTask, readJson, Tree, updateJson } from '@nrwl/devkit';
 import { libraryGenerator } from '@nrwl/node';
 import requireFromString from 'require-from-string';
 
@@ -8,7 +8,7 @@ interface Schema {
 
 export default async function (tree: Tree, schema: Schema) {
   const { name } = schema;
-  const importPath = `@polymathnetwork/${name}`;
+  const importPath = `@polymeshassociation/${name}`;
   const projectPath = `packages/${name}`;
   const srcPath = `${projectPath}/src`;
 
@@ -21,16 +21,19 @@ export default async function (tree: Tree, schema: Schema) {
 
   // add types dependency and publish config
   updateJson(tree, `${projectPath}/package.json`, contents => {
+    // fetch latest types version
+    const { version: typesVersion } = readJson(tree, 'packages/types/package.json');
+
     contents.publishConfig = {
       access: 'public',
     };
     contents.dependencies = {
       ...contents.dependencies,
-      '@polymathnetwork/signing-manager-types': '*',
+      '@polymeshassociation/signing-manager-types': `^${typesVersion}`,
     };
     contents.peerDependencies = {
       ...contents.peerDependencies,
-      '@polymathnetwork/polymesh-sdk': '>=13.0.0',
+      '@polymathnetwork/polymesh-sdk': '>=14.0.0',
     };
 
     return contents;
@@ -91,8 +94,16 @@ export default async function (tree: Tree, schema: Schema) {
       allowJs: true,
       esModuleInterop: true,
     };
+    testTsConfig.include = [...testTsConfig.include, '**/mocks.ts'];
 
     return testTsConfig;
+  });
+
+  // modify build tsconfig
+  updateJson(tree, `${projectPath}/tsconfig.lib.json`, buildTsConfig => {
+    buildTsConfig.exclude = [...buildTsConfig.exclude, '**/mocks.ts', 'sandbox'];
+
+    return buildTsConfig;
   });
 
   // modify import paths in base tsconfig
@@ -103,6 +114,18 @@ export default async function (tree: Tree, schema: Schema) {
     };
 
     return tsConfigBase;
+  });
+
+  // add the new package to the accepted commit scopes
+  updateJsConfig(tree, 'commitlint.config.js', commitlintConfig => {
+    const { rules } = commitlintConfig;
+    const scopeEnumRule = rules['scope-enum'];
+    commitlintConfig.rules = {
+      ...rules,
+      'scope-enum': [scopeEnumRule[0], scopeEnumRule[1], [...scopeEnumRule[2], name]],
+    };
+
+    return commitlintConfig;
   });
 
   await formatFiles(tree);

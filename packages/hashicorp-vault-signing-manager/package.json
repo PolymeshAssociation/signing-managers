@@ -1,0 +1,14 @@
+{
+  "name": "@polymeshassociation/hashicorp-vault-signing-manager",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@polymathnetwork/signing-manager-types": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@polymathnetwork/polymesh-sdk": ">=14.0.0",
+    "@polymeshassociation/signing-manager-types": "^1.0.0"
+  }
+}

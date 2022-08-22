@@ -1,14 +1,14 @@
-# local-signing-manager
+# browser-extension-signing-manager
 
-Polymesh SDK (v13+) compatible signing manager that manages accounts and signs via a polkadot compatible browser wallet extension.
+Polymesh SDK (14+) compatible signing manager that manages accounts and signs via a polkadot compatible browser wallet extension.
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Usage
 
 ```typescript
-import { BrowserExtensionSigningManager } from '@polymathnetwork/browser-extension-signing-manager';
-import { Polymesh } from '@polymathnetwork/polymesh-sdk';
+import { BrowserExtensionSigningManager } from '@polymeshassociation/browser-extension-signing-manager';
+import { Polymesh } from '@polymeshassociation/polymesh-sdk';
 
 // setup. This call will prompt the user if they haven't authorized the dApp before
 const signingManager = await BrowserExtensionSigningManager.create({
