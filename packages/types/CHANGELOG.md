@@ -1,3 +1,10 @@
+# [1.1.0-beta.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.0.0...@polymeshassociation/signing-manager-types@1.1.0-beta.1) (2022-08-23)
+
+
+### Features
+
+* update to latest polkadot dependencies ([740129a](https://github.com/PolymeshAssociation/signing-managers/commit/740129a1fd594064af9055c2bb47e295e5ff83a9))
+
 # 1.0.0 (2022-06-13)
 
 
