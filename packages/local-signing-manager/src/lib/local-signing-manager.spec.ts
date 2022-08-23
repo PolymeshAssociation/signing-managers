@@ -2,14 +2,20 @@ import { Keyring } from '@polkadot/api';
 import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
 import { hexToU8a, stringToU8a, u8aToHex } from '@polkadot/util';
-import { cryptoWaitReady, signatureVerify } from '@polkadot/util-crypto';
+import { cryptoWaitReady, mnemonicGenerate, signatureVerify } from '@polkadot/util-crypto';
 
 import { PrivateKey } from '../types';
 import { KeyringSigner, LocalSigningManager } from './local-signing-manager';
 
+jest.mock('@polkadot/util-crypto', () => ({
+  ...jest.requireActual('@polkadot/util-crypto'),
+  mnemonicGenerate: jest.fn(),
+}));
+
 describe('LocalSigningManager Class', () => {
   let signingManager: LocalSigningManager;
   let accounts: { privateKey: PrivateKey; address: string; publicKey: Uint8Array }[];
+  const mnemonicGenerateStub = mnemonicGenerate as jest.MockedFunction<typeof mnemonicGenerate>;
 
   beforeAll(() => {
     accounts = [
@@ -91,6 +97,18 @@ describe('LocalSigningManager Class', () => {
       ).toThrow(
         "Cannot call 'addAccount' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
       );
+    });
+  });
+
+  describe('method: generateAccount', () => {
+    it('should generate a new Account and return its mnemonic', () => {
+      const mockMnemonic =
+        'risk topple twice merry intact slot plunge jeans penalty consider secret owner';
+
+      mnemonicGenerateStub.mockReturnValue(mockMnemonic);
+      const mnemonic = LocalSigningManager.generateAccount();
+
+      expect(mnemonic).toBe(mockMnemonic);
     });
   });
 });

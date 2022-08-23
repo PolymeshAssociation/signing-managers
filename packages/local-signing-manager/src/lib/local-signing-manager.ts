@@ -7,7 +7,7 @@ import {
   SignerResult,
 } from '@polkadot/types/types';
 import { hexToU8a, u8aToHex } from '@polkadot/util';
-import { cryptoWaitReady } from '@polkadot/util-crypto';
+import { cryptoWaitReady, mnemonicGenerate } from '@polkadot/util-crypto';
 import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
 
 import { PrivateKey } from '../types';
@@ -105,6 +105,15 @@ export class LocalSigningManager implements SigningManager {
     await cryptoWaitReady();
 
     return new LocalSigningManager(args.accounts);
+  }
+
+  /**
+   * Generate a new Polymesh account and return its mnemonic. This account can be used with the Local Signing Manager to sign transactions via the Polymesh SDK
+   *
+   * @note make sure to store the returned mnemonic somewhere safe since it will not be accessible by any means after being returned, and it gives full control over the account
+   */
+  public static generateAccount(): string {
+    return mnemonicGenerate();
   }
 
   /**
