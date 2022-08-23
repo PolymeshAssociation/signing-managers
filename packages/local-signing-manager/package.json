@@ -8,9 +8,9 @@
     "@polymeshassociation/signing-manager-types": "^1.0.0"
   },
   "peerDependencies": {
-    "@polkadot/api": "^8.0.2",
-    "@polkadot/util": "^9.0.1",
-    "@polkadot/util-crypto": "^9.0.1",
+    "@polkadot/api": "^9.2.3",
+    "@polkadot/util": "^10.1.5",
+    "@polkadot/util-crypto": "^10.1.5",
     "@polymathnetwork/polymesh-sdk": ">=14.0.0"
   }
 }
