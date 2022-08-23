@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.1.0...@polymeshassociation/local-signing-manager@1.2.0) (2022-08-23)
+
+
+### Features
+
+* **local-signing-manager:** add account creation utilities ([19dd42b](https://github.com/PolymeshAssociation/signing-managers/commit/19dd42b0a19db8f1d4ed6a4f83f472f4c1ddef41))
+
 # [1.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.0.0...@polymeshassociation/local-signing-manager@1.1.0) (2022-08-10)
 
 
