@@ -9,6 +9,6 @@
   },
   "peerDependencies": {
     "@polymathnetwork/polymesh-sdk": ">=14.0.0",
-    "@polymeshassociation/signing-manager-types": "^1.0.0"
+    "@polymeshassociation/signing-manager-types": "^1.1.0-beta.1"
   }
 }
