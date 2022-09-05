@@ -38,5 +38,5 @@ jobs:
         run: yarn nx run-many --all --target=release --parallel=1
         env:
           CI: true
-          GITHUB_TOKEN: ${{ secrets.JERE_RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
           NPM_TOKEN: ${{ secrets.ASSOCIATION_NPM_TOKEN }}
