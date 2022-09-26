@@ -12,6 +12,7 @@ module.exports = {
         'local-signing-manager',
         'browser-extension-signing-manager',
         'hashicorp-vault-signing-manager',
+        'approval-signing-manager',
       ],
     ],
   },

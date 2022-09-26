@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApprovalClient class method: createWallet should call the endpoint to create a wallet 1`] = `
+Array [
+  Object {
+    "_id": "62fc2a617cbb5b9ecbaff97f",
+    "address": "5GdqFHLLxZt2u6HokFLBnyopDnGsS2sCBod4vUZTQ7YYx",
+    "network": "polymesh",
+    "ownerId": "someOwnerId",
+    "token": "polyx",
+  },
+]
+`;
+
+exports[`ApprovalClient class method: fetchKeys should return all accessible keys 1`] = `
+Array [
+  Object {
+    "_id": "1",
+    "address": "0x01000",
+    "network": "polymesh",
+    "ownerId": "someOwnerId",
+  },
+  Object {
+    "_id": "2",
+    "address": "0x02000",
+    "network": "polymesh",
+    "ownerId": "someOwnerId",
+  },
+  Object {
+    "_id": "3",
+    "address": "0x3000",
+    "network": "polymesh",
+    "ownerId": "someOwnerId",
+  },
+]
+`;
+
+exports[`ApprovalClient class method: fetchOwnerKeys should return all keys under the passed owner 1`] = `
+Array [
+  Object {
+    "_id": "1",
+    "address": "0x01000",
+    "network": "polymesh",
+    "ownerId": "someOwnerId",
+  },
+]
+`;
+
+exports[`ApprovalClient class method: signData should throw if the transaction is rejected 1`] = `"The message was not signed and the request is no longer pending. The transaction has likely been rejected"`;
