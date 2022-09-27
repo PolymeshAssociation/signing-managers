@@ -101,7 +101,7 @@ export default async function (tree: Tree, schema: Schema) {
 
   // modify build tsconfig
   updateJson(tree, `${projectPath}/tsconfig.lib.json`, buildTsConfig => {
-    buildTsConfig.exclude = [...buildTsConfig.exclude, '**/mocks.ts', 'sandbox'];
+    buildTsConfig.exclude = [...buildTsConfig.exclude, '**/mocks.ts', '**/*.example.ts', 'sandbox'];
 
     return buildTsConfig;
   });
