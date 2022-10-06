@@ -1,10 +1,11 @@
 import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw, SignerResult } from '@polkadot/types/types';
-import { hexToU8a, u8aToHex } from '@polkadot/util';
-import { decodeAddress, encodeAddress } from '@polkadot/util-crypto';
+import { hexToU8a } from '@polkadot/util';
+import { decodeAddress } from '@polkadot/util-crypto';
 import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
+
 import { ApprovalClient } from './approval-client/approval-client';
-import { KeyRecord, KeyRecordWithOwner } from './approval-client/types';
+import { KeyRecordWithOwner } from './approval-client/types';
 
 /**
  * A signer compatible with the polkadot.js library directly. If using the polymesh SDK you should use `ApprovalSigningManager` instead

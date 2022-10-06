@@ -1,22 +1,20 @@
 import { HexString } from '@polkadot/util/types';
 import fetch from 'cross-fetch';
-import { Key } from 'readline';
+
 import {
   createWalletRoute,
   getWalletRoute,
   meshNetwork,
-  pollingInterval,
   routePrefix,
   signatureRoute,
 } from './consts';
-
 import {
-  KeyRecord,
-  OwnerKeys,
   GetSignatureResponse,
-  SignRequestBody,
   Headers,
+  KeyRecord,
   KeyRecordWithOwner,
+  OwnerKeys,
+  SignRequestBody,
 } from './types';
 import { sleep } from './utils';
 
@@ -63,7 +61,9 @@ export class ApprovalClient {
     const { headers, apiClientId } = this;
 
     const requestSignatureUrl = this.getUrl(signatureRoute);
-    const body = JSON.stringify({ message, apiClientId, ownerId });
+    const payload: SignRequestBody = { message, apiClientId, ownerId };
+    const body = JSON.stringify(payload);
+
     const response = await fetch(requestSignatureUrl, {
       method: 'POST',
       body,

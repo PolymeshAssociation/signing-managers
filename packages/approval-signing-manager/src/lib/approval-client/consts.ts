@@ -1,9 +1,4 @@
 /**
- * The default interval to poll for completed signatures, in milliseconds
- */
-export const pollingInterval = 1000;
-
-/**
  * A common prefix for all routes
  */
 export const routePrefix = 'v1/client';

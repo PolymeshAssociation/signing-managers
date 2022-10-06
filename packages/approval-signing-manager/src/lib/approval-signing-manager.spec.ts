@@ -1,12 +1,15 @@
 import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
 import { stringToU8a, u8aToHex } from '@polkadot/util';
+
 import { ApprovalClient } from './approval-client/approval-client';
 import { mockApprovalClient } from './approval-client/mocks';
 import { ApprovalSigner, ApprovalSigningManager } from './approval-signing-manager';
 
 jest.mock('./approval-client', () => ({
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   ApprovalClient: function () {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     return require('./approval-client/mocks').mockApprovalClient;
   },
 }));
@@ -44,10 +47,8 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  // jest.resetAllMocks();
+  jest.resetAllMocks();
 });
-
-// const approvalClient: ApprovalClient = mockApprovalClient as unknown as ApprovalClient;
 
 describe('ApprovalSigningManager Class', () => {
   let signingManager: ApprovalSigningManager;
@@ -67,6 +68,7 @@ describe('ApprovalSigningManager Class', () => {
 
     it("should throw an error if the Signing Manager doesn't have a SS58 format", () => {
       signingManager = new ApprovalSigningManager({ url, apiClientId, apiKey });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (signingManager as any).approvalClient = mockApprovalClient;
 
       return expect(signingManager.getAccounts()).rejects.toThrow(
@@ -176,6 +178,7 @@ describe('ApprovalSigningManager Class', () => {
 const getSigningManager = (): ApprovalSigningManager => {
   const signingManager = new ApprovalSigningManager({ url, apiClientId, apiKey });
   // work around as ApprovalSigningManager isn't creating the client as the mock version for some reason
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (signingManager as any).approvalClient = mockApprovalClient;
 
   return signingManager;

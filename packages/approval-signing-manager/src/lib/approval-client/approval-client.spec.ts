@@ -1,5 +1,4 @@
 import fetch from 'cross-fetch';
-import { Key } from 'readline';
 
 import { ApprovalClient } from './approval-client';
 import { createMockResponse } from './mocks';
