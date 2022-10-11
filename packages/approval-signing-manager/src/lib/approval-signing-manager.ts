@@ -43,9 +43,7 @@ export class ApprovalSigner implements PolkadotSigner {
   public async signRaw(raw: SignerPayloadRaw): Promise<SignerResult> {
     const { address, data } = raw;
 
-    const { address: returnedAddress } = await this.getKeyRecord(address);
-
-    return this.signData(returnedAddress, hexToU8a(data));
+    return this.signData(address, hexToU8a(data));
   }
 
   /**
