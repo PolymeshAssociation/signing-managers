@@ -99,7 +99,7 @@ describe('ApprovalSigningManager Class', () => {
     describe('method signPayload', () => {
       it('should return a signed payload and an incremental ID', async () => {
         const payload = {
-          specVersion: '0x00000bb9',
+          specVersion: '0x00000bba',
           transactionVersion: '0x00000002',
           address: accounts[0].address,
           blockHash: '0xdf06dca982acacbd5f0bcd7a8a062465b8441d569813561ed13ab81883bc08e7',
@@ -107,7 +107,7 @@ describe('ApprovalSigningManager Class', () => {
           era: '0x0500',
           genesisHash: '0x44748824f9798715435c421b5db9af2beae537974d192fab5fb6fc12e1523765',
           method: '0x1a005041594c4f41445f54455354',
-          nonce: '0x00000001',
+          nonce: '0x00000004',
           signedExtensions: [
             'CheckSpecVersion',
             'CheckTxVersion',
@@ -117,19 +117,19 @@ describe('ApprovalSigningManager Class', () => {
             'CheckWeight',
             'ChargeTransactionPayment',
           ],
-          tip: '0x00000000000000000000000000000000',
+          tip: '0x00000000000000000000000000000002',
           version: 4,
         };
 
-        let result = await signer.signPayload(payload);
+        let { id, signature } = await signer.signPayload(payload);
 
-        expect(result.id).toBe(0);
-        expect(result.signature).toBe(expectedSignature);
+        expect(id).toBe(0);
+        expect(signature).toBe(expectedSignature);
 
-        result = await signer.signPayload(payload);
+        ({ id, signature } = await signer.signPayload(payload));
 
-        expect(result.id).toBe(1);
-        expect(result.signature).toBe(expectedSignature);
+        expect(id).toBe(1);
+        expect(signature).toBe(expectedSignature);
       });
 
       it('should throw an error if the payload address is not present in the backing API', () => {
@@ -152,22 +152,22 @@ describe('ApprovalSigningManager Class', () => {
           type: 'bytes' as const,
         };
 
-        let result = await signer.signRaw(raw);
+        let { id, signature } = await signer.signRaw(raw);
 
-        expect(result.id).toBe(0);
-        expect(result.signature).toBe(expectedSignature);
+        expect(id).toBe(0);
+        expect(signature).toBe(expectedSignature);
 
-        result = await signer.signRaw(raw);
+        ({ id, signature } = await signer.signRaw(raw));
 
-        expect(result.id).toBe(1);
-        expect(result.signature).toBe(expectedSignature);
+        expect(id).toBe(1);
+        expect(signature).toBe(expectedSignature);
       });
 
       it('should throw an error if the payload address is not present in the backing API', () => {
         mockApprovalClient.fetchKeys.mockResolvedValue([]);
         return expect(
           signer.signRaw({
-            address: '5Ef2XHepJvTUJLhhx39Nf5iqu6AACrfFAmc6AW8a3hKF4Rdc',
+            address: '5DAAnrj7VHTznn2AWBemMuyBwZWs6FNFjdyVXUeYum3PTXFy',
           } as SignerPayloadRaw)
         ).rejects.toThrow('The signer cannot sign transactions on behalf of the calling Account');
       });
