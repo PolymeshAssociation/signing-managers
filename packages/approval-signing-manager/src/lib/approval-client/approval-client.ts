@@ -9,6 +9,7 @@ import {
   signatureRoute,
 } from './consts';
 import {
+  ApprovalStatus,
   GetSignatureResponse,
   Headers,
   KeyRecord,
@@ -72,7 +73,7 @@ export class ApprovalClient {
 
     let responseJson = await this.readBody<GetSignatureResponse>(response);
 
-    while (responseJson.approvalStatus === 'pending') {
+    while (responseJson.approvalStatus === ApprovalStatus.Pending) {
       responseJson = await this.getSignature(responseJson.virtualHash);
       await sleep(this.pollingInterval);
     }
@@ -101,7 +102,7 @@ export class ApprovalClient {
   }
 
   /**
-   * @returns the signature information for the given `virtualHash`
+   * Get the signature information for the given `virtualHash`
    */
   private async getSignature(virtualHash: string): Promise<GetSignatureResponse> {
     const { headers } = this;
@@ -112,7 +113,7 @@ export class ApprovalClient {
   }
 
   /**
-   * @returns The set of accounts the current api key has access to.
+   * Get the set of accounts accessible by the current API key
    */
   public async fetchKeys(): Promise<KeyRecordWithOwner[]> {
     const { headers } = this;
@@ -120,6 +121,7 @@ export class ApprovalClient {
 
     const response = await fetch(url, { headers });
     const keys = await this.readBody<OwnerKeys[]>(response);
+    console.log('keys', keys);
 
     return keys.flatMap(({ ownerId, accounts }) =>
       accounts
@@ -129,7 +131,7 @@ export class ApprovalClient {
   }
 
   /**
-   * @returns The set of accounts belonging to the given ownerId
+   * Get the set of accounts belonging to the given `ownerId`
    */
   public async fetchOwnerKeys(ownerId: string): Promise<KeyRecordWithOwner[]> {
     const { headers } = this;

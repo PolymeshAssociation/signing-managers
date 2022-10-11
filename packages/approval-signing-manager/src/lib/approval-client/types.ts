@@ -62,12 +62,12 @@ export interface OwnerKeys {
  */
 export interface KeyRecord {
   /**
-   * The network this key is for. Note this is idiosyncratic to the API this was written against which is multi-chain
+   * The network this key is for. Note this is idiosyncratic to the API this was written against, which is multi-chain
    */
   network: string;
 
   /**
-   * The SS58 encoded public associated to the stored private key
+   * The SS58 encoded public key associated to the stored private key
    */
   address: string;
 
@@ -85,3 +85,8 @@ export interface KeyRecordWithOwner extends KeyRecord {
 }
 
 export type Headers = { Authorization: string; 'Content-Type': 'application/json' };
+
+export enum ApprovalStatus {
+  Pending = 'pending',
+  Approved = 'approved',
+}

@@ -4,13 +4,15 @@ This library was generated with [Nx](https://nx.dev).
 
 This signing manager was made with a specific API in which signatures for some transactions go through some kind of approval process. Some transaction may even require human approval which means the signing process may take a very long time in computer terms.
 
-This signing manager will make a request for a signature, and will continue to poll until the signature is approved. Generally its recommended to use "immortal" transactions when using this signing manager (pass in `{immortal: true}` in transaction opts).
+This signing manager makes a request for a signature, and continues to poll until the transaction is approved.
 
-Generally its recommended to use "mortal" transactions in Substrate chains to mitigate the risk of replay attacks on Substrate chains. However the polymesh chain will never reap accounts, and thus mitigates the risk of replay attacks. We generally recommend mortal transactions, however since this signing manager introduces the possibility of significant delay, its better to use immortal transactions so they do not expire while waiting for approval.
+By default the SDK generates transactions that are valid for roughly 5 minutes. If the approval process may take longer, then "immortal" transactions should be used by passing in `{immortal: true}` in the transaction opts.
 
-If you were to use this, then you'd need to reconstruct the backing API. By looking at the types.ts file and some of the client code it should be relatively simple to get a compatible API. However its likely you'll use this as an example and make some modifications to the code.
+Substrate chains recommend the use of "mortal" transactions to mitigate the risk of replay attacks. However, the Polymesh chain will never reap accounts, and thus mitigates the risk of replay attacks.
 
 ## Usage
+
+Note: To use this as is, the remote signing service would need to be reimplemented. The `types.ts` and the "client" source, it should be relatively simple to reconstruct. This has been published to as an example for similar integrations
 
 ```ts
 import { ApprovalSigningManager } from '@polymeshassociation/approval-signing-manager';

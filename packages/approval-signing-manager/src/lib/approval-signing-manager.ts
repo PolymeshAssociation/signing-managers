@@ -28,15 +28,13 @@ export class ApprovalSigner implements PolkadotSigner {
     const { registry } = this;
     const { address, signedExtensions, version } = payload;
 
-    const { address: returnedAddress } = await this.getKeyRecord(address);
-
     registry.setSignedExtensions(signedExtensions);
 
     const signablePayload = registry.createType('ExtrinsicPayload', payload, {
       version,
     });
 
-    return this.signData(returnedAddress, signablePayload.toU8a(true));
+    return this.signData(address, signablePayload.toU8a(true));
   }
 
   /**
@@ -53,7 +51,7 @@ export class ApprovalSigner implements PolkadotSigner {
   /**
    * @hidden
    *
-   * Get a signature from the approval key store. This may take a while as the approval process may require human approval.
+   * Get a signature from the approval key store. This may take a while as the approval process may require human approval
    */
   private async signData(address: string, data: Uint8Array): Promise<SignerResult> {
     const message = `0x${Buffer.from(data).toString('hex')}`;
@@ -96,7 +94,7 @@ export class ApprovalSigner implements PolkadotSigner {
 /**
  * A signing manager for the Polymesh SDK. This delegates signature generation to an external API that may manually approve transactions
  *
- * @note the backing API is not open sourced, but it can be reversed engineered by looking at the code if you want to use this manager as it is.
+ * @note the backing API is not open sourced, but it can be reversed engineered by looking at the code if you want to use this manager as it is
  */
 export class ApprovalSigningManager implements SigningManager {
   private approvalClient: ApprovalClient;
@@ -131,7 +129,7 @@ export class ApprovalSigningManager implements SigningManager {
   }
 
   /**
-   * Return the addresses of all Accounts accessible to the configured API key.
+   * Return the addresses of all Accounts accessible to the configured API key
    */
   public async getAccounts(): Promise<string[]> {
     const keys = await this.approvalClient.fetchKeys();
