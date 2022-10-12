@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.0...@polymeshassociation/hashicorp-vault-signing-manager@1.1.1) (2022-10-08)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** fix long message signing ([#18](https://github.com/PolymeshAssociation/signing-managers/issues/18)) ([c25ead8](https://github.com/PolymeshAssociation/signing-managers/commit/c25ead80fecb681bac72af1a0cd3247aff0d5801))
+
 # [1.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.0.0...@polymeshassociation/hashicorp-vault-signing-manager@1.1.0) (2022-08-10)
 
 

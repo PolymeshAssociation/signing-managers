@@ -1,7 +1,7 @@
 import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw, SignerResult } from '@polkadot/types/types';
 import { hexToU8a, u8aToHex } from '@polkadot/util';
-import { decodeAddress, encodeAddress } from '@polkadot/util-crypto';
+import { blake2AsU8a, decodeAddress, encodeAddress } from '@polkadot/util-crypto';
 import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
 
 import { AddressedVaultKey } from '../types';
@@ -50,8 +50,10 @@ export class VaultSigner implements PolkadotSigner {
    * Use the Vault to sign raw data and return the signature + update ID
    */
   private async signData(name: string, version: number, data: Uint8Array): Promise<SignerResult> {
+    const fixedData = data.length > 256 ? blake2AsU8a(data) : data;
+
     const body = {
-      input: Buffer.from(data).toString('base64'),
+      input: Buffer.from(fixedData).toString('base64'),
       // eslint-disable-next-line @typescript-eslint/naming-convention
       key_version: version,
     };
