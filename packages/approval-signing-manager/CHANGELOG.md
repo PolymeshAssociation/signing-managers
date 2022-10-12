@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@1.0.0...@polymeshassociation/approval-signing-manager@1.0.1) (2022-10-12)
+
+
+### Bug Fixes
+
+* **approval-signing-manager:** remove debug console.log statement ([#19](https://github.com/PolymeshAssociation/signing-managers/issues/19)) ([7c1f5db](https://github.com/PolymeshAssociation/signing-managers/commit/7c1f5dbe48128c41294375517527b9571ef14c65))
+
 # 1.0.0 (2022-10-12)
 
 
