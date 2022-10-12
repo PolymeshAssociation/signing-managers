@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@polymeshassociation/approval-signing-manager": ["packages/approval-signing-manager/src"],
       "@polymeshassociation/browser-extension-signing-manager": [
         "packages/browser-extension-signing-manager/src"
       ],

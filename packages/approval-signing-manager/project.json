@@ -1,0 +1,51 @@
+{
+  "root": "packages/approval-signing-manager",
+  "sourceRoot": "packages/approval-signing-manager/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/approval-signing-manager",
+        "tsConfig": "packages/approval-signing-manager/tsconfig.lib.json",
+        "packageJson": "packages/approval-signing-manager/package.json",
+        "main": "packages/approval-signing-manager/src/index.ts",
+        "assets": ["packages/approval-signing-manager/*.md"],
+        "srcRootForCompilationRoot": "packages/approval-signing-manager/src"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/approval-signing-manager/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/approval-signing-manager"],
+      "options": {
+        "jestConfig": "packages/approval-signing-manager/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "release": {
+      "executor": "@ng-easy/builders:semantic-release",
+      "configurations": {
+        "local": {
+          "force": true
+        }
+      }
+    },
+    "run-local": {
+      "executor": "./tools/executors/run-local:run-local",
+      "options": {
+        "runInBrowser": false,
+        "path": "packages/approval-signing-manager/sandbox/index.ts",
+        "port": 9000
+      }
+    }
+  },
+  "tags": []
+}
