@@ -1,7 +1,5 @@
 # approval-signing-manager
 
-This library was generated with [Nx](https://nx.dev).
-
 This signing manager was made with a specific API in which signatures for some transactions go through some kind of approval process. Some transaction may even require human approval which means the signing process may take a very long time in computer terms.
 
 This signing manager makes a request for a signature, and continues to poll until the transaction is approved.
@@ -45,3 +43,7 @@ sdk.assets.createAsset(args, { mortality: { immortal: true } });
 ## Running unit tests
 
 Run `nx test approval-signing-manager` to execute the unit tests via [Jest](https://jestjs.io).
+
+### Info
+
+This library was generated with [Nx](https://nx.dev).
