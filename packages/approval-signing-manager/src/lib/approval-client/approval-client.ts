@@ -121,7 +121,6 @@ export class ApprovalClient {
 
     const response = await fetch(url, { headers });
     const keys = await this.readBody<OwnerKeys[]>(response);
-    console.log('keys', keys);
 
     return keys.flatMap(({ ownerId, accounts }) =>
       accounts
