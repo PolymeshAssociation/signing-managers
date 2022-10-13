@@ -2,8 +2,6 @@
 
 Polymesh SDK (v14+) compatible signing manager that stores private keys in memory.
 
-This library was generated with [Nx](https://nx.dev).
-
 ## Usage
 
 ```typescript
@@ -24,3 +22,7 @@ const sdk = await Polymesh.connect({
   signingManager,
 });
 ```
+
+### Info
+
+This library was generated with [Nx](https://nx.dev).

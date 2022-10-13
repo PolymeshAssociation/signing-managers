@@ -2,8 +2,6 @@
 
 Polymesh SDK (14+) compatible signing manager that manages accounts and signs via a polkadot compatible browser wallet extension.
 
-This library was generated with [Nx](https://nx.dev).
-
 ## Usage
 
 ```typescript
@@ -31,3 +29,7 @@ signingManager.onNetworkChange(newNetwork => {
   // act accordingly
 });
 ```
+
+### Info
+
+This library was generated with [Nx](https://nx.dev).

@@ -2,8 +2,6 @@
 
 Monorepo for Polymesh SDK compatible Signing Managers.
 
-This project was generated using [Nx](https://nx.dev).
-
 ## Projects
 
 | Project                               | Package                                                                                                                                      | Version                                                                                                                                                                                                       | Links                                                                                                                                                                                                                                           |
@@ -35,3 +33,7 @@ You can also use nx commands directly with `yarn nx` (i.e. `yarn nx affected --t
 ## Contributing
 
 Refer to the [Contribution Guidelines](CONTRIBUTING.md).
+
+### Info
+
+This project was generated using [Nx](https://nx.dev).
