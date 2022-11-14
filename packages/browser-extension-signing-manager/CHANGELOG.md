@@ -1,3 +1,15 @@
+## [1.1.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.1.0...@polymeshassociation/browser-extension-signing-manager@1.1.1) (2022-10-13)
+
+
+### Bug Fixes
+
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.1.1 [skip ci] ([176af64](https://github.com/PolymeshAssociation/signing-managers/commit/176af644a76a1cd43e8717100d08c250bf748ceb))
+
+
+### Documentation
+
+* move nx attribution to bottom of README to improve readability ([#20](https://github.com/PolymeshAssociation/signing-managers/issues/20)) ([dd29e9b](https://github.com/PolymeshAssociation/signing-managers/commit/dd29e9b32a07a73834d0c77d38aafe34e8e288ed))
+
 # [1.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.0.0...@polymeshassociation/browser-extension-signing-manager@1.1.0) (2022-08-10)
 
 
