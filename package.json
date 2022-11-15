@@ -1,7 +1,8 @@
 {
   "name": "signing-managers",
+  "author": "Polymesh Association",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "scripts": {
     "prepare": "is-ci || husky install",
     "nx": "npx nx",

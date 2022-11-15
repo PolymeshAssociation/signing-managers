@@ -34,6 +34,9 @@ You can also use nx commands directly with `yarn nx` (i.e. `yarn nx affected --t
 
 Refer to the [Contribution Guidelines](CONTRIBUTING.md).
 
-### Info
 
-This project was generated using [Nx](https://nx.dev).
+## License
+
+This project was generated using [Nx](https://nx.dev) which is [MIT licensed](./LICENSE.MIT).
+
+The project itself is [Apache 2.0 licensed](./LICENSE).
