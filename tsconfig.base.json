@@ -19,6 +19,7 @@
       "@polymeshassociation/browser-extension-signing-manager": [
         "packages/browser-extension-signing-manager/src"
       ],
+      "@polymeshassociation/fireblocks-signing-manager": ["packages/fireblocks-signing-manager/src"],
       "@polymeshassociation/hashicorp-vault-signing-manager": [
         "packages/hashicorp-vault-signing-manager/src"
       ],

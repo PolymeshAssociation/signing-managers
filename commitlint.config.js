@@ -13,6 +13,7 @@ module.exports = {
         'browser-extension-signing-manager',
         'hashicorp-vault-signing-manager',
         'approval-signing-manager',
+        'fireblocks-signing-manager',
       ],
     ],
   },
