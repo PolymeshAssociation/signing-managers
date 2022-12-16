@@ -9,6 +9,7 @@ Monorepo for Polymesh SDK compatible Signing Managers.
 | **Local Signing Manager**             | [`@polymeshassociation/local-signing-manager`](https://npmjs.com/package/@polymeshassociation/local-signing-manager)                         | [![npm latest version](https://img.shields.io/npm/v/@polymeshassociation/local-signing-manager/latest.svg)](https://www.npmjs.com/package/@polymeshassociation/local-signing-manager)                         | [![README](https://img.shields.io/badge/README--green.svg)](/packages/local-signing-manager/README.md) [![CHANGELOG](https://img.shields.io/badge/CHANGELOG--orange.svg)](/packages/local-signing-manager/CHANGELOG.md)                         |
 | **Browser Extension Signing Manager** | [`@polymeshassociation/browser-extension-signing-manager`](https://npmjs.com/package/@polymeshassociation/browser-extension-signing-manager) | [![npm latest version](https://img.shields.io/npm/v/@polymeshassociation/browser-extension-signing-manager/latest.svg)](https://www.npmjs.com/package/@polymeshassociation/browser-extension-signing-manager) | [![README](https://img.shields.io/badge/README--green.svg)](/packages/browser-extension-signing-manager/README.md) [![CHANGELOG](https://img.shields.io/badge/CHANGELOG--orange.svg)](/packages/browser-extension-signing-manager/CHANGELOG.md) |
 | **Hashicorp Vault Signing Manager**   | [`@polymeshassociation/hashicorp-vault-signing-manager`](https://npmjs.com/package/@polymeshassociation/hashicorp-vault-signing-manager)     | [![npm latest version](https://img.shields.io/npm/v/@polymeshassociation/hashicorp-vault-signing-manager/latest.svg)](https://www.npmjs.com/package/@polymeshassociation/hashicorp-vault-signing-manager)     | [![README](https://img.shields.io/badge/README--green.svg)](/packages/hashicorp-vault-signing-manager/README.md) [![CHANGELOG](https://img.shields.io/badge/CHANGELOG--orange.svg)](/packages/hashicorp-vault-signing-manager/CHANGELOG.md)     |
+| **Fireblocks Signing Manager**        | [`@polymeshassociation/fireblocks-signing-manager`](https://npmjs.com/package/@polymeshassociation/fireblocks-signing-manager)               | [![npm latest version](https://img.shields.io/npm/v/@polymeshassociation/fireblocks-signing-manager/latest.svg)](https://www.npmjs.com/package/@polymeshassociation/fireblocks-signing-manager)               | [![README](https://img.shields.io/badge/README--green.svg)](/packages/fireblocks-signing-manager/README.md) [![CHANGELOG](https://img.shields.io/badge/CHANGELOG--orange.svg)](/packages/fireblocks-signing-manager/CHANGELOG.md)               |
 
 ## Scripts
 
@@ -33,7 +34,6 @@ You can also use nx commands directly with `yarn nx` (i.e. `yarn nx affected --t
 ## Contributing
 
 Refer to the [Contribution Guidelines](CONTRIBUTING.md).
-
 
 ## License
 
