@@ -1,11 +1,12 @@
 import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw, SignerResult } from '@polkadot/types/types';
-import { hexToU8a } from '@polkadot/util';
-import { blake2AsU8a } from '@polkadot/util-crypto';
+import { hexToU8a, u8aToHex } from '@polkadot/util';
+import { blake2AsU8a, decodeAddress, encodeAddress } from '@polkadot/util-crypto';
 import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
 import { PublicKeyResonse } from 'fireblocks-sdk';
-import { DerivationPath, KeyInfo } from './fireblocks';
 
+import { ConfigError, CreateParams, DerivationPath, KeyInfo, KeyNotFound } from './fireblocks';
+import { defaultKeyPath, maxInitialDeriveAmount } from './fireblocks/consts';
 import { Fireblocks } from './fireblocks/fireblocks';
 
 export class FireblocksSigner implements PolkadotSigner {
@@ -54,7 +55,9 @@ export class FireblocksSigner implements PolkadotSigner {
 
     const { derivationPath } = await this.getFireblocksKeyInfo(address);
 
-    const signature = await this.fireblocks.signData(derivationPath, msg, note);
+    const rawSignature = await this.fireblocks.signData(derivationPath, msg, note);
+    // Add hex prefix and append 0 byte to indicate an ed25519 signature
+    const signature = `0x00${rawSignature}` as const;
 
     const id = (this.currentId += 1);
 
@@ -72,10 +75,12 @@ export class FireblocksSigner implements PolkadotSigner {
    * @throws if there is no key has been derived with that address
    */
   private async getFireblocksKeyInfo(address: string): Promise<PublicKeyResonse> {
-    const foundKey = this.fireblocks.lookupAddress(address);
+    const pubKey = u8aToHex(decodeAddress(address));
+
+    const foundKey = this.fireblocks.lookupKey(pubKey);
 
     if (!foundKey) {
-      throw new Error('The signer cannot sign transactions on behalf of the calling Account');
+      throw new KeyNotFound('The signer cannot sign transactions on behalf of the calling Account');
     }
 
     return foundKey;
@@ -83,37 +88,67 @@ export class FireblocksSigner implements PolkadotSigner {
 }
 
 export class FireblocksSigningManager implements SigningManager {
+  public fireblocksClient: Fireblocks;
   private externalSigner: FireblocksSigner;
-  public fireblocks: Fireblocks;
+  private _ss58Format?: number;
 
   /**
-   * Create an instance of the FireblocksSigningManager
-   *
-   * @param args.url - points to where the Vault's transit engine is hosted (usually `<base-url>/v1/transit`)
-   * @param args.token - authentication token used for signing
-   * @param args.secretPath - File path to the fireblocks secret key to sign requests with
+   * @hidden
    */
-  public constructor(args: { url: string; token: string; secretPath: string }) {
-    const { url, token, secretPath } = args;
+  private constructor(args: Omit<CreateParams, 'derivationPaths'>) {
+    const { url, apiKey, secretPath } = args;
 
-    this.fireblocks = new Fireblocks(url, token, secretPath);
-    this.externalSigner = new FireblocksSigner(this.fireblocks, new TypeRegistry());
+    this.fireblocksClient = new Fireblocks({ url, apiKey, secretPath });
+    this.externalSigner = new FireblocksSigner(this.fireblocksClient, new TypeRegistry());
+  }
+
+  public static async create(args: CreateParams): Promise<FireblocksSigningManager> {
+    const signingManager = new FireblocksSigningManager(args);
+
+    if (args.derivationPaths) {
+      if (args.derivationPaths.length > maxInitialDeriveAmount) {
+        throw new ConfigError(
+          `Number of initial derivation paths cannot exceed ${maxInitialDeriveAmount}. Use deriveAccount after creation to load more accounts instead`
+        );
+      }
+
+      const derivePromises = args.derivationPaths.map(path =>
+        signingManager.fireblocksClient.deriveKey(path)
+      );
+      await Promise.all(derivePromises);
+    } else {
+      await signingManager.deriveAccount(defaultKeyPath);
+    }
+
+    return signingManager;
   }
 
   /**
    * Set the SS58 format in which addresses will be encoded
    */
   public setSs58Format(ss58Format: number): void {
-    this.fireblocks.setSs58Format(ss58Format);
+    this._ss58Format = ss58Format;
+  }
+
+  public get ss58Format(): number {
+    if (!this._ss58Format) {
+      throw new ConfigError(
+        'ss58Format was not set. The SDK should set the format upon initialization. setSs58Format may need to be called manually in a different context'
+      );
+    }
+
+    return this._ss58Format;
   }
 
   /**
    * Return the addresses of all derived keys in Fireblocks
    */
   public async getAccounts(): Promise<string[]> {
-    const allKeys = await this.fireblocks.fetchAllKeys();
+    const allKeys = this.fireblocksClient.fetchDerivedKeys();
 
-    return allKeys.map(({ address }) => address);
+    const ss58Format = this.ss58Format;
+
+    return allKeys.map(({ publicKey }) => encodeAddress(`0x${publicKey}`, ss58Format));
   }
 
   /**
@@ -122,7 +157,11 @@ export class FireblocksSigningManager implements SigningManager {
    * @note this method must be called with the derivation path for non default addresses before they can be used to sign
    */
   public async deriveAccount(path: DerivationPath): Promise<KeyInfo> {
-    return this.fireblocks.deriveAccount(path);
+    const key = await this.fireblocksClient.deriveKey(path);
+
+    const address = encodeAddress(key.publicKey, this.ss58Format);
+
+    return { ...key, address };
   }
 
   /**

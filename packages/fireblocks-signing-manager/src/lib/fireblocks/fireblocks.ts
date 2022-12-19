@@ -1,61 +1,41 @@
-import { encodeAddress } from '@polkadot/util-crypto';
 import { HexString } from '@polkadot/util/types';
 import {
   FireblocksSDK,
   PeerType,
+  PublicKeyResonse,
   TransactionOperation,
   TransactionResponse,
   TransactionStatus,
 } from 'fireblocks-sdk';
 import { readFileSync } from 'fs';
 
-import { DerivationPath, KeyInfo } from './types';
+import { DerivationPath, KeyInfo, NoTransactionSignature } from './types';
 
 const algorithm = 'MPC_EDDSA_ED25519';
 
 export class Fireblocks {
-  public fireblocksSdk: FireblocksSDK;
-  private addressBook: Record<string, KeyInfo> = {};
-  private ss58Format = 0;
-  private defaultKey?: KeyInfo;
-
   /**
-   * @hidden
+   * the authenticated [FireblocksSDK instance](https://www.npmjs.com/package/fireblocks-sdk) to allow full interaction with their API
    */
-  constructor(url: string, apiKey: string, secretPath: string) {
+  public fireblocksSdk: FireblocksSDK;
+  private addressBook: Record<HexString, PublicKeyResonse> = {};
+
+  public constructor(args: { url: string; apiKey: string; secretPath: string }) {
+    const { secretPath, apiKey, url } = args;
+
     const secret = readFileSync(secretPath, 'utf8');
 
     this.fireblocksSdk = new FireblocksSDK(secret, apiKey, url);
   }
 
-  public async fetchAllKeys(): Promise<KeyInfo[]> {
-    await this.fetchDefaultKey();
-
+  public fetchDerivedKeys(): PublicKeyResonse[] {
     return Object.values(this.addressBook);
   }
 
-  public setSs58Format(ss58Format: number) {
-    this.ss58Format = ss58Format;
-  }
-
   /**
-   * Retrieve the default public key for the Fireblocks account. Additional keys can be used by calling `deriveAccount`
+   * Derive a key from a derivation path, allowing it to sign requests
    */
-  private async fetchDefaultKey(): Promise<KeyInfo> {
-    if (this.defaultKey) {
-      return this.defaultKey;
-    }
-
-    const coinType = this.ss58Format === 12 ? 595 : 1;
-    this.defaultKey = await this.deriveAccount([44, coinType, 0, 0, 0]);
-
-    return this.defaultKey;
-  }
-
-  /**
-   * This method can be called with a given derive path to enable signing with the given key
-   */
-  public async deriveAccount(path: DerivationPath): Promise<KeyInfo> {
+  public async deriveKey(path: DerivationPath): Promise<PublicKeyResonse> {
     const pubKeyInfoArgs = {
       algorithm,
       derivationPath: `[${path}]`,
@@ -63,39 +43,20 @@ export class Fireblocks {
 
     const key = await this.fireblocksSdk.getPublicKeyInfo(pubKeyInfoArgs);
 
-    return this.encodeAndCacheKey(key);
-  }
+    this.cacheKey(key);
 
-  /**
-   * Returns information about an already derived account. `deriveAccount` must be called with the params that give this address
-   */
-  public lookupAddress(address: string): KeyInfo {
-    const keyInfo = this.addressBook[address];
-
-    if (!keyInfo) {
-      throw new Error('The signer cannot sign transactions on behalf of the calling Account');
-    }
-
-    return keyInfo;
-  }
-
-  private encodeAndCacheKey(key: KeyInfo): KeyInfo {
-    if (this.ss58Format === 0) {
-      throw new Error('ss58 format must be set before a key can be encoded');
-    }
-    const address = encodeAddress(`0x${key.publicKey}`, this.ss58Format);
-    key.address = address;
-    this.addressBook[address] = key;
     return key;
   }
 
+  public lookupKey(pubKey: HexString): PublicKeyResonse | undefined {
+    return this.addressBook[pubKey];
+  }
+
   /**
-   * Sign data on behalf of a key and return the hex signature
+   * Sign data on behalf of a key and return the signature
    */
-  public async signData(derivationPath: number[], data: string, note: string): Promise<HexString> {
-    const signature = await this.signArbitraryMessage(derivationPath, data, note);
-    // convert to hex and prepend 0x00 to indicate this is an ed25519 signature
-    return `0x00${signature}`;
+  public async signData(derivationPath: number[], data: string, note: string): Promise<string> {
+    return this.signArbitraryMessage(derivationPath, data, note);
   }
 
   private async signArbitraryMessage(
@@ -103,7 +64,7 @@ export class Fireblocks {
     message: string,
     note: string
   ): Promise<string> {
-    const { status, id } = await this.fireblocksSdk.createTransaction({
+    const { id } = await this.fireblocksSdk.createTransaction({
       operation: TransactionOperation.RAW,
       source: {
         type: PeerType.VAULT_ACCOUNT,
@@ -122,30 +83,42 @@ export class Fireblocks {
       note,
     });
 
-    let currentStatus = status;
+    let currentStatus;
     let txInfo: TransactionResponse;
 
     // poll until the transaction is signed or rejected
-    while (
-      currentStatus !== TransactionStatus.COMPLETED &&
-      currentStatus !== TransactionStatus.FAILED &&
-      currentStatus !== TransactionStatus.CANCELLED &&
-      currentStatus !== TransactionStatus.REJECTED &&
-      currentStatus !== TransactionStatus.FAILED &&
-      currentStatus !== TransactionStatus.TIMEOUT &&
-      currentStatus !== TransactionStatus.BLOCKED
-    ) {
+    for (;;) {
       txInfo = await this.fireblocksSdk.getTransactionById(id);
       currentStatus = txInfo.status;
+
+      if (this.isCompletedTransaction(txInfo)) {
+        break;
+      }
 
       await new Promise(r => setTimeout(r, 1000));
     }
 
-    const signature = txInfo!?.signedMessages![0]?.signature;
+    const signature = txInfo?.signedMessages?.[0]?.signature;
     if (!signature) {
-      throw new Error(`No signature on transaction with status: ${currentStatus}`);
+      throw new NoTransactionSignature(`No signature on transaction with status: ${currentStatus}`);
     }
 
     return signature.fullSig;
+  }
+
+  private cacheKey(key: KeyInfo): void {
+    this.addressBook[`0x${key.publicKey}`] = key;
+  }
+
+  private isCompletedTransaction(tx: TransactionResponse): boolean {
+    return [
+      TransactionStatus.COMPLETED,
+      TransactionStatus.FAILED,
+      TransactionStatus.CANCELLED,
+      TransactionStatus.REJECTED,
+      TransactionStatus.FAILED,
+      TransactionStatus.TIMEOUT,
+      TransactionStatus.BLOCKED,
+    ].includes(tx.status);
   }
 }

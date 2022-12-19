@@ -1,7 +1,7 @@
 import { TransactionResponse, TransactionStatus } from 'fireblocks-sdk';
 
 import { Fireblocks } from './fireblocks';
-import { DerivationPath } from './types';
+import { DerivationPath, NoTransactionSignature } from './types';
 
 const algorithm = 'MPC_EDDSA_ED25519';
 
@@ -9,7 +9,7 @@ jest.mock('fs');
 
 describe('Fireblocks class', () => {
   const url = 'http://example.com';
-  const token = 'someToken';
+  const apiKey = 'someToken';
   const secretPath = './some-secret.key';
 
   const defaultKey = {
@@ -34,52 +34,41 @@ describe('Fireblocks class', () => {
   let fireblocks: Fireblocks;
 
   beforeEach(() => {
-    fireblocks = new Fireblocks(url, token, secretPath);
-    fireblocks.setSs58Format(42);
+    fireblocks = new Fireblocks({ url, apiKey, secretPath });
   });
 
   describe('method: fetchAllKeys', () => {
-    it('should return the default key', async () => {
-      const publicKeySpy = jest.spyOn(fireblocks.fireblocksSdk, 'getPublicKeyInfo');
-      publicKeySpy.mockResolvedValue(defaultKey);
+    it('should return no keys if none have been derived', async () => {
+      const result = fireblocks.fetchDerivedKeys();
 
-      const result = await fireblocks.fetchAllKeys();
-
-      expect(result).toEqual([defaultKey]);
-
-      publicKeySpy.mockRestore();
+      expect(result).toEqual([]);
     });
 
     it('should return derived keys', async () => {
       const publicKeySpy = jest.spyOn(fireblocks.fireblocksSdk, 'getPublicKeyInfo');
 
       publicKeySpy.mockResolvedValue(key1);
-      await fireblocks.deriveAccount(key1.derivationPath);
+      await fireblocks.deriveKey(key1.derivationPath);
+
       publicKeySpy.mockResolvedValue(key2);
-      await fireblocks.deriveAccount(key2.derivationPath);
+      await fireblocks.deriveKey(key2.derivationPath);
 
-      publicKeySpy.mockResolvedValueOnce(defaultKey);
+      const result = fireblocks.fetchDerivedKeys();
 
-      const result = await fireblocks.fetchAllKeys();
-
-      expect(result).toEqual(expect.arrayContaining([defaultKey, key1, key2]));
+      expect(result).toEqual(expect.arrayContaining([key1, key2]));
 
       publicKeySpy.mockRestore();
     });
   });
 
   describe('method: deriveKey', () => {
-    it('should throw if ss58Format is not set', () => {
-      fireblocks.setSs58Format(0);
+    it('should return the key', async () => {
       const publicKeySpy = jest.spyOn(fireblocks.fireblocksSdk, 'getPublicKeyInfo');
 
       publicKeySpy.mockResolvedValue(key1);
+      const key = await fireblocks.deriveKey(key1.derivationPath);
 
-      const expectedError = new Error('ss58 format must be set before a key can be encoded');
-
-      expect(fireblocks.deriveAccount(key1.derivationPath)).rejects.toThrowError(expectedError);
-
-      publicKeySpy.mockRestore();
+      expect(key).toEqual(key1);
     });
   });
 
@@ -87,8 +76,6 @@ describe('Fireblocks class', () => {
     it('should return signed data', async () => {
       const publicKeySpy = jest.spyOn(fireblocks.fireblocksSdk, 'getPublicKeyInfo');
       publicKeySpy.mockResolvedValue(defaultKey);
-
-      await fireblocks.fetchAllKeys();
 
       const createTxSpy = jest.spyOn(fireblocks.fireblocksSdk, 'createTransaction');
 
@@ -110,7 +97,7 @@ describe('Fireblocks class', () => {
       const result = await fireblocks.signData(defaultKey.derivationPath, 'test data', 'test note');
 
       expect(getTxSpy).toHaveBeenCalledTimes(2);
-      expect(result).toBe(`0x00${expectedSignature}`);
+      expect(result).toBe(expectedSignature);
 
       publicKeySpy.mockRestore();
       createTxSpy.mockRestore();
@@ -118,20 +105,24 @@ describe('Fireblocks class', () => {
     });
 
     it('should throw an error if a transaction is rejected', async () => {
-      const publicKeySpy = jest.spyOn(fireblocks.fireblocksSdk, 'getPublicKeyInfo');
-      publicKeySpy.mockResolvedValue(defaultKey);
-
-      await fireblocks.fetchAllKeys();
-
       const createTxSpy = jest.spyOn(fireblocks.fireblocksSdk, 'createTransaction');
+      createTxSpy.mockResolvedValue({ id: '1', status: TransactionStatus.PENDING_AUTHORIZATION });
 
-      createTxSpy.mockResolvedValue({ id: '1', status: TransactionStatus.REJECTED });
+      const getTxSpy = jest.spyOn(fireblocks.fireblocksSdk, 'getTransactionById');
+      getTxSpy.mockResolvedValue({
+        id: '1',
+        status: TransactionStatus.REJECTED,
+      } as TransactionResponse);
 
-      const expectedError = new Error('No signature on transaction with status: REJECTED');
+      const expectedError = new NoTransactionSignature(
+        'No signature on transaction with status: REJECTED'
+      );
 
-      expect(
+      await expect(
         fireblocks.signData(defaultKey.derivationPath, 'test data', 'test note')
       ).rejects.toThrowError(expectedError);
+
+      createTxSpy.mockRestore();
     });
   });
 });

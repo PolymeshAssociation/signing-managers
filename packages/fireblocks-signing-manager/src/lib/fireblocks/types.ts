@@ -18,3 +18,28 @@ export type DerivationPath = [44, 1 | 595, number, number, number];
 export interface KeyInfo extends PublicKeyResonse {
   address: string;
 }
+
+export interface CreateParams {
+  url: string;
+  apiKey: string;
+  secretPath: string;
+  derivationPaths?: DerivationPath[];
+}
+
+export enum ErrorCode {
+  Config,
+  KeyNotFound,
+  NoTransactionSignature,
+}
+
+export class ConfigError extends Error {
+  public readonly code = ErrorCode.Config;
+}
+
+export class KeyNotFound extends Error {
+  public readonly code = ErrorCode.KeyNotFound;
+}
+
+export class NoTransactionSignature extends Error {
+  public readonly code = ErrorCode.NoTransactionSignature;
+}
