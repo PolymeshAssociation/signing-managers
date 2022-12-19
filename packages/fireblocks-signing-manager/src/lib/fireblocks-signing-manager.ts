@@ -22,7 +22,7 @@ export class FireblocksSigner implements PolkadotSigner {
    */
   public async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     const { registry } = this;
-    const { address, signedExtensions, version } = payload;
+    const { address, version, signedExtensions } = payload;
 
     registry.setSignedExtensions(signedExtensions);
 
@@ -37,7 +37,7 @@ export class FireblocksSigner implements PolkadotSigner {
    * Sign raw data
    */
   public async signRaw(raw: SignerPayloadRaw): Promise<SignerResult> {
-    const { address, data } = raw;
+    const { data, address } = raw;
 
     return this.signData(address, hexToU8a(data));
   }
