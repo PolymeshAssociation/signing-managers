@@ -161,7 +161,7 @@ export class FireblocksSigningManager implements SigningManager {
   public async deriveAccount(path: DerivationPath): Promise<KeyInfo> {
     const key = await this.fireblocksClient.deriveKey(path);
 
-    const address = encodeAddress(key.publicKey, this.ss58Format);
+    const address = encodeAddress(`0x${key.publicKey}`, this.ss58Format);
 
     return { ...key, address };
   }
