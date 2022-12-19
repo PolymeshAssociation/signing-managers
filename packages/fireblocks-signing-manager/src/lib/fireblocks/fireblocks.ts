@@ -100,7 +100,9 @@ export class Fireblocks {
 
     const signature = txInfo?.signedMessages?.[0]?.signature;
     if (!signature) {
-      throw new NoTransactionSignature(`No signature on transaction with status: ${currentStatus}`);
+      throw new NoTransactionSignature(
+        `Fireblocks transaction response with status: "${currentStatus}" had no signature`
+      );
     }
 
     return signature.fullSig;

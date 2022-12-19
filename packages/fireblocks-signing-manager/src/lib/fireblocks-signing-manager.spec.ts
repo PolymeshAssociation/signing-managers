@@ -4,8 +4,9 @@ import { stringToU8a, u8aToHex } from '@polkadot/util';
 import { encodeAddress } from '@polkadot/util-crypto';
 import { PublicKeyResonse } from 'fireblocks-sdk';
 
+import { maxInitialDerivedAccounts } from './fireblocks/consts';
 import { Fireblocks } from './fireblocks/fireblocks';
-import { ConfigError } from './fireblocks/types';
+import { ConfigError, DerivationPath } from './fireblocks/types';
 import { FireblocksSigner, FireblocksSigningManager } from './fireblocks-signing-manager';
 
 jest.mock('fs');
@@ -63,6 +64,25 @@ describe('FireblocksSigningManager Class', () => {
 
       expect(manager).toBeInstanceOf(FireblocksSigningManager);
     });
+
+    it('should error if given a large number of initial accounts', async () => {
+      const derivationPaths: DerivationPath[] = [...new Array(maxInitialDerivedAccounts + 1)].map(
+        (v, index) => [44, 1, index, 0, 0]
+      );
+
+      const expectedError = new ConfigError(
+        'Number of initial derivation paths cannot exceed 120. Use deriveAccount after creation to load more accounts instead'
+      );
+
+      return expect(
+        FireblocksSigningManager.create({
+          url,
+          apiKey,
+          secretPath,
+          derivationPaths,
+        })
+      ).rejects.toThrow(expectedError);
+    });
   });
 
   describe('method: getAccounts', () => {
@@ -83,7 +103,7 @@ describe('FireblocksSigningManager Class', () => {
       signingManager.setSs58Format(undefined as unknown as number);
 
       const expectedError = new ConfigError(
-        'ss58Format was not set. The SDK should set the format upon initialization. setSs58Format may need to be called manually in a different context'
+        'FireblocksSigningManager ss58Format was not set. The Polymesh SDK should set the format upon its initialization'
       );
 
       return expect(signingManager.getAccounts()).rejects.toThrowError(expectedError);

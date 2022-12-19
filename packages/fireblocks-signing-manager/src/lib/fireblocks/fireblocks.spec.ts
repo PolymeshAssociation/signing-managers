@@ -115,7 +115,7 @@ describe('Fireblocks class', () => {
       } as TransactionResponse);
 
       const expectedError = new NoTransactionSignature(
-        'No signature on transaction with status: REJECTED'
+        'Fireblocks transaction response with status: "REJECTED" had no signature'
       );
 
       await expect(

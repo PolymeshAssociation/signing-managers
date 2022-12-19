@@ -20,9 +20,21 @@ export interface KeyInfo extends PublicKeyResonse {
 }
 
 export interface CreateParams {
+  /**
+   * The URL for the fireblocks API to use. e.g. `https://api.fireblocks.io`
+   */
   url: string;
+  /**
+   * The API key to authenticate request with. Note `secretPath` must be provided in addition to this field
+   */
   apiKey: string;
+  /**
+   * Path to a file containing the secret file for interacting with the Fireblocks API
+   */
   secretPath: string;
+  /**
+   * (optional) Derivation paths to initialize Accounts upon creation. Accounts can also be added dynamically by calling `deriveAccount` on the signing manager
+   */
   derivationPaths?: DerivationPath[];
 }
 

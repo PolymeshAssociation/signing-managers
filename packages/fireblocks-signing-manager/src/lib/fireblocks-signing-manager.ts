@@ -6,7 +6,7 @@ import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-man
 import { PublicKeyResonse } from 'fireblocks-sdk';
 
 import { ConfigError, CreateParams, DerivationPath, KeyInfo, KeyNotFound } from './fireblocks';
-import { defaultKeyPath, maxInitialDeriveAmount } from './fireblocks/consts';
+import { defaultKeyPath, maxInitialDerivedAccounts } from './fireblocks/consts';
 import { Fireblocks } from './fireblocks/fireblocks';
 
 export class FireblocksSigner implements PolkadotSigner {
@@ -106,9 +106,9 @@ export class FireblocksSigningManager implements SigningManager {
     const signingManager = new FireblocksSigningManager(args);
 
     if (args.derivationPaths) {
-      if (args.derivationPaths.length > maxInitialDeriveAmount) {
+      if (args.derivationPaths.length > maxInitialDerivedAccounts) {
         throw new ConfigError(
-          `Number of initial derivation paths cannot exceed ${maxInitialDeriveAmount}. Use deriveAccount after creation to load more accounts instead`
+          `Number of initial derivation paths cannot exceed ${maxInitialDerivedAccounts}. Use deriveAccount after creation to load more accounts instead`
         );
       }
 
@@ -117,7 +117,7 @@ export class FireblocksSigningManager implements SigningManager {
       );
       await Promise.all(derivePromises);
     } else {
-      await signingManager.deriveAccount(defaultKeyPath);
+      await signingManager.fireblocksClient.deriveKey(defaultKeyPath);
     }
 
     return signingManager;
@@ -133,7 +133,7 @@ export class FireblocksSigningManager implements SigningManager {
   public get ss58Format(): number {
     if (!this._ss58Format) {
       throw new ConfigError(
-        'ss58Format was not set. The SDK should set the format upon initialization. setSs58Format may need to be called manually in a different context'
+        'FireblocksSigningManager ss58Format was not set. The Polymesh SDK should set the format upon its initialization'
       );
     }
 

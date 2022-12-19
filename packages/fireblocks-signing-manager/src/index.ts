@@ -1,1 +1,1 @@
-export * from './lib/fireblocks';
+export * from './lib/fireblocks-signing-manager';
