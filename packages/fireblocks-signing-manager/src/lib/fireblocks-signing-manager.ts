@@ -51,7 +51,9 @@ export class FireblocksSigner implements PolkadotSigner {
     const fixedData = data.length > 256 ? blake2AsU8a(data) : data;
 
     const msg = Buffer.from(fixedData).toString('hex');
-    const note = `0x${Buffer.from(data).toString('hex')}`;
+    const note = `https://testnet-app.polymesh.live/#/extrinsics/decode/0x${Buffer.from(
+      data
+    ).toString('hex')}`;
 
     const { derivationPath } = await this.getFireblocksKeyInfo(address);
 
