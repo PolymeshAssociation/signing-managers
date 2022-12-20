@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export class MockFireblocks {
   public fetchDerivedKeys = jest.fn();
 

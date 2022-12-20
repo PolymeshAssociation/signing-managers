@@ -1,6 +1,6 @@
 import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw, SignerResult } from '@polkadot/types/types';
-import { hexToU8a, u8aToHex } from '@polkadot/util';
+import { hexAddPrefix, hexToU8a, u8aToHex } from '@polkadot/util';
 import { blake2AsU8a, decodeAddress, encodeAddress } from '@polkadot/util-crypto';
 import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
 import { PublicKeyResonse } from 'fireblocks-sdk';
@@ -150,7 +150,7 @@ export class FireblocksSigningManager implements SigningManager {
 
     const ss58Format = this.ss58Format;
 
-    return allKeys.map(({ publicKey }) => encodeAddress(`0x${publicKey}`, ss58Format));
+    return allKeys.map(({ publicKey }) => encodeAddress(hexAddPrefix(publicKey), ss58Format));
   }
 
   /**
@@ -161,7 +161,7 @@ export class FireblocksSigningManager implements SigningManager {
   public async deriveAccount(path: DerivationPath): Promise<KeyInfo> {
     const key = await this.fireblocksClient.deriveKey(path);
 
-    const address = encodeAddress(`0x${key.publicKey}`, this.ss58Format);
+    const address = encodeAddress(hexAddPrefix(key.publicKey), this.ss58Format);
 
     return { ...key, address };
   }

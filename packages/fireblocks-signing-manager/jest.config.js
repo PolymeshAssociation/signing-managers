@@ -9,4 +9,5 @@ module.exports = {
   testEnvironment: 'node',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/packages/fireblocks-signing-manager',
+  restoreMocks: true,
 };

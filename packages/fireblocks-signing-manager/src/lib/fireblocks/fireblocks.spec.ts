@@ -56,16 +56,13 @@ describe('Fireblocks class', () => {
       const result = fireblocks.fetchDerivedKeys();
 
       expect(result).toEqual(expect.arrayContaining([key1, key2]));
-
-      publicKeySpy.mockRestore();
     });
   });
 
   describe('method: deriveKey', () => {
     it('should return the key', async () => {
-      const publicKeySpy = jest.spyOn(fireblocks.fireblocksSdk, 'getPublicKeyInfo');
+      jest.spyOn(fireblocks.fireblocksSdk, 'getPublicKeyInfo').mockResolvedValue(key1);
 
-      publicKeySpy.mockResolvedValue(key1);
       const key = await fireblocks.deriveKey(key1.derivationPath);
 
       expect(key).toEqual(key1);
@@ -74,16 +71,16 @@ describe('Fireblocks class', () => {
 
   describe('method: signData', () => {
     it('should return signed data', async () => {
-      const publicKeySpy = jest.spyOn(fireblocks.fireblocksSdk, 'getPublicKeyInfo');
-      publicKeySpy.mockResolvedValue(defaultKey);
+      jest.spyOn(fireblocks.fireblocksSdk, 'getPublicKeyInfo').mockResolvedValue(defaultKey);
 
-      const createTxSpy = jest.spyOn(fireblocks.fireblocksSdk, 'createTransaction');
+      jest
+        .spyOn(fireblocks.fireblocksSdk, 'createTransaction')
+        .mockResolvedValue({ id: '1', status: TransactionStatus.PENDING_AUTHORIZATION });
 
-      createTxSpy.mockResolvedValue({ id: '1', status: TransactionStatus.PENDING_AUTHORIZATION });
+      const expectedSignature = '123';
 
       const getTxSpy = jest.spyOn(fireblocks.fireblocksSdk, 'getTransactionById');
 
-      const expectedSignature = '123';
       getTxSpy.mockResolvedValueOnce({
         id: '1',
         status: TransactionStatus.PENDING_SIGNATURE,
@@ -98,18 +95,14 @@ describe('Fireblocks class', () => {
 
       expect(getTxSpy).toHaveBeenCalledTimes(2);
       expect(result).toBe(expectedSignature);
-
-      publicKeySpy.mockRestore();
-      createTxSpy.mockRestore();
-      getTxSpy.mockRestore();
     });
 
     it('should throw an error if a transaction is rejected', async () => {
-      const createTxSpy = jest.spyOn(fireblocks.fireblocksSdk, 'createTransaction');
-      createTxSpy.mockResolvedValue({ id: '1', status: TransactionStatus.PENDING_AUTHORIZATION });
+      jest
+        .spyOn(fireblocks.fireblocksSdk, 'createTransaction')
+        .mockResolvedValue({ id: '1', status: TransactionStatus.PENDING_AUTHORIZATION });
 
-      const getTxSpy = jest.spyOn(fireblocks.fireblocksSdk, 'getTransactionById');
-      getTxSpy.mockResolvedValue({
+      jest.spyOn(fireblocks.fireblocksSdk, 'getTransactionById').mockResolvedValue({
         id: '1',
         status: TransactionStatus.REJECTED,
       } as TransactionResponse);
@@ -121,8 +114,6 @@ describe('Fireblocks class', () => {
       await expect(
         fireblocks.signData(defaultKey.derivationPath, 'test data', 'test note')
       ).rejects.toThrowError(expectedError);
-
-      createTxSpy.mockRestore();
     });
   });
 });

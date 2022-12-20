@@ -87,16 +87,15 @@ describe('FireblocksSigningManager Class', () => {
 
   describe('method: getAccounts', () => {
     it('should return all derived Accounts', async () => {
-      const getKeysSpy = jest.spyOn(signingManager.fireblocksClient, 'fetchDerivedKeys');
-      getKeysSpy.mockReturnValue(fireblocksKeys);
+      jest
+        .spyOn(signingManager.fireblocksClient, 'fetchDerivedKeys')
+        .mockReturnValue(fireblocksKeys);
 
       const result = await signingManager.getAccounts();
 
       expect(result).toEqual(
         fireblocksKeys.map(({ publicKey }) => encodeAddress(`0x${publicKey}`, ss58Format))
       );
-
-      getKeysSpy.mockRestore();
     });
 
     it('should throw an error if ss58Format is not defined', () => {
@@ -156,11 +155,9 @@ describe('FireblocksSigningManager Class', () => {
         const rawSignature = '0100000';
         const expectedSignature = '0x000100000';
 
-        const lookupAddressSpy = jest.spyOn(fireblocks, 'lookupKey');
-        lookupAddressSpy.mockReturnValue(fireblocksKeys[0]);
+        jest.spyOn(fireblocks, 'lookupKey').mockReturnValue(fireblocksKeys[0]);
 
-        const signDataSpy = jest.spyOn(fireblocks, 'signData');
-        signDataSpy.mockResolvedValue(rawSignature);
+        jest.spyOn(fireblocks, 'signData').mockResolvedValue(rawSignature);
 
         let { id, signature } = await signer.signPayload(payload);
 
@@ -171,9 +168,6 @@ describe('FireblocksSigningManager Class', () => {
 
         expect(id).toBe(1);
         expect(signature).toBe(expectedSignature);
-
-        lookupAddressSpy.mockRestore();
-        signDataSpy.mockRestore();
       });
 
       it('should throw an error if the payload address is not present in the backing API', () => {
@@ -198,19 +192,14 @@ describe('FireblocksSigningManager Class', () => {
         const rawSignature = '123';
         const expectedSignature = '0x00123';
 
-        const lookupAddressSpy = jest.spyOn(fireblocks, 'lookupKey');
-        lookupAddressSpy.mockReturnValue(fireblocksKeys[0]);
+        jest.spyOn(fireblocks, 'lookupKey').mockReturnValue(fireblocksKeys[0]);
 
-        const signDataSpy = jest.spyOn(fireblocks, 'signData');
-        signDataSpy.mockResolvedValue(rawSignature);
+        jest.spyOn(fireblocks, 'signData').mockResolvedValue(rawSignature);
 
         const { id, signature } = await signer.signRaw(raw);
 
         expect(id).toBe(0);
         expect(signature).toBe(expectedSignature);
-
-        lookupAddressSpy.mockRestore();
-        signDataSpy.mockRestore();
       });
 
       it('should throw an error if the payload address is not present in the backing API', () => {

@@ -1,3 +1,4 @@
+import { hexAddPrefix } from '@polkadot/util';
 import { HexString } from '@polkadot/util/types';
 import {
   FireblocksSDK,
@@ -87,7 +88,8 @@ export class Fireblocks {
     let txInfo: TransactionResponse;
 
     // poll until the transaction is signed or rejected
-    for (;;) {
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
       txInfo = await this.fireblocksSdk.getTransactionById(id);
       currentStatus = txInfo.status;
 
@@ -109,7 +111,7 @@ export class Fireblocks {
   }
 
   private cacheKey(key: KeyInfo): void {
-    this.addressBook[`0x${key.publicKey}`] = key;
+    this.addressBook[hexAddPrefix(key.publicKey)] = key;
   }
 
   private isCompletedTransaction(tx: TransactionResponse): boolean {
