@@ -1,0 +1,51 @@
+{
+  "root": "packages/fireblocks-signing-manager",
+  "sourceRoot": "packages/fireblocks-signing-manager/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/fireblocks-signing-manager",
+        "tsConfig": "packages/fireblocks-signing-manager/tsconfig.lib.json",
+        "packageJson": "packages/fireblocks-signing-manager/package.json",
+        "main": "packages/fireblocks-signing-manager/src/index.ts",
+        "assets": ["packages/fireblocks-signing-manager/*.md"],
+        "srcRootForCompilationRoot": "packages/fireblocks-signing-manager/src"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/fireblocks-signing-manager/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/fireblocks-signing-manager"],
+      "options": {
+        "jestConfig": "packages/fireblocks-signing-manager/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "release": {
+      "executor": "@ng-easy/builders:semantic-release",
+      "configurations": {
+        "local": {
+          "force": true
+        }
+      }
+    },
+    "run-local": {
+      "executor": "./tools/executors/run-local:run-local",
+      "options": {
+        "runInBrowser": false,
+        "path": "packages/fireblocks-signing-manager/sandbox/index.ts",
+        "port": 9000
+      }
+    }
+  },
+  "tags": []
+}

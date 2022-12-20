@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'types',
+  displayName: 'fireblocks-signing-manager',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -8,6 +8,6 @@ module.exports = {
   },
   testEnvironment: 'node',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/packages/types',
+  coverageDirectory: '../../coverage/packages/fireblocks-signing-manager',
   restoreMocks: true,
 };
