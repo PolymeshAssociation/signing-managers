@@ -4,9 +4,9 @@ Polymesh SDK (v14+) compatible signing manager that interacts with [Fireblocks](
 
 ## Usage
 
-You will need to get a Fireblocks Account and setup access for the API. This involves generating an API Key as well as a secret file.
+You will need a Fireblocks Account and setup access for the API. This involves generating an API Key as well as a secret file to authenticate with.
 
-In addition to getting the account, you will need to ask for Fireblocks to enable "Raw signing".
+Also, you will need to ask for Fireblocks to enable "raw signing" for your account. You should understand the risks and why raw signing is not enabled by default.
 
 To use non default addresses, they must be "derived" first, before the SDK will recognize them as valid keys.
 
@@ -40,9 +40,9 @@ The derivation path is a method for generating many keys out of a single secret.
 
 When using this signing manager BIP-44 conventions should be used. Essentially the first number should always be `44`, the second should be `595` for mainnet, otherwise it should be `1`. The third should correspond with the Fireblocks Account ID that should sign. The last two numbers are a way to generate sub account under a particular account. They should be 0, unless you intend to use sub accounts.
 
-If an empty array of `derivationPaths` is provided, then no keys will be derived. If `derivationPaths` is `undefined` then the default path test path will be used. i.e. `[44, 1, 0, 0, 0]`
+If an empty array of `derivationPaths` is provided, then no keys will be derived. If `derivationPaths` is `undefined` then the default test path will be used. i.e. `[44, 1, 0, 0, 0]`
 
-Note, the `deriveAccount` method MUST be called with the appropriate path before the SDK will be able to sign for a given address.
+Note, the `deriveAccount` method MUST be called with the appropriate path before the SDK will be able to sign for a given address, otherwise the address will not be found when attempting to sign.
 
 ## Running unit tests
 
