@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@1.0.0...@polymeshassociation/fireblocks-signing-manager@1.0.1) (2022-12-21)
+
+
+### Documentation
+
+* **fireblocks-signing-manager:** improve README readability ([1bb4a92](https://github.com/PolymeshAssociation/signing-managers/commit/1bb4a92719e56e04f440f7299bd50dc4da8ab056))
+
 # 1.0.0 (2022-12-20)
 
 
