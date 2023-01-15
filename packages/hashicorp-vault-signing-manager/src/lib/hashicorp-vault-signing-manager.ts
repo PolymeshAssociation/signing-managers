@@ -9,6 +9,10 @@ import { HashicorpVault, VaultKey } from './hashicorp-vault';
 
 export class VaultSigner implements PolkadotSigner {
   private currentId = -1;
+  /**
+   * This can be invalid in the event of a key rename in Vault
+   */
+  private addressCache: Record<string, VaultKey> = {};
 
   /**
    * @hidden
@@ -30,7 +34,10 @@ export class VaultSigner implements PolkadotSigner {
       version,
     });
 
-    return this.signData(name, keyVersion, signablePayload.toU8a(true));
+    return this.signData(name, keyVersion, signablePayload.toU8a(true)).catch(error => {
+      this.clearAddressCache(address);
+      throw error;
+    });
   }
 
   /**
@@ -41,7 +48,10 @@ export class VaultSigner implements PolkadotSigner {
 
     const { name, version } = await this.getVaultKey(address);
 
-    return this.signData(name, version, hexToU8a(data));
+    return this.signData(name, version, hexToU8a(data)).catch(error => {
+      this.clearAddressCache(address);
+      throw error;
+    });
   }
 
   /**
@@ -89,6 +99,10 @@ export class VaultSigner implements PolkadotSigner {
     }
 
     return foundKey;
+  }
+
+  private clearAddressCache(address: string): void {
+    delete this.addressCache[address];
   }
 }
 export class HashicorpVaultSigningManager implements SigningManager {
