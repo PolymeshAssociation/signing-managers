@@ -59,7 +59,6 @@ export class ApprovalSigner implements PolkadotSigner {
     const message = `0x${Buffer.from(fixedData).toString('hex')}`;
 
     const { ownerId } = await this.getKeyRecord(address);
-
     const signature = await this.approvalClient.signData(ownerId, message);
 
     const id = (this.currentId += 1);
