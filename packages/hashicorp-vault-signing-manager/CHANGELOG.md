@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.3...@polymeshassociation/hashicorp-vault-signing-manager@1.1.4) (2023-01-16)
+
+
+### Performance Improvements
+
+* **hashicorp-vault-signing-manager:** cache keys to avoid repeated lookups ([#29](https://github.com/PolymeshAssociation/signing-managers/issues/29)) ([39c34f4](https://github.com/PolymeshAssociation/signing-managers/commit/39c34f43ffdb979b985c551939a49fc60ed5d08d))
+
 ## [1.1.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.2...@polymeshassociation/hashicorp-vault-signing-manager@1.1.3) (2023-01-16)
 
 
