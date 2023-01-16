@@ -2,7 +2,11 @@ import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw, SignerResult } from '@polkadot/types/types';
 import { hexAddPrefix, hexToU8a, u8aToHex } from '@polkadot/util';
 import { blake2AsU8a, decodeAddress, encodeAddress } from '@polkadot/util-crypto';
-import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
+import {
+  PolkadotSigner,
+  signedExtensions,
+  SigningManager,
+} from '@polymeshassociation/signing-manager-types';
 import { PublicKeyResonse } from 'fireblocks-sdk';
 
 import { ConfigError, CreateParams, DerivationPath, KeyInfo, KeyNotFound } from './fireblocks';
@@ -22,9 +26,7 @@ export class FireblocksSigner implements PolkadotSigner {
    */
   public async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     const { registry } = this;
-    const { address, version, signedExtensions } = payload;
-
-    registry.setSignedExtensions(signedExtensions);
+    const { address, version } = payload;
 
     const signablePayload = registry.createType('ExtrinsicPayload', payload, {
       version,
@@ -100,8 +102,11 @@ export class FireblocksSigningManager implements SigningManager {
   private constructor(args: Omit<CreateParams, 'derivationPaths'>) {
     const { url, apiKey, secretPath } = args;
 
+    const registry = new TypeRegistry();
+    registry.setSignedExtensions(signedExtensions);
+
     this.fireblocksClient = new Fireblocks({ url, apiKey, secretPath });
-    this.externalSigner = new FireblocksSigner(this.fireblocksClient, new TypeRegistry());
+    this.externalSigner = new FireblocksSigner(this.fireblocksClient, registry);
   }
 
   public static async create(args: CreateParams): Promise<FireblocksSigningManager> {

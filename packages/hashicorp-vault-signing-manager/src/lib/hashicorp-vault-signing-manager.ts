@@ -2,7 +2,11 @@ import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw, SignerResult } from '@polkadot/types/types';
 import { hexToU8a, u8aToHex } from '@polkadot/util';
 import { blake2AsU8a, decodeAddress, encodeAddress } from '@polkadot/util-crypto';
-import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
+import {
+  PolkadotSigner,
+  signedExtensions,
+  SigningManager,
+} from '@polymeshassociation/signing-manager-types';
 
 import { AddressedVaultKey } from '../types';
 import { HashicorpVault, VaultKey } from './hashicorp-vault';
@@ -24,11 +28,9 @@ export class VaultSigner implements PolkadotSigner {
    */
   public async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     const { registry } = this;
-    const { address, signedExtensions, version } = payload;
+    const { address, version } = payload;
 
     const { name, version: keyVersion } = await this.getVaultKey(address);
-
-    registry.setSignedExtensions(signedExtensions);
 
     const signablePayload = registry.createType('ExtrinsicPayload', payload, {
       version,
@@ -134,8 +136,11 @@ export class HashicorpVaultSigningManager implements SigningManager {
   public constructor(args: { url: string; token: string }) {
     const { url, token } = args;
 
+    const registry = new TypeRegistry();
+    registry.setSignedExtensions(signedExtensions);
+
     this.vault = new HashicorpVault(url, token);
-    this.externalSigner = new VaultSigner(this.vault, new TypeRegistry());
+    this.externalSigner = new VaultSigner(this.vault, registry);
   }
 
   /**
