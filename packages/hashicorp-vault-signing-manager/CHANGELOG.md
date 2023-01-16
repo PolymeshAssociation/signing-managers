@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.4...@polymeshassociation/hashicorp-vault-signing-manager@1.1.5) (2023-01-16)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** fetchAllKeys returns empty list instead of 404 when no keys are present ([#26](https://github.com/PolymeshAssociation/signing-managers/issues/26)) ([011dbb0](https://github.com/PolymeshAssociation/signing-managers/commit/011dbb000178430df08eef2c4e2116b830db4838))
+
 ## [1.1.4](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.3...@polymeshassociation/hashicorp-vault-signing-manager@1.1.4) (2023-01-16)
 
 
