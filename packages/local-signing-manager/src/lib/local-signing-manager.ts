@@ -10,7 +10,7 @@ import { hexToU8a, u8aToHex } from '@polkadot/util';
 import { cryptoWaitReady, mnemonicGenerate } from '@polkadot/util-crypto';
 import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
 
-import { PrivateKey } from '../types';
+import { KeyRingType, PrivateKey } from '../types';
 
 /**
  * Manages signing payloads with a set of pre-loaded accounts in a Keyring
@@ -101,10 +101,15 @@ export class LocalSigningManager implements SigningManager {
    *
    * @param args.accounts - array of private keys
    */
-  public static async create(args: { accounts: PrivateKey[] }): Promise<LocalSigningManager> {
+  public static async create(args: {
+    accounts: PrivateKey[];
+    type?: KeyRingType;
+  }): Promise<LocalSigningManager> {
     await cryptoWaitReady();
 
-    return new LocalSigningManager(args.accounts);
+    const { accounts, type } = args;
+
+    return new LocalSigningManager(accounts, type);
   }
 
   /**
@@ -119,9 +124,9 @@ export class LocalSigningManager implements SigningManager {
   /**
    * @hidden
    */
-  private constructor(accounts: PrivateKey[]) {
+  private constructor(accounts: PrivateKey[], type?: KeyRingType) {
     this.keyring = new Keyring({
-      type: 'sr25519',
+      type: type || 'sr25519',
     });
 
     this.externalSigner = new KeyringSigner(this.keyring, new TypeRegistry());
