@@ -88,6 +88,11 @@ export class VaultSigner implements PolkadotSigner {
    * @throws if there is no key with that address
    */
   private async getVaultKey(address: string): Promise<VaultKey> {
+    const cachedKey = this.getCachedKey(address);
+    if (cachedKey) {
+      return cachedKey;
+    }
+
     const payloadPublicKey = u8aToHex(decodeAddress(address));
 
     const allKeys = await this.vault.fetchAllKeys();
@@ -98,7 +103,17 @@ export class VaultSigner implements PolkadotSigner {
       throw new Error('The signer cannot sign transactions on behalf of the calling Account');
     }
 
+    this.setCachedKey(address, foundKey);
+
     return foundKey;
+  }
+
+  private getCachedKey(address: string): VaultKey {
+    return this.addressCache[address];
+  }
+
+  private setCachedKey(address: string, key: VaultKey): void {
+    this.addressCache[address] = key;
   }
 
   private clearAddressCache(address: string): void {
