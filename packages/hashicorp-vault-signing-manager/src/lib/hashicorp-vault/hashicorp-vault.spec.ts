@@ -79,6 +79,19 @@ describe('HashicorpVault class', () => {
       expect(result).toEqual(expectedKeys);
     });
 
+    it('should return an empty list when Vault returns 404', async () => {
+      // https://github.com/hashicorp/vault/issues/1365#issuecomment-216369253
+      fetchStub.mockResolvedValueOnce(
+        createMockResponse(404, 'Not Found', {
+          errors: [],
+        })
+      );
+
+      const result = await vault.fetchAllKeys();
+
+      expect(result).toEqual([]);
+    });
+
     it('should throw any errors returned by the Vault API', () => {
       fetchStub.mockResolvedValue(
         createMockResponse(400, 'Bad Request', {
