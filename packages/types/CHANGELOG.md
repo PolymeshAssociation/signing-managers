@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.1.1...@polymeshassociation/signing-manager-types@1.2.0) (2023-01-16)
+
+
+### Features
+
+* **types:** add signed extensions const ([#28](https://github.com/PolymeshAssociation/signing-managers/issues/28)) ([e235f54](https://github.com/PolymeshAssociation/signing-managers/commit/e235f5494061e3812325f0f232d439b2386973f6))
+
 ## [1.1.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.1.0...@polymeshassociation/signing-manager-types@1.1.1) (2022-10-13)
 
 
