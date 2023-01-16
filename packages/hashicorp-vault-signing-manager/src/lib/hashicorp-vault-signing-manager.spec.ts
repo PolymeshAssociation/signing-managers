@@ -151,6 +151,20 @@ describe('class VaultSigner', () => {
       expect(result.signature).toBe(expectedSignature);
     });
 
+    it('should clear the cache if Vault returns an error', async () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const exposedSigner = signer as any;
+      const clearAddressCacheSpy = jest.spyOn(exposedSigner, 'clearAddressCache');
+      const payload = { address: accounts[0].address } as SignerPayloadJSON;
+
+      const expectedError = new Error('fake error');
+      mockHashicorpVault.signData.mockRejectedValue(expectedError);
+
+      await expect(signer.signPayload(payload)).rejects.toThrow(expectedError);
+
+      return expect(clearAddressCacheSpy).toHaveBeenCalled();
+    });
+
     it('should throw an error if the payload address is not present in the Vault', () => {
       mockHashicorpVault.fetchAllKeys.mockResolvedValue([]);
       return expect(
@@ -180,6 +194,48 @@ describe('class VaultSigner', () => {
 
       expect(result.id).toBe(1);
       expect(result.signature).toBe(expectedSignature);
+    });
+
+    it('should check and set the key cache', async () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const exposedSigner = signer as any;
+      const expectedAccount = accounts[0];
+      const getSpy = jest.spyOn(exposedSigner, 'getCachedKey');
+      const setSpy = jest.spyOn(exposedSigner, 'setCachedKey');
+
+      const { address, ...expectedKey } = expectedAccount;
+
+      const data = u8aToHex(stringToU8a('Hello, my name is Alice'));
+      const raw = {
+        address,
+        data,
+        type: 'bytes' as const,
+      };
+
+      await signer.signRaw(raw);
+
+      expect(getSpy).toHaveBeenCalledWith(address);
+      expect(setSpy).toHaveBeenCalledWith(address, expectedKey);
+    });
+
+    it('should clear the cache if Vault returns an error', async () => {
+      const data = u8aToHex(stringToU8a('Hello, my name is Alice'));
+      const raw = {
+        address: accounts[0].address,
+        data,
+        type: 'bytes' as const,
+      };
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const exposedSigner = signer as any;
+      const clearAddressCacheSpy = jest.spyOn(exposedSigner, 'clearAddressCache');
+
+      const expectedError = new Error('fake error');
+      mockHashicorpVault.signData.mockRejectedValue(expectedError);
+
+      await expect(signer.signRaw(raw)).rejects.toThrow(expectedError);
+
+      return expect(clearAddressCacheSpy).toHaveBeenCalled();
     });
 
     it('should throw an error if the payload address is not present in the Vault', () => {
