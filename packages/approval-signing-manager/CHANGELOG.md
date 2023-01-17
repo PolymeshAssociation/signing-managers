@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@1.0.4...@polymeshassociation/approval-signing-manager@1.0.5) (2023-01-17)
+
+
+### Bug Fixes
+
+* **approval-signing-manager:** hash large payloads before requesting signature ([7cea739](https://github.com/PolymeshAssociation/signing-managers/commit/7cea73957b9ec502936b51139df032c8fa8d2a44))
+
 ## [1.0.4](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@1.0.3...@polymeshassociation/approval-signing-manager@1.0.4) (2023-01-17)
 
 
