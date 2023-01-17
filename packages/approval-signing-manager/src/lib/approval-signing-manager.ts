@@ -1,7 +1,7 @@
 import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw, SignerResult } from '@polkadot/types/types';
 import { hexToU8a } from '@polkadot/util';
-import { decodeAddress } from '@polkadot/util-crypto';
+import { blake2AsU8a, decodeAddress } from '@polkadot/util-crypto';
 import {
   PolkadotSigner,
   signedExtensions,
@@ -54,10 +54,11 @@ export class ApprovalSigner implements PolkadotSigner {
    * Get a signature from the approval key store. This may take a while as the approval process may require human approval
    */
   private async signData(address: string, data: Uint8Array): Promise<SignerResult> {
-    const message = `0x${Buffer.from(data).toString('hex')}`;
+    const fixedData = data.length > 256 ? blake2AsU8a(data) : data;
+
+    const message = `0x${Buffer.from(fixedData).toString('hex')}`;
 
     const { ownerId } = await this.getKeyRecord(address);
-
     const signature = await this.approvalClient.signData(ownerId, message);
 
     const id = (this.currentId += 1);

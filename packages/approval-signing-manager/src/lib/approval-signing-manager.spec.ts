@@ -163,6 +163,39 @@ describe('ApprovalSigningManager Class', () => {
         expect(signature).toBe(expectedSignature);
       });
 
+      it('should hash payloads larger than 256 bytes', async () => {
+        const address = accounts[0].address;
+        const inputData = stringToU8a(''.padEnd(257, 'A'));
+        const data = u8aToHex(inputData);
+        const raw = {
+          address,
+          data,
+          type: 'bytes' as const,
+        };
+
+        await signer.signRaw(raw);
+
+        expect(mockApprovalClient.signData).toHaveBeenCalledWith(
+          'alice',
+          '0x68b9f4466b19c20b2ff001f34ba6baaaf31b10057b18f3f4eb9232b990df186e'
+        );
+      });
+
+      it('should not hash payloads smaller than 256 bytes', async () => {
+        const address = accounts[0].address;
+        const inputData = stringToU8a('AAA');
+        const data = u8aToHex(inputData);
+        const raw = {
+          address,
+          data,
+          type: 'bytes' as const,
+        };
+
+        await signer.signRaw(raw);
+
+        expect(mockApprovalClient.signData).toHaveBeenCalledWith('alice', '0x414141');
+      });
+
       it('should throw an error if the payload address is not present in the backing API', () => {
         mockApprovalClient.fetchKeys.mockResolvedValue([]);
         return expect(
