@@ -2,7 +2,11 @@ import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw, SignerResult } from '@polkadot/types/types';
 import { hexToU8a } from '@polkadot/util';
 import { decodeAddress } from '@polkadot/util-crypto';
-import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
+import {
+  PolkadotSigner,
+  signedExtensions,
+  SigningManager,
+} from '@polymeshassociation/signing-manager-types';
 
 import { ApprovalClient } from './approval-client/approval-client';
 import { KeyRecordWithOwner } from './approval-client/types';
@@ -26,9 +30,7 @@ export class ApprovalSigner implements PolkadotSigner {
    */
   public async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     const { registry } = this;
-    const { address, signedExtensions, version } = payload;
-
-    registry.setSignedExtensions(signedExtensions);
+    const { address, version } = payload;
 
     const signablePayload = registry.createType('ExtrinsicPayload', payload, {
       version,
@@ -115,8 +117,11 @@ export class ApprovalSigningManager implements SigningManager {
   }) {
     const { url, apiClientId, apiKey, pollingInterval = 15 } = args;
 
+    const registry = new TypeRegistry();
+    registry.setSignedExtensions(signedExtensions);
+
     this.approvalClient = new ApprovalClient(url, apiClientId, apiKey, pollingInterval);
-    this.externalSigner = new ApprovalSigner(this.approvalClient, new TypeRegistry());
+    this.externalSigner = new ApprovalSigner(this.approvalClient, registry);
   }
 
   /**
