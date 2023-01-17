@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.3...@polymeshassociation/local-signing-manager@1.3.0) (2023-01-17)
+
+
+### Features
+
+* **local-signing-manager:** allow `ed25519` to be specified in `create` ([#31](https://github.com/PolymeshAssociation/signing-managers/issues/31)) ([0c4b205](https://github.com/PolymeshAssociation/signing-managers/commit/0c4b20510f484584ffe0db89350ec9833e191955))
+
 ## [1.2.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.2...@polymeshassociation/local-signing-manager@1.2.3) (2023-01-17)
 
 
