@@ -20,7 +20,7 @@ Monorepo for Polymesh SDK compatible Signing Managers.
 If using on a unix type computer, all packages can be built (or test/lint) with:
 
 ```sh
-ls packages | cut -d "_" -f 1 | xargs -I {} bash -c "yarn build} {}"
+ls packages | cut -d "_" -f 1 | xargs -I {} bash -c "yarn build {}"
 ```
 
 ### Manual Testing
