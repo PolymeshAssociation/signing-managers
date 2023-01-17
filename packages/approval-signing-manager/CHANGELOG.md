@@ -1,3 +1,11 @@
+## [1.0.4](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@1.0.3...@polymeshassociation/approval-signing-manager@1.0.4) (2023-01-17)
+
+
+### Bug Fixes
+
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([2c7fda3](https://github.com/PolymeshAssociation/signing-managers/commit/2c7fda3a095ad449d0c8ca85248469279c9a32de))
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
 ## [1.0.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@1.0.2...@polymeshassociation/approval-signing-manager@1.0.3) (2023-01-16)
 
 
