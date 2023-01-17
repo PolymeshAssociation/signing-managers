@@ -1,11 +1,11 @@
 {
   "name": "@polymeshassociation/local-signing-manager",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@polymeshassociation/signing-manager-types": "^1.2.0"
+    "@polymeshassociation/signing-manager-types": "^1.2.1"
   },
   "peerDependencies": {
     "@polkadot/api": "^8.0.2",

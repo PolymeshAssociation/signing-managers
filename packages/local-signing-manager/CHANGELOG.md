@@ -1,3 +1,11 @@
+## [1.2.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.2...@polymeshassociation/local-signing-manager@1.2.3) (2023-01-17)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([f6aae6c](https://github.com/PolymeshAssociation/signing-managers/commit/f6aae6cd263f973647dcd262f23d98295c875397))
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
 ## [1.2.2](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.1...@polymeshassociation/local-signing-manager@1.2.2) (2023-01-16)
 
 

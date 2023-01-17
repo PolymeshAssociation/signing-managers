@@ -8,7 +8,11 @@ import {
 } from '@polkadot/types/types';
 import { hexToU8a, u8aToHex } from '@polkadot/util';
 import { cryptoWaitReady, mnemonicGenerate } from '@polkadot/util-crypto';
-import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
+import {
+  PolkadotSigner,
+  signedExtensions,
+  SigningManager,
+} from '@polymeshassociation/signing-manager-types';
 
 import { KeyRingType, PrivateKey } from '../types';
 
@@ -28,11 +32,9 @@ export class KeyringSigner implements PolkadotSigner {
    */
   public async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     const { registry } = this;
-    const { address, signedExtensions, version } = payload;
+    const { address, version } = payload;
 
     const pair = this.getPair(address);
-
-    registry.setSignedExtensions(signedExtensions);
 
     const signablePayload = registry.createType('ExtrinsicPayload', payload, {
       version,
@@ -129,7 +131,10 @@ export class LocalSigningManager implements SigningManager {
       type: type || 'sr25519',
     });
 
-    this.externalSigner = new KeyringSigner(this.keyring, new TypeRegistry());
+    const registry = new TypeRegistry();
+    registry.setSignedExtensions(signedExtensions);
+
+    this.externalSigner = new KeyringSigner(this.keyring, registry);
 
     accounts.forEach(account => {
       this._addAccount(account);
