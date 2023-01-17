@@ -52,6 +52,23 @@ describe('LocalSigningManager Class', () => {
     signingManager.setSs58Format(42);
   });
 
+  describe('method: create', () => {
+    it('should default to sr25519 key ring type', () => {
+      const exposedManager = signingManager as any;
+
+      expect(exposedManager.keyring.type).toEqual('sr25519');
+    });
+
+    it('should allow for ed25519 to be specified', async () => {
+      const ed25519Manager = (await LocalSigningManager.create({
+        accounts: [],
+        type: 'ed25519',
+      })) as any;
+
+      expect(ed25519Manager.keyring.type).toEqual('ed25519');
+    });
+  });
+
   describe('method: getAccounts', () => {
     it('should return all Accounts held in the keyring', async () => {
       const result = await signingManager.getAccounts();

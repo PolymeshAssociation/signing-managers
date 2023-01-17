@@ -11,3 +11,8 @@ export type PrivateKey =
   | {
       seed: string;
     };
+
+/**
+ * Supported key types. Generally `sr25519` is preferred, but `ed25519` is more widely supported
+ */
+export type KeyRingType = 'sr25519' | 'ed25519';
