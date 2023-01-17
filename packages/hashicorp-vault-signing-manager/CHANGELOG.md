@@ -1,3 +1,11 @@
+## [1.1.6](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.5...@polymeshassociation/hashicorp-vault-signing-manager@1.1.6) (2023-01-17)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([4f09bd8](https://github.com/PolymeshAssociation/signing-managers/commit/4f09bd8f47d0f5f74b1e1b07c669fb57cba23ba8))
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
 ## [1.1.5](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.4...@polymeshassociation/hashicorp-vault-signing-manager@1.1.5) (2023-01-16)
 
 
