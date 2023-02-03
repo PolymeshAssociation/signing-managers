@@ -4,12 +4,15 @@
 export type PrivateKey =
   | {
       uri: string;
+      derivationPath?: string;
     }
   | {
       mnemonic: string;
+      derivationPath?: string;
     }
   | {
       seed: string;
+      derivationPath?: string;
     };
 
 /**

@@ -97,6 +97,7 @@ export class LocalSigningManager implements SigningManager {
   private keyring: Keyring;
   private externalSigner: KeyringSigner;
   private hasFormat?: boolean;
+  private type?: KeyRingType;
 
   /**
    * Create an instance of the Local Signing Manager and populates it with the passed Accounts
@@ -127,8 +128,9 @@ export class LocalSigningManager implements SigningManager {
    * @hidden
    */
   private constructor(accounts: PrivateKey[], type?: KeyRingType) {
+    this.type = type || 'sr25519';
     this.keyring = new Keyring({
-      type: type || 'sr25519',
+      type: this.type,
     });
 
     const registry = new TypeRegistry();
@@ -190,11 +192,21 @@ export class LocalSigningManager implements SigningManager {
     let address: string;
 
     if ('uri' in account) {
-      ({ address } = keyring.addFromUri(account.uri));
+      ({ address } = keyring.addFromUri(
+        account.derivationPath ? `${account.uri}${account.derivationPath}` : account.uri
+      ));
     } else if ('mnemonic' in account) {
-      ({ address } = keyring.addFromMnemonic(account.mnemonic));
+      ({ address } = keyring.addFromUri(
+        account.derivationPath ? `${account.mnemonic}${account.derivationPath}` : account.mnemonic
+      ));
     } else {
-      ({ address } = keyring.addFromSeed(hexToU8a(account.seed)));
+      const seedInU8a = hexToU8a(account.seed);
+
+      ({ address } = account.derivationPath
+        ? keyring.addPair(
+            new Keyring({ type: this.type }).addFromSeed(seedInU8a).derive(account.derivationPath)
+          )
+        : keyring.addFromSeed(seedInU8a));
     }
 
     return address;
