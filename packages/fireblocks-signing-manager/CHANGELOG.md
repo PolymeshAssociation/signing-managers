@@ -1,3 +1,18 @@
+## [1.0.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@1.0.2...@polymeshassociation/fireblocks-signing-manager@1.0.3) (2023-01-17)
+
+
+### Bug Fixes
+
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([e19ac5a](https://github.com/PolymeshAssociation/signing-managers/commit/e19ac5a75ae875e90a937aef3e3b7ca80708d818))
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
+## [1.0.2](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@1.0.1...@polymeshassociation/fireblocks-signing-manager@1.0.2) (2023-01-16)
+
+
+### Bug Fixes
+
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.0 [skip ci] ([d0340f2](https://github.com/PolymeshAssociation/signing-managers/commit/d0340f20dbc08802ff593fe3be6ca58420293d05))
+
 ## [1.0.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@1.0.0...@polymeshassociation/fireblocks-signing-manager@1.0.1) (2022-12-21)
 
 

@@ -1,3 +1,25 @@
+# [1.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.3...@polymeshassociation/local-signing-manager@1.3.0) (2023-01-17)
+
+
+### Features
+
+* **local-signing-manager:** allow `ed25519` to be specified in `create` ([#31](https://github.com/PolymeshAssociation/signing-managers/issues/31)) ([0c4b205](https://github.com/PolymeshAssociation/signing-managers/commit/0c4b20510f484584ffe0db89350ec9833e191955))
+
+## [1.2.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.2...@polymeshassociation/local-signing-manager@1.2.3) (2023-01-17)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([f6aae6c](https://github.com/PolymeshAssociation/signing-managers/commit/f6aae6cd263f973647dcd262f23d98295c875397))
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
+## [1.2.2](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.1...@polymeshassociation/local-signing-manager@1.2.2) (2023-01-16)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.0 [skip ci] ([9cdd028](https://github.com/PolymeshAssociation/signing-managers/commit/9cdd028ea3198aae84a307e282749f3573b30e41))
+
 ## [1.2.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.0...@polymeshassociation/local-signing-manager@1.2.1) (2022-10-13)
 
 

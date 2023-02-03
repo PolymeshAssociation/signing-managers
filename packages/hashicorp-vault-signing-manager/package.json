@@ -1,11 +1,11 @@
 {
   "name": "@polymeshassociation/hashicorp-vault-signing-manager",
-  "version": "1.1.2",
+  "version": "1.1.6",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@polymeshassociation/signing-manager-types": "^1.1.1"
+    "@polymeshassociation/signing-manager-types": "^1.2.1"
   },
   "peerDependencies": {
     "@polymeshassociation/polymesh-sdk": ">=15.0.0",

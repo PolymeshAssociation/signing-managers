@@ -3,6 +3,7 @@ import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
 import { hexToU8a, stringToU8a, u8aToHex } from '@polkadot/util';
 import { cryptoWaitReady, mnemonicGenerate, signatureVerify } from '@polkadot/util-crypto';
+import { signedExtensions } from '@polymeshassociation/signing-manager-types';
 
 import { PrivateKey } from '../types';
 import { KeyringSigner, LocalSigningManager } from './local-signing-manager';
@@ -49,6 +50,23 @@ describe('LocalSigningManager Class', () => {
     });
 
     signingManager.setSs58Format(42);
+  });
+
+  describe('method: create', () => {
+    it('should default to sr25519 key ring type', () => {
+      const exposedManager = signingManager as any;
+
+      expect(exposedManager.keyring.type).toEqual('sr25519');
+    });
+
+    it('should allow for ed25519 to be specified', async () => {
+      const ed25519Manager = (await LocalSigningManager.create({
+        accounts: [],
+        type: 'ed25519',
+      })) as any;
+
+      expect(ed25519Manager.keyring.type).toEqual('ed25519');
+    });
   });
 
   describe('method: getAccounts', () => {
@@ -129,6 +147,7 @@ describe('class KeyringSigner', () => {
 
   beforeEach(() => {
     registry = new TypeRegistry();
+    registry.setSignedExtensions(signedExtensions);
     signer = new KeyringSigner(keyring, registry);
   });
 

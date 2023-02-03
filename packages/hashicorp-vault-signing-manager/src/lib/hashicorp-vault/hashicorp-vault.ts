@@ -42,6 +42,11 @@ export class HashicorpVault {
       headers,
     });
 
+    // Vault returns 404 for empty lists for [ease of implementation](https://github.com/hashicorp/vault/issues/1365#issuecomment-216369253)
+    if (response.status === 404) {
+      return [];
+    }
+
     await this.assertResponseOk(response);
 
     const {

@@ -1,11 +1,11 @@
 {
   "name": "@polymeshassociation/fireblocks-signing-manager",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@polymeshassociation/signing-manager-types": "^1.1.1",
+    "@polymeshassociation/signing-manager-types": "^1.2.1",
     "fireblocks-sdk": "^2.5.3"
   },
   "peerDependencies": {

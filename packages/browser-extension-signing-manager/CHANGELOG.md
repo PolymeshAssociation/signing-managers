@@ -1,3 +1,18 @@
+## [1.1.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.1.2...@polymeshassociation/browser-extension-signing-manager@1.1.3) (2023-01-17)
+
+
+### Bug Fixes
+
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([c18fb9e](https://github.com/PolymeshAssociation/signing-managers/commit/c18fb9e2f93a1a68553f2064d6a5a6949458babc))
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
+## [1.1.2](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.1.1...@polymeshassociation/browser-extension-signing-manager@1.1.2) (2023-01-16)
+
+
+### Bug Fixes
+
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.0 [skip ci] ([cce05bd](https://github.com/PolymeshAssociation/signing-managers/commit/cce05bdb71127d5bf2a17f9c2d75191c066b2511))
+
 ## [1.1.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.1.0...@polymeshassociation/browser-extension-signing-manager@1.1.1) (2022-10-13)
 
 
