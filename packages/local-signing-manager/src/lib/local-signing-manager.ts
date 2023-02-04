@@ -97,7 +97,6 @@ export class LocalSigningManager implements SigningManager {
   private keyring: Keyring;
   private externalSigner: KeyringSigner;
   private hasFormat?: boolean;
-  private type?: KeyRingType;
 
   /**
    * Create an instance of the Local Signing Manager and populates it with the passed Accounts
@@ -128,9 +127,8 @@ export class LocalSigningManager implements SigningManager {
    * @hidden
    */
   private constructor(accounts: PrivateKey[], type?: KeyRingType) {
-    this.type = type || 'sr25519';
     this.keyring = new Keyring({
-      type: this.type,
+      type: type || 'sr25519',
     });
 
     const registry = new TypeRegistry();
@@ -204,7 +202,9 @@ export class LocalSigningManager implements SigningManager {
 
       ({ address } = account.derivationPath
         ? keyring.addPair(
-            new Keyring({ type: this.type }).addFromSeed(seedInU8a).derive(account.derivationPath)
+            new Keyring({ type: this.keyring.type })
+              .addFromSeed(seedInU8a)
+              .derive(account.derivationPath)
           )
         : keyring.addFromSeed(seedInU8a));
     }
