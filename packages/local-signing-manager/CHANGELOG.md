@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.4.0...@polymeshassociation/local-signing-manager@1.4.1) (2023-02-06)
+
+
+### Documentation
+
+* **local-signing-manager:** update comment wording ([#34](https://github.com/PolymeshAssociation/signing-managers/issues/34)) ([fb95679](https://github.com/PolymeshAssociation/signing-managers/commit/fb956790cf1e12c5e2c56c13b3a76e16383a06df))
+
 # [1.4.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.3.0...@polymeshassociation/local-signing-manager@1.4.0) (2023-02-06)
 
 
