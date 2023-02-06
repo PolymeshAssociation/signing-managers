@@ -1,7 +1,7 @@
 /**
  * URI|mnemonic|hex representation of a private key
  */
-export type PrivateKey<S = string> = ({ uri: S } | { mnemonic: S } | { seed: S }) & {
+export type PrivateKey = ({ uri: string } | { mnemonic: string } | { seed: string }) & {
   derivationPath?: string;
 };
 
