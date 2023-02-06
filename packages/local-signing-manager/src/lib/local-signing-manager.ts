@@ -190,23 +190,27 @@ export class LocalSigningManager implements SigningManager {
     let address: string;
 
     if ('uri' in account) {
-      ({ address } = keyring.addFromUri(
-        account.derivationPath ? `${account.uri}${account.derivationPath}` : account.uri
-      ));
+      const accountUri = account.derivationPath
+        ? `${account.uri}${account.derivationPath}`
+        : account.uri;
+      address = keyring.addFromUri(accountUri).address;
     } else if ('mnemonic' in account) {
-      ({ address } = keyring.addFromUri(
-        account.derivationPath ? `${account.mnemonic}${account.derivationPath}` : account.mnemonic
-      ));
+      const accountMnemonic = account.derivationPath
+        ? `${account.mnemonic}${account.derivationPath}`
+        : account.mnemonic;
+      address = keyring.addFromUri(accountMnemonic).address;
     } else {
       const seedInU8a = hexToU8a(account.seed);
 
-      ({ address } = account.derivationPath
-        ? keyring.addPair(
-            new Keyring({ type: this.keyring.type })
-              .addFromSeed(seedInU8a)
-              .derive(account.derivationPath)
-          )
-        : keyring.addFromSeed(seedInU8a));
+      if (account.derivationPath) {
+        address = keyring.addPair(
+          new Keyring({ type: this.keyring.type })
+            .addFromSeed(seedInU8a)
+            .derive(account.derivationPath)
+        ).address;
+      } else {
+        address = keyring.addFromSeed(seedInU8a).address;
+      }
     }
 
     return address;
