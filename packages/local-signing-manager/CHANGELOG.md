@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.3.0...@polymeshassociation/local-signing-manager@1.4.0) (2023-02-06)
+
+
+### Features
+
+* **local-signing-manager:** add `derivationPath` for account ([#33](https://github.com/PolymeshAssociation/signing-managers/issues/33)) ([af131b6](https://github.com/PolymeshAssociation/signing-managers/commit/af131b6cf02cffed08fff0b9f91fc28ec28a389a))
+
 # [1.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.3...@polymeshassociation/local-signing-manager@1.3.0) (2023-01-17)
 
 
