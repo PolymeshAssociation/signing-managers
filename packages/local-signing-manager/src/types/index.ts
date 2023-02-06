@@ -3,9 +3,9 @@
  */
 export type PrivateKey = ({ uri: string } | { mnemonic: string } | { seed: string }) & {
   /**
-   * (optional) a specify a derivation path to apply to the secret. This allows for multiple accounts to be created with only one secret
+   * (optional) specify a derivation path for the secret. As a result, multiple accounts can be created with a single secret
    *
-   * @note if using this option the account can only be recreated by knowing the path and the secret. Be sure to use a consistent scheme when making the path
+   * @note With this option, the account can be recreated only by knowing the path and the secret. Be sure to use a consistent scheme when making the path
    */
   derivationPath?: string;
 };
