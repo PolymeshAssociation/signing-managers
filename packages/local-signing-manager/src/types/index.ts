@@ -1,19 +1,9 @@
 /**
  * URI|mnemonic|hex representation of a private key
  */
-export type PrivateKey =
-  | {
-      uri: string;
-      derivationPath?: string;
-    }
-  | {
-      mnemonic: string;
-      derivationPath?: string;
-    }
-  | {
-      seed: string;
-      derivationPath?: string;
-    };
+export type PrivateKey<S = string> = ({ uri: S } | { mnemonic: S } | { seed: S }) & {
+  derivationPath?: string;
+};
 
 /**
  * Supported key types. Generally `sr25519` is preferred, but `ed25519` is more widely supported
