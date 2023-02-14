@@ -8,9 +8,13 @@ import {
 } from '@polkadot/types/types';
 import { hexToU8a, u8aToHex } from '@polkadot/util';
 import { cryptoWaitReady, mnemonicGenerate } from '@polkadot/util-crypto';
-import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
+import {
+  PolkadotSigner,
+  signedExtensions,
+  SigningManager,
+} from '@polymeshassociation/signing-manager-types';
 
-import { PrivateKey } from '../types';
+import { KeyRingType, PrivateKey } from '../types';
 
 /**
  * Manages signing payloads with a set of pre-loaded accounts in a Keyring
@@ -28,11 +32,9 @@ export class KeyringSigner implements PolkadotSigner {
    */
   public async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     const { registry } = this;
-    const { address, signedExtensions, version } = payload;
+    const { address, version } = payload;
 
     const pair = this.getPair(address);
-
-    registry.setSignedExtensions(signedExtensions);
 
     const signablePayload = registry.createType('ExtrinsicPayload', payload, {
       version,
@@ -101,10 +103,15 @@ export class LocalSigningManager implements SigningManager {
    *
    * @param args.accounts - array of private keys
    */
-  public static async create(args: { accounts: PrivateKey[] }): Promise<LocalSigningManager> {
+  public static async create(args: {
+    accounts: PrivateKey[];
+    type?: KeyRingType;
+  }): Promise<LocalSigningManager> {
     await cryptoWaitReady();
 
-    return new LocalSigningManager(args.accounts);
+    const { accounts, type } = args;
+
+    return new LocalSigningManager(accounts, type);
   }
 
   /**
@@ -119,12 +126,15 @@ export class LocalSigningManager implements SigningManager {
   /**
    * @hidden
    */
-  private constructor(accounts: PrivateKey[]) {
+  private constructor(accounts: PrivateKey[], type?: KeyRingType) {
     this.keyring = new Keyring({
-      type: 'sr25519',
+      type: type || 'sr25519',
     });
 
-    this.externalSigner = new KeyringSigner(this.keyring, new TypeRegistry());
+    const registry = new TypeRegistry();
+    registry.setSignedExtensions(signedExtensions);
+
+    this.externalSigner = new KeyringSigner(this.keyring, registry);
 
     accounts.forEach(account => {
       this._addAccount(account);
@@ -180,11 +190,27 @@ export class LocalSigningManager implements SigningManager {
     let address: string;
 
     if ('uri' in account) {
-      ({ address } = keyring.addFromUri(account.uri));
+      const accountUri = account.derivationPath
+        ? `${account.uri}${account.derivationPath}`
+        : account.uri;
+      address = keyring.addFromUri(accountUri).address;
     } else if ('mnemonic' in account) {
-      ({ address } = keyring.addFromMnemonic(account.mnemonic));
+      const accountMnemonic = account.derivationPath
+        ? `${account.mnemonic}${account.derivationPath}`
+        : account.mnemonic;
+      address = keyring.addFromUri(accountMnemonic).address;
     } else {
-      ({ address } = keyring.addFromSeed(hexToU8a(account.seed)));
+      const seedInU8a = hexToU8a(account.seed);
+
+      if (account.derivationPath) {
+        address = keyring.addPair(
+          new Keyring({ type: this.keyring.type })
+            .addFromSeed(seedInU8a)
+            .derive(account.derivationPath)
+        ).address;
+      } else {
+        address = keyring.addFromSeed(seedInU8a).address;
+      }
     }
 
     return address;

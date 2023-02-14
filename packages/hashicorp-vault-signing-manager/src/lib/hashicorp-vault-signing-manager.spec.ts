@@ -238,6 +238,46 @@ describe('class VaultSigner', () => {
       return expect(clearAddressCacheSpy).toHaveBeenCalled();
     });
 
+    it('should hash payloads larger than 256 bytes', async () => {
+      const inputData = stringToU8a(''.padEnd(257, 'A'));
+      const data = u8aToHex(inputData);
+      const raw = {
+        address: accounts[0].address,
+        data,
+        type: 'bytes' as const,
+      };
+
+      await signer.signRaw(raw);
+
+      const expectedBody = {
+        input: 'aLn0RmsZwgsv8AHzS6a6qvMbEAV7GPP065IyuZDfGG4=',
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        key_version: 1,
+      };
+
+      expect(mockHashicorpVault.signData).toHaveBeenCalledWith('Alice', expectedBody);
+    });
+
+    it('should not hash payloads smaller than 256 bytes', async () => {
+      const inputData = stringToU8a('AAA');
+      const data = u8aToHex(inputData);
+      const raw = {
+        address: accounts[0].address,
+        data,
+        type: 'bytes' as const,
+      };
+
+      await signer.signRaw(raw);
+
+      const expectedBody = {
+        input: 'QUFB',
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        key_version: 1,
+      };
+
+      expect(mockHashicorpVault.signData).toHaveBeenCalledWith('Alice', expectedBody);
+    });
+
     it('should throw an error if the payload address is not present in the Vault', () => {
       mockHashicorpVault.fetchAllKeys.mockResolvedValue([]);
       return expect(

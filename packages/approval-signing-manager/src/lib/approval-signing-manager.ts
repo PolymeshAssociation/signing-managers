@@ -1,8 +1,12 @@
 import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw, SignerResult } from '@polkadot/types/types';
 import { hexToU8a } from '@polkadot/util';
-import { decodeAddress } from '@polkadot/util-crypto';
-import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
+import { blake2AsU8a, decodeAddress } from '@polkadot/util-crypto';
+import {
+  PolkadotSigner,
+  signedExtensions,
+  SigningManager,
+} from '@polymeshassociation/signing-manager-types';
 
 import { ApprovalClient } from './approval-client/approval-client';
 import { KeyRecordWithOwner } from './approval-client/types';
@@ -26,9 +30,7 @@ export class ApprovalSigner implements PolkadotSigner {
    */
   public async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     const { registry } = this;
-    const { address, signedExtensions, version } = payload;
-
-    registry.setSignedExtensions(signedExtensions);
+    const { address, version } = payload;
 
     const signablePayload = registry.createType('ExtrinsicPayload', payload, {
       version,
@@ -52,10 +54,11 @@ export class ApprovalSigner implements PolkadotSigner {
    * Get a signature from the approval key store. This may take a while as the approval process may require human approval
    */
   private async signData(address: string, data: Uint8Array): Promise<SignerResult> {
-    const message = `0x${Buffer.from(data).toString('hex')}`;
+    const fixedData = data.length > 256 ? blake2AsU8a(data) : data;
+
+    const message = `0x${Buffer.from(fixedData).toString('hex')}`;
 
     const { ownerId } = await this.getKeyRecord(address);
-
     const signature = await this.approvalClient.signData(ownerId, message);
 
     const id = (this.currentId += 1);
@@ -115,8 +118,11 @@ export class ApprovalSigningManager implements SigningManager {
   }) {
     const { url, apiClientId, apiKey, pollingInterval = 15 } = args;
 
+    const registry = new TypeRegistry();
+    registry.setSignedExtensions(signedExtensions);
+
     this.approvalClient = new ApprovalClient(url, apiClientId, apiKey, pollingInterval);
-    this.externalSigner = new ApprovalSigner(this.approvalClient, new TypeRegistry());
+    this.externalSigner = new ApprovalSigner(this.approvalClient, registry);
   }
 
   /**
