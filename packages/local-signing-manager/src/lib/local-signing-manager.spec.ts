@@ -54,6 +54,7 @@ describe('LocalSigningManager Class', () => {
 
   describe('method: create', () => {
     it('should default to sr25519 key ring type', () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const exposedManager = signingManager as any;
 
       expect(exposedManager.keyring.type).toEqual('sr25519');
@@ -63,6 +64,7 @@ describe('LocalSigningManager Class', () => {
       const ed25519Manager = (await LocalSigningManager.create({
         accounts: [],
         type: 'ed25519',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       })) as any;
 
       expect(ed25519Manager.keyring.type).toEqual('ed25519');
