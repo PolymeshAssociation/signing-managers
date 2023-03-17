@@ -1,3 +1,15 @@
+## [1.0.7](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@1.0.6...@polymeshassociation/approval-signing-manager@1.0.7) (2023-03-17)
+
+
+### Bug Fixes
+
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.3 [skip ci] ([cd094fc](https://github.com/PolymeshAssociation/signing-managers/commit/cd094fc259d8c42a396788a2960ee4e4af8045db))
+
+
+### Documentation
+
+* rename `sdk` to `polymesh` for the variable name in the examples ([#35](https://github.com/PolymeshAssociation/signing-managers/issues/35)) ([9dbe040](https://github.com/PolymeshAssociation/signing-managers/commit/9dbe0407329afe539bebc159febbebde35fbd967))
+
 ## [1.0.6](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@1.0.5...@polymeshassociation/approval-signing-manager@1.0.6) (2023-03-17)
 
 
