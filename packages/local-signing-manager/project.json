@@ -41,7 +41,7 @@
     "run-local": {
       "executor": "./tools/executors/run-local:run-local",
       "options": {
-        "runInBrowser": false,        
+        "runInBrowser": false,
         "path": "packages/local-signing-manager/sandbox/index.ts",
         "port": 9000
       }
