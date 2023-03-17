@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.2...@polymeshassociation/signing-manager-types@1.2.3) (2023-03-17)
+
+
+### Documentation
+
+* rename `sdk` to `polymesh` for the variable name in the examples ([#35](https://github.com/PolymeshAssociation/signing-managers/issues/35)) ([9dbe040](https://github.com/PolymeshAssociation/signing-managers/commit/9dbe0407329afe539bebc159febbebde35fbd967))
+
 ## [1.2.2](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.1...@polymeshassociation/signing-manager-types@1.2.2) (2023-03-17)
 
 
