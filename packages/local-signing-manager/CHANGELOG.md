@@ -1,3 +1,15 @@
+## [1.4.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.4.2...@polymeshassociation/local-signing-manager@1.4.3) (2023-03-17)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.3 [skip ci] ([d350ca1](https://github.com/PolymeshAssociation/signing-managers/commit/d350ca1358e26bb1ac76d5515d637651f35036f3))
+
+
+### Documentation
+
+* rename `sdk` to `polymesh` for the variable name in the examples ([#35](https://github.com/PolymeshAssociation/signing-managers/issues/35)) ([9dbe040](https://github.com/PolymeshAssociation/signing-managers/commit/9dbe0407329afe539bebc159febbebde35fbd967))
+
 ## [1.4.2](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.4.1...@polymeshassociation/local-signing-manager@1.4.2) (2023-03-17)
 
 
