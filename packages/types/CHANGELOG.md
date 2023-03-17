@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.1...@polymeshassociation/signing-manager-types@1.2.2) (2023-03-17)
+
+
+### Bug Fixes
+
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+
 ## [1.2.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.0...@polymeshassociation/signing-manager-types@1.2.1) (2023-01-17)
 
 

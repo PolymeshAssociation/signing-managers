@@ -1,3 +1,11 @@
+## [1.1.4](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.1.3...@polymeshassociation/browser-extension-signing-manager@1.1.4) (2023-03-17)
+
+
+### Bug Fixes
+
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.2 [skip ci] ([f7f6445](https://github.com/PolymeshAssociation/signing-managers/commit/f7f6445a9a56b96a8bc1e70860f4ae9c3fe34f8c))
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+
 ## [1.1.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.1.2...@polymeshassociation/browser-extension-signing-manager@1.1.3) (2023-01-17)
 
 
