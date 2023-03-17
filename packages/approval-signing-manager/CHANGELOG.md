@@ -1,3 +1,11 @@
+## [1.0.6](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@1.0.5...@polymeshassociation/approval-signing-manager@1.0.6) (2023-03-17)
+
+
+### Bug Fixes
+
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.2 [skip ci] ([aff71f2](https://github.com/PolymeshAssociation/signing-managers/commit/aff71f2e7ab13069717fefc7940e1aebf5af13bb))
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+
 ## [1.0.5](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@1.0.4...@polymeshassociation/approval-signing-manager@1.0.5) (2023-01-17)
 
 

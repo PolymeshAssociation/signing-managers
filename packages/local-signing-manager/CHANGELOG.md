@@ -1,3 +1,11 @@
+## [1.4.2](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.4.1...@polymeshassociation/local-signing-manager@1.4.2) (2023-03-17)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.2 [skip ci] ([123f154](https://github.com/PolymeshAssociation/signing-managers/commit/123f154dd477d34ecaee94096ba84de1fa4a9603))
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+
 ## [1.4.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.4.0...@polymeshassociation/local-signing-manager@1.4.1) (2023-02-06)
 
 
