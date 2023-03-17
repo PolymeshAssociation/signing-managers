@@ -11,7 +11,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@polymeshassociation/signing-manager-types": "^1.2.2"
+    "@polymeshassociation/signing-manager-types": "^1.2.3"
   },
   "peerDependencies": {
     "@polkadot/api": "^8.0.2",
