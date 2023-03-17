@@ -16,7 +16,7 @@ const signingManager = new HashicorpVaultSigningManager({
   token: 'willNeverTell',
 });
 
-const sdk = await Polymesh.connect({
+const polymesh = await Polymesh.connect({
   nodeUrl,
   signingManager,
 });

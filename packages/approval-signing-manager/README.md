@@ -26,7 +26,7 @@ const signingManager = new ApprovalSigningManager({
   pollingInterval: 60,
 });
 
-const sdk = await Polymesh.connect({
+const polymesh = await Polymesh.connect({
   nodeUrl,
   signingManager,
 });

@@ -14,7 +14,7 @@ const signingManager = await BrowserExtensionSigningManager.create({
   extensionName: 'polywallet', // this is optional, defaults to 'polywallet'
 });
 
-const sdk = await Polymesh.connect({
+const polymesh = await Polymesh.connect({
   nodeUrl,
   signingManager,
 });

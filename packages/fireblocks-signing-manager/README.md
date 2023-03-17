@@ -22,7 +22,7 @@ const signingManager = await FireblocksSigningManager.create({
   derivationPaths: [[44, 595, 0, 0, 0]], // derive mainnet key with the "default" Fireblocks account
 });
 
-const sdk = await Polymesh.connect({
+const polymesh = await Polymesh.connect({
   signingManager,
   ...
 })
