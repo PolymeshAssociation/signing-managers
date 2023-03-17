@@ -1,3 +1,11 @@
+## [1.0.4](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@1.0.3...@polymeshassociation/fireblocks-signing-manager@1.0.4) (2023-03-17)
+
+
+### Bug Fixes
+
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.2 [skip ci] ([df156e1](https://github.com/PolymeshAssociation/signing-managers/commit/df156e16fd815a54576a4754c4f8873f289ec301))
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+
 ## [1.0.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@1.0.2...@polymeshassociation/fireblocks-signing-manager@1.0.3) (2023-01-17)
 
 
