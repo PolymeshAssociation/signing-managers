@@ -2,13 +2,21 @@ import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw, SignerResult } from '@polkadot/types/types';
 import { hexToU8a, u8aToHex } from '@polkadot/util';
 import { blake2AsU8a, decodeAddress, encodeAddress } from '@polkadot/util-crypto';
-import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
+import {
+  PolkadotSigner,
+  signedExtensions,
+  SigningManager,
+} from '@polymeshassociation/signing-manager-types';
 
 import { AddressedVaultKey } from '../types';
 import { HashicorpVault, VaultKey } from './hashicorp-vault';
 
 export class VaultSigner implements PolkadotSigner {
   private currentId = -1;
+  /**
+   * This can be invalid in the event of a key rename in Vault
+   */
+  private addressCache: Record<string, VaultKey> = {};
 
   /**
    * @hidden
@@ -20,17 +28,18 @@ export class VaultSigner implements PolkadotSigner {
    */
   public async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     const { registry } = this;
-    const { address, signedExtensions, version } = payload;
+    const { address, version } = payload;
 
     const { name, version: keyVersion } = await this.getVaultKey(address);
-
-    registry.setSignedExtensions(signedExtensions);
 
     const signablePayload = registry.createType('ExtrinsicPayload', payload, {
       version,
     });
 
-    return this.signData(name, keyVersion, signablePayload.toU8a(true));
+    return this.signData(name, keyVersion, signablePayload.toU8a(true)).catch(error => {
+      this.clearAddressCache(address);
+      throw error;
+    });
   }
 
   /**
@@ -41,7 +50,10 @@ export class VaultSigner implements PolkadotSigner {
 
     const { name, version } = await this.getVaultKey(address);
 
-    return this.signData(name, version, hexToU8a(data));
+    return this.signData(name, version, hexToU8a(data)).catch(error => {
+      this.clearAddressCache(address);
+      throw error;
+    });
   }
 
   /**
@@ -78,6 +90,11 @@ export class VaultSigner implements PolkadotSigner {
    * @throws if there is no key with that address
    */
   private async getVaultKey(address: string): Promise<VaultKey> {
+    const cachedKey = this.getCachedKey(address);
+    if (cachedKey) {
+      return cachedKey;
+    }
+
     const payloadPublicKey = u8aToHex(decodeAddress(address));
 
     const allKeys = await this.vault.fetchAllKeys();
@@ -88,7 +105,21 @@ export class VaultSigner implements PolkadotSigner {
       throw new Error('The signer cannot sign transactions on behalf of the calling Account');
     }
 
+    this.setCachedKey(address, foundKey);
+
     return foundKey;
+  }
+
+  private getCachedKey(address: string): VaultKey {
+    return this.addressCache[address];
+  }
+
+  private setCachedKey(address: string, key: VaultKey): void {
+    this.addressCache[address] = key;
+  }
+
+  private clearAddressCache(address: string): void {
+    delete this.addressCache[address];
   }
 }
 export class HashicorpVaultSigningManager implements SigningManager {
@@ -105,8 +136,11 @@ export class HashicorpVaultSigningManager implements SigningManager {
   public constructor(args: { url: string; token: string }) {
     const { url, token } = args;
 
+    const registry = new TypeRegistry();
+    registry.setSignedExtensions(signedExtensions);
+
     this.vault = new HashicorpVault(url, token);
-    this.externalSigner = new VaultSigner(this.vault, new TypeRegistry());
+    this.externalSigner = new VaultSigner(this.vault, registry);
   }
 
   /**

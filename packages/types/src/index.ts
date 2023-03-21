@@ -21,3 +21,18 @@ export interface SigningManager {
    */
   setSs58Format(ss58Format: number): void;
 }
+
+/**
+ * @hidden
+ *
+ * Expected chain signed extensions any internal `TypeRegistry` should use
+ */
+export const signedExtensions = [
+  'CheckSpecVersion',
+  'CheckTxVersion',
+  'CheckGenesis',
+  'CheckMortality',
+  'CheckNonce',
+  'CheckWeight',
+  'ChargeTransactionPayment',
+];

@@ -36,6 +36,13 @@ export default async function (tree: Tree, schema: Schema) {
       '@polymeshassociation/polymesh-sdk': '>=15.0.0',
     };
 
+    contents.main = './index.js';
+    contents.typings = './index.d.ts';
+    contents.repository = {
+      type: 'git',
+      url: 'https://github.com/PolymeshAssociation/signing-managers.git',
+    };
+
     return contents;
   });
 

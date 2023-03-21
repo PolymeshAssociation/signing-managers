@@ -17,7 +17,7 @@ const signingManager = await LocalSigningManager.create({
   ],
 });
 
-const sdk = await Polymesh.connect({
+const polymesh = await Polymesh.connect({
   nodeUrl,
   signingManager,
 });

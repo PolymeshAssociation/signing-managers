@@ -1,11 +1,17 @@
 {
   "name": "@polymeshassociation/approval-signing-manager",
-  "version": "1.0.2",
+  "version": "1.0.7",
+  "main": "./index.js",
+  "typings": "./index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PolymeshAssociation/signing-managers.git"
+  },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@polymeshassociation/signing-manager-types": "^1.1.1"
+    "@polymeshassociation/signing-manager-types": "^1.2.3"
   },
   "peerDependencies": {
     "@polymeshassociation/polymesh-sdk": ">=15.0.0"

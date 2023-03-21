@@ -1,3 +1,59 @@
+## [1.4.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.4.2...@polymeshassociation/local-signing-manager@1.4.3) (2023-03-17)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.3 [skip ci] ([d350ca1](https://github.com/PolymeshAssociation/signing-managers/commit/d350ca1358e26bb1ac76d5515d637651f35036f3))
+
+
+### Documentation
+
+* rename `sdk` to `polymesh` for the variable name in the examples ([#35](https://github.com/PolymeshAssociation/signing-managers/issues/35)) ([9dbe040](https://github.com/PolymeshAssociation/signing-managers/commit/9dbe0407329afe539bebc159febbebde35fbd967))
+
+## [1.4.2](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.4.1...@polymeshassociation/local-signing-manager@1.4.2) (2023-03-17)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.2 [skip ci] ([123f154](https://github.com/PolymeshAssociation/signing-managers/commit/123f154dd477d34ecaee94096ba84de1fa4a9603))
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+
+## [1.4.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.4.0...@polymeshassociation/local-signing-manager@1.4.1) (2023-02-06)
+
+
+### Documentation
+
+* **local-signing-manager:** update comment wording ([#34](https://github.com/PolymeshAssociation/signing-managers/issues/34)) ([fb95679](https://github.com/PolymeshAssociation/signing-managers/commit/fb956790cf1e12c5e2c56c13b3a76e16383a06df))
+
+# [1.4.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.3.0...@polymeshassociation/local-signing-manager@1.4.0) (2023-02-06)
+
+
+### Features
+
+* **local-signing-manager:** add `derivationPath` for account ([#33](https://github.com/PolymeshAssociation/signing-managers/issues/33)) ([af131b6](https://github.com/PolymeshAssociation/signing-managers/commit/af131b6cf02cffed08fff0b9f91fc28ec28a389a))
+
+# [1.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.3...@polymeshassociation/local-signing-manager@1.3.0) (2023-01-17)
+
+
+### Features
+
+* **local-signing-manager:** allow `ed25519` to be specified in `create` ([#31](https://github.com/PolymeshAssociation/signing-managers/issues/31)) ([0c4b205](https://github.com/PolymeshAssociation/signing-managers/commit/0c4b20510f484584ffe0db89350ec9833e191955))
+
+## [1.2.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.2...@polymeshassociation/local-signing-manager@1.2.3) (2023-01-17)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([f6aae6c](https://github.com/PolymeshAssociation/signing-managers/commit/f6aae6cd263f973647dcd262f23d98295c875397))
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
+## [1.2.2](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.1...@polymeshassociation/local-signing-manager@1.2.2) (2023-01-16)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.0 [skip ci] ([9cdd028](https://github.com/PolymeshAssociation/signing-managers/commit/9cdd028ea3198aae84a307e282749f3573b30e41))
+
 ## [1.2.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.2.0...@polymeshassociation/local-signing-manager@1.2.1) (2022-10-13)
 
 

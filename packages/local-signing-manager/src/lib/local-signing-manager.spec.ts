@@ -3,6 +3,7 @@ import { TypeRegistry } from '@polkadot/types';
 import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
 import { hexToU8a, stringToU8a, u8aToHex } from '@polkadot/util';
 import { cryptoWaitReady, mnemonicGenerate, signatureVerify } from '@polkadot/util-crypto';
+import { signedExtensions } from '@polymeshassociation/signing-manager-types';
 
 import { PrivateKey } from '../types';
 import { KeyringSigner, LocalSigningManager } from './local-signing-manager';
@@ -49,6 +50,25 @@ describe('LocalSigningManager Class', () => {
     });
 
     signingManager.setSs58Format(42);
+  });
+
+  describe('method: create', () => {
+    it('should default to sr25519 key ring type', () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const exposedManager = signingManager as any;
+
+      expect(exposedManager.keyring.type).toEqual('sr25519');
+    });
+
+    it('should allow for ed25519 to be specified', async () => {
+      const ed25519Manager = (await LocalSigningManager.create({
+        accounts: [],
+        type: 'ed25519',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      })) as any;
+
+      expect(ed25519Manager.keyring.type).toEqual('ed25519');
+    });
   });
 
   describe('method: getAccounts', () => {
@@ -98,6 +118,74 @@ describe('LocalSigningManager Class', () => {
         "Cannot call 'addAccount' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
       );
     });
+
+    it('should add a new Account(by seed) with a derivation path', async () => {
+      signingManager = await LocalSigningManager.create({
+        accounts: [
+          {
+            seed: '0xb5da7610352f87452fe5fa4d9af35a3fbb613e7afee2c72056333db0b94d6f98',
+            derivationPath: '//test',
+          },
+        ],
+      });
+
+      signingManager.setSs58Format(42);
+
+      expect((await signingManager.getAccounts())[0]).toBe(
+        '5FQwqu3rSRgr48cKxvU9zhumx2iAbtQp8NvRA99j8DKgdFua'
+      );
+    });
+
+    it('should add a new Account(by uri) with a derivation path', async () => {
+      signingManager = await LocalSigningManager.create({
+        accounts: [
+          {
+            uri: '//Alice',
+            derivationPath: '//test',
+          },
+        ],
+      });
+
+      signingManager.setSs58Format(42);
+
+      expect((await signingManager.getAccounts())[0]).toBe(
+        '5DfkbGYYVW5DHGrZtiAWVF6umYUTpYMPuhXhcAMor8nPGmJG'
+      );
+    });
+
+    it('should add a new Account(by mnemonic) with a derivation path', async () => {
+      signingManager = await LocalSigningManager.create({
+        accounts: [
+          {
+            mnemonic:
+              'bachelor nurse busy spot cannon equal drip outer autumn fork virtual thunder',
+            derivationPath: '//test',
+          },
+        ],
+      });
+
+      signingManager.setSs58Format(42);
+
+      expect((await signingManager.getAccounts())[0]).toBe(
+        '5FbhYPC4ShEdEpKjv37ZvVpJ68nuCTNbRShWmg8iSVCEpwmr'
+      );
+    });
+
+    it('should throw an error if the soft path was provided on `ed25519` curve type', async () => {
+      expect(
+        async () =>
+          await LocalSigningManager.create({
+            accounts: [
+              {
+                mnemonic:
+                  'bachelor nurse busy spot cannon equal drip outer autumn fork virtual thunder',
+                derivationPath: '//hard/soft',
+              },
+            ],
+            type: 'ed25519',
+          })
+      ).rejects.toThrow('A soft key was found in the path and is not supported');
+    });
   });
 
   describe('method: generateAccount', () => {
@@ -129,6 +217,7 @@ describe('class KeyringSigner', () => {
 
   beforeEach(() => {
     registry = new TypeRegistry();
+    registry.setSignedExtensions(signedExtensions);
     signer = new KeyringSigner(keyring, registry);
   });
 

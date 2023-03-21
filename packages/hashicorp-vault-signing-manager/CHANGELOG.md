@@ -1,3 +1,52 @@
+## [1.1.8](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.7...@polymeshassociation/hashicorp-vault-signing-manager@1.1.8) (2023-03-17)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.3 [skip ci] ([50cefc6](https://github.com/PolymeshAssociation/signing-managers/commit/50cefc61fc9cb0ec811ff2ae5161e45c2ad82ff5))
+
+
+### Documentation
+
+* rename `sdk` to `polymesh` for the variable name in the examples ([#35](https://github.com/PolymeshAssociation/signing-managers/issues/35)) ([9dbe040](https://github.com/PolymeshAssociation/signing-managers/commit/9dbe0407329afe539bebc159febbebde35fbd967))
+
+## [1.1.7](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.6...@polymeshassociation/hashicorp-vault-signing-manager@1.1.7) (2023-03-17)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.2 [skip ci] ([4f90c6f](https://github.com/PolymeshAssociation/signing-managers/commit/4f90c6ffe8c25607f4f33b34e2cdd88e40767373))
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+
+## [1.1.6](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.5...@polymeshassociation/hashicorp-vault-signing-manager@1.1.6) (2023-01-17)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([4f09bd8](https://github.com/PolymeshAssociation/signing-managers/commit/4f09bd8f47d0f5f74b1e1b07c669fb57cba23ba8))
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
+## [1.1.5](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.4...@polymeshassociation/hashicorp-vault-signing-manager@1.1.5) (2023-01-16)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** fetchAllKeys returns empty list instead of 404 when no keys are present ([#26](https://github.com/PolymeshAssociation/signing-managers/issues/26)) ([011dbb0](https://github.com/PolymeshAssociation/signing-managers/commit/011dbb000178430df08eef2c4e2116b830db4838))
+
+## [1.1.4](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.3...@polymeshassociation/hashicorp-vault-signing-manager@1.1.4) (2023-01-16)
+
+
+### Performance Improvements
+
+* **hashicorp-vault-signing-manager:** cache keys to avoid repeated lookups ([#29](https://github.com/PolymeshAssociation/signing-managers/issues/29)) ([39c34f4](https://github.com/PolymeshAssociation/signing-managers/commit/39c34f43ffdb979b985c551939a49fc60ed5d08d))
+
+## [1.1.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.2...@polymeshassociation/hashicorp-vault-signing-manager@1.1.3) (2023-01-16)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.0 [skip ci] ([058dd89](https://github.com/PolymeshAssociation/signing-managers/commit/058dd891d260e099a76d2a595fe93153f154f45c))
+
 ## [1.1.2](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.1...@polymeshassociation/hashicorp-vault-signing-manager@1.1.2) (2022-10-13)
 
 

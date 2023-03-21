@@ -1,11 +1,17 @@
 {
   "name": "@polymeshassociation/fireblocks-signing-manager",
-  "version": "1.0.1",
+  "version": "1.0.5",
+  "main": "./index.js",
+  "typings": "./index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PolymeshAssociation/signing-managers.git"
+  },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@polymeshassociation/signing-manager-types": "^1.1.1",
+    "@polymeshassociation/signing-manager-types": "^1.2.3",
     "fireblocks-sdk": "^2.5.3"
   },
   "peerDependencies": {

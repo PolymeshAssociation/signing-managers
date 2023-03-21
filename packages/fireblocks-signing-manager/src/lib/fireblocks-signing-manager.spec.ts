@@ -180,6 +180,9 @@ describe('FireblocksSigningManager Class', () => {
     });
 
     describe('method signRaw', () => {
+      const rawSignature = '123';
+      const expectedSignature = '0x00123';
+
       it('should return signed raw data and an incremental ID', async () => {
         const address = encodeAddress(`0x${fireblocksKeys[0].publicKey}`, ss58Format);
         const data = u8aToHex(stringToU8a('Hello, my name is Alice'));
@@ -189,9 +192,6 @@ describe('FireblocksSigningManager Class', () => {
           type: 'bytes' as const,
         };
 
-        const rawSignature = '123';
-        const expectedSignature = '0x00123';
-
         jest.spyOn(fireblocks, 'lookupKey').mockReturnValue(fireblocksKeys[0]);
 
         jest.spyOn(fireblocks, 'signData').mockResolvedValue(rawSignature);
@@ -200,6 +200,59 @@ describe('FireblocksSigningManager Class', () => {
 
         expect(id).toBe(0);
         expect(signature).toBe(expectedSignature);
+      });
+
+      it('should hash payloads larger than 256 bytes', async () => {
+        const address = encodeAddress(`0x${fireblocksKeys[0].publicKey}`, ss58Format);
+        const inputData = stringToU8a(''.padEnd(257, 'A'));
+        const data = u8aToHex(inputData);
+        const raw = {
+          address,
+          data,
+          type: 'bytes' as const,
+        };
+
+        jest.spyOn(fireblocks, 'lookupKey').mockReturnValue(fireblocksKeys[0]);
+
+        jest.spyOn(fireblocks, 'signData').mockResolvedValue(rawSignature);
+
+        await signer.signRaw(raw);
+
+        const expectedData = '68b9f4466b19c20b2ff001f34ba6baaaf31b10057b18f3f4eb9232b990df186e';
+        const expectedNote =
+          'https://testnet-app.polymesh.live/#/extrinsics/decode/0x4141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141';
+
+        expect(fireblocks.signData).toHaveBeenCalledWith(
+          fireblocksKeys[0].derivationPath,
+          expectedData,
+          expectedNote
+        );
+      });
+
+      it('should not hash payloads smaller than 256 bytes', async () => {
+        const address = encodeAddress(`0x${fireblocksKeys[0].publicKey}`, ss58Format);
+        const inputData = stringToU8a('AAA');
+        const data = u8aToHex(inputData);
+        const raw = {
+          address,
+          data,
+          type: 'bytes' as const,
+        };
+
+        jest.spyOn(fireblocks, 'lookupKey').mockReturnValue(fireblocksKeys[0]);
+
+        jest.spyOn(fireblocks, 'signData').mockResolvedValue(rawSignature);
+
+        await signer.signRaw(raw);
+
+        const expectedBody = '414141';
+        const expectedNote = 'https://testnet-app.polymesh.live/#/extrinsics/decode/0x414141';
+
+        expect(fireblocks.signData).toHaveBeenCalledWith(
+          fireblocksKeys[0].derivationPath,
+          expectedBody,
+          expectedNote
+        );
       });
 
       it('should throw an error if the payload address is not present in the backing API', () => {

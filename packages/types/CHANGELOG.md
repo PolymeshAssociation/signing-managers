@@ -1,3 +1,31 @@
+## [1.2.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.2...@polymeshassociation/signing-manager-types@1.2.3) (2023-03-17)
+
+
+### Documentation
+
+* rename `sdk` to `polymesh` for the variable name in the examples ([#35](https://github.com/PolymeshAssociation/signing-managers/issues/35)) ([9dbe040](https://github.com/PolymeshAssociation/signing-managers/commit/9dbe0407329afe539bebc159febbebde35fbd967))
+
+## [1.2.2](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.1...@polymeshassociation/signing-manager-types@1.2.2) (2023-03-17)
+
+
+### Bug Fixes
+
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+
+## [1.2.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.0...@polymeshassociation/signing-manager-types@1.2.1) (2023-01-17)
+
+
+### Bug Fixes
+
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
+# [1.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.1.1...@polymeshassociation/signing-manager-types@1.2.0) (2023-01-16)
+
+
+### Features
+
+* **types:** add signed extensions const ([#28](https://github.com/PolymeshAssociation/signing-managers/issues/28)) ([e235f54](https://github.com/PolymeshAssociation/signing-managers/commit/e235f5494061e3812325f0f232d439b2386973f6))
+
 ## [1.1.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.1.0...@polymeshassociation/signing-manager-types@1.1.1) (2022-10-13)
 
 
