@@ -1,8 +1,8 @@
-import { web3Enable } from '@polkadot/extension-dapp';
+import { InjectedAccount } from '@polkadot/extension-inject/types';
 import { PolkadotSigner } from '@polymeshassociation/signing-manager-types';
 
 import { Extension } from '../types';
-import { changeAddressFormat } from '../utils';
+import * as utilsModule from '../utils';
 import { BrowserExtensionSigningManager } from './browser-extension-signing-manager';
 
 jest.mock('@polkadot/extension-dapp', () => ({
@@ -12,12 +12,28 @@ jest.mock('@polkadot/extension-dapp', () => ({
 describe('BrowserExtensionSigningManager Class', () => {
   let signingManager: BrowserExtensionSigningManager;
   let args: { appName: string; extensionName?: string };
-  const enableStub = web3Enable as jest.MockedFunction<typeof web3Enable>;
+  let enableStub: jest.SpyInstance;
   const accountsGetStub = jest.fn();
   const accountsSubscribeStub = jest.fn();
   const networkSubscribeStub = jest.fn();
 
+  const accounts: InjectedAccount[] = [
+    {
+      name: 'ACCOUNT 1',
+      address: '5Ef2XHepJvTUJLhhx39Nf5iqu6AACrfFAmc6AW8a3hKF4Rdc',
+      genesisHash: 'someHash',
+      type: 'ed25519',
+    },
+    {
+      name: 'ACCOUNT 2',
+      address: '5HQLVKFYkytr9HisQRWoUArUWw8YNWUmhLdXztRFjqysiNUx',
+      genesisHash: 'someHash',
+      type: 'ed25519',
+    },
+  ];
+
   beforeAll(() => {
+    enableStub = jest.spyOn(utilsModule, 'enableWeb3Extension');
     args = {
       appName: 'testDApp',
       extensionName: 'polywallet',
@@ -25,65 +41,35 @@ describe('BrowserExtensionSigningManager Class', () => {
   });
 
   beforeEach(async () => {
-    enableStub.mockResolvedValue([
-      {
-        name: 'polywallet',
-        accounts: {
-          get: accountsGetStub,
-          subscribe: accountsSubscribeStub,
-        },
-        network: {
-          subscribe: networkSubscribeStub,
-          get: jest.fn(),
-        },
-        version: '1.5.5',
-        signer: 'signer' as unknown as PolkadotSigner,
+    enableStub.mockResolvedValue({
+      name: 'polywallet',
+      accounts: {
+        get: accountsGetStub,
+        subscribe: accountsSubscribeStub,
       },
-    ] as Extension[]);
-    signingManager = await BrowserExtensionSigningManager.create(args);
-
-    signingManager.setSs58Format(42);
+      network: {
+        subscribe: networkSubscribeStub,
+        get: jest.fn(),
+      },
+      version: '1.5.5',
+      signer: 'signer' as unknown as PolkadotSigner,
+    } as Extension);
   });
 
   describe('method: create', () => {
-    it('should throw an error if there is no extension with the passed name', () => {
-      enableStub.mockResolvedValue([
-        {
-          name: 'other-wallet',
-        },
-      ] as Extension[]);
+    it('should create instance of BrowserExtensionSigningManager', async () => {
+      expect(enableStub).toHaveBeenCalledTimes(1);
+      expect(enableStub).toHaveBeenCalledWith(args.appName, args.extensionName);
+      enableStub.mockClear();
 
-      expect(BrowserExtensionSigningManager.create(args)).rejects.toThrow(
-        'There is no extension named "polywallet", or the extension has blocked the "testDApp" dApp'
-      );
-    });
-
-    it('should throw an error if there is more than one extension with the passed name', () => {
-      enableStub.mockResolvedValue([
-        {
-          name: 'polywallet',
-        },
-        {
-          name: 'polywallet',
-        },
-      ] as Extension[]);
-
-      expect(
-        BrowserExtensionSigningManager.create({ ...args, extensionName: undefined })
-      ).rejects.toThrow('There is more than one extension named "polywallet"');
+      await BrowserExtensionSigningManager.create({ appName: 'someOtherApp' });
+      expect(enableStub).toHaveBeenCalledTimes(1);
+      expect(enableStub).toHaveBeenCalledWith('someOtherApp', 'polywallet');
     });
   });
 
   describe('method: getAccounts', () => {
     it('should return all Accounts held in the extension, respecting the SS58 format', async () => {
-      const accounts = [
-        {
-          address: '5Ef2XHepJvTUJLhhx39Nf5iqu6AACrfFAmc6AW8a3hKF4Rdc',
-        },
-        {
-          address: '5HQLVKFYkytr9HisQRWoUArUWw8YNWUmhLdXztRFjqysiNUx',
-        },
-      ];
       accountsGetStub.mockResolvedValue(accounts);
 
       let result = await signingManager.getAccounts();
@@ -94,7 +80,45 @@ describe('BrowserExtensionSigningManager Class', () => {
 
       result = await signingManager.getAccounts();
 
-      expect(result).toEqual(accounts.map(({ address }) => changeAddressFormat(address, 0)));
+      expect(result).toEqual(
+        accounts.map(({ address }) => utilsModule.changeAddressFormat(address, 0))
+      );
+    });
+
+    it("should throw an error if the Signing Manager doesn't have a SS58 format", async () => {
+      signingManager = await BrowserExtensionSigningManager.create(args);
+
+      expect(signingManager.getAccounts()).rejects.toThrow(
+        "Cannot call 'getAccounts' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
+      );
+    });
+  });
+
+  describe('method: getAccountsWithMeta', () => {
+    it('should return all Accounts along with its metadata held in the extension, respecting the SS58 format', async () => {
+      accountsGetStub.mockResolvedValue(accounts);
+
+      let result = await signingManager.getAccountsWithMeta();
+
+      expect(result).toEqual(
+        accounts.map(({ address, genesisHash, name, type }) => ({
+          address,
+          meta: { genesisHash, name, source: 'polywallet' },
+          type,
+        }))
+      );
+
+      signingManager.setSs58Format(0);
+
+      result = await signingManager.getAccountsWithMeta();
+
+      expect(result).toEqual(
+        accounts.map(({ address, genesisHash, name, type }) => ({
+          address: utilsModule.changeAddressFormat(address, 0),
+          meta: { genesisHash, name, source: 'polywallet' },
+          type,
+        }))
+      );
     });
 
     it("should throw an error if the Signing Manager doesn't have a SS58 format", async () => {
@@ -117,22 +141,14 @@ describe('BrowserExtensionSigningManager Class', () => {
 
   describe('method: onAccountChange', () => {
     it('should pass the new Accounts to the callback, respecting the SS58 format', () => {
-      const newAccounts = [
-        {
-          address: '5Ef2XHepJvTUJLhhx39Nf5iqu6AACrfFAmc6AW8a3hKF4Rdc',
-        },
-        {
-          address: '5HQLVKFYkytr9HisQRWoUArUWw8YNWUmhLdXztRFjqysiNUx',
-        },
-      ];
       accountsSubscribeStub.mockImplementation(cb => {
-        cb(newAccounts);
+        cb(accounts);
       });
 
       const callback = jest.fn();
-      signingManager.onAccountChange(callback);
+      signingManager.onAccountChange(callback, false);
 
-      expect(callback).toHaveBeenCalledWith(newAccounts.map(({ address }) => address));
+      expect(callback).toHaveBeenCalledWith(accounts.map(({ address }) => address));
 
       signingManager.setSs58Format(0);
 
@@ -140,8 +156,14 @@ describe('BrowserExtensionSigningManager Class', () => {
       signingManager.onAccountChange(callback);
 
       expect(callback).toHaveBeenCalledWith(
-        newAccounts.map(({ address }) => changeAddressFormat(address, 0))
+        accounts.map(({ address }) => utilsModule.changeAddressFormat(address, 0))
       );
+
+      callback.mockReset();
+      signingManager.onAccountChange(callback, true);
+      signingManager.setSs58Format(42);
+
+      expect(callback).toHaveBeenCalledWith(utilsModule.mapAccounts('polywallet', accounts, 42));
     });
 
     it("should throw an error if the Signing Manager doesn't have a SS58 format", async () => {
@@ -173,6 +195,20 @@ describe('BrowserExtensionSigningManager Class', () => {
       signingManager.onNetworkChange(callback);
 
       expect(callback).toHaveBeenCalledWith(newNetwork);
+    });
+  });
+
+  describe('method: getExtensionList', () => {
+    it('should return the list of all available extensions', () => {
+      jest.spyOn(utilsModule, 'getExtensions').mockReturnValue({
+        polywallet: {
+          version: '5.4.1',
+        },
+        talisman: {
+          version: '1.1.0',
+        },
+      });
+      expect(BrowserExtensionSigningManager.getExtensionList()).toEqual(['polywallet', 'talisman']);
     });
   });
 });

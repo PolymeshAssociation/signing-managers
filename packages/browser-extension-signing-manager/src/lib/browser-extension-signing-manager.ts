@@ -1,8 +1,8 @@
-import { web3Enable } from '@polkadot/extension-dapp';
+import { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
 import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
 
 import { Extension, NetworkInfo, UnsubCallback } from '../types';
-import { changeAddressFormat } from '../utils';
+import { changeAddressFormat, enableWeb3Extension, getExtensions, mapAccounts } from '../utils';
 
 export class BrowserExtensionSigningManager implements SigningManager {
   private _ss58Format?: number;
@@ -26,21 +26,8 @@ export class BrowserExtensionSigningManager implements SigningManager {
     extensionName?: string;
   }): Promise<BrowserExtensionSigningManager> {
     const { appName, extensionName = 'polywallet' } = args;
-    const extensions = await web3Enable(appName);
-
-    const filteredExtensions = extensions.filter(({ name }) => name === extensionName);
-
-    if (filteredExtensions.length === 0) {
-      throw new Error(
-        `There is no extension named "${extensionName}", or the extension has blocked the "${appName}" dApp`
-      );
-    }
-
-    if (filteredExtensions.length > 1) {
-      throw new Error(`There is more than one extension named "${extensionName}"`);
-    }
-
-    return new BrowserExtensionSigningManager(filteredExtensions[0] as Extension);
+    const extension = await enableWeb3Extension(appName, extensionName);
+    return new BrowserExtensionSigningManager(extension as Extension);
   }
 
   private constructor(private readonly extension: Extension) {}
@@ -67,6 +54,20 @@ export class BrowserExtensionSigningManager implements SigningManager {
   }
 
   /**
+   * Return the addresses of all Accounts along with other metadata in the Browser Wallet Extension
+   *
+   * @throws if called before calling `setSs58Format`. Normally, `setSs58Format` will be called by the SDK when instantiated
+   */
+  public async getAccountsWithMeta(): Promise<InjectedAccountWithMeta[]> {
+    const ss58Format = this.getSs58Format('getAccounts');
+
+    const accounts = await this.extension.accounts.get();
+
+    // we make sure the addresses are returned in the correct SS58 format
+    return mapAccounts(this.extension.name, accounts, ss58Format);
+  }
+
+  /**
    * Return a signer object that uses the extension Accounts to sign
    */
   public getExternalSigner(): PolkadotSigner {
@@ -82,9 +83,13 @@ export class BrowserExtensionSigningManager implements SigningManager {
    * Convention is for the current selected Account to be the first value in the array, but it
    *   depends on the extension implementation
    *
+   * @param callbackWithMeta pass this value as true if the callback parameter expects `InjectedAccountWithMeta[]` as param
    * @throws if the callback is triggered before calling `setSs58Format`. Normally, `setSs58Format` will be called by the SDK when instantiated
    */
-  public onAccountChange(cb: (accounts: string[]) => void): UnsubCallback {
+  public onAccountChange(
+    cb: (accounts: string[] | InjectedAccountWithMeta[]) => void,
+    callbackWithMeta = false
+  ): UnsubCallback {
     let ss58Format: number;
 
     return this.extension.accounts.subscribe(accounts => {
@@ -92,7 +97,14 @@ export class BrowserExtensionSigningManager implements SigningManager {
         ss58Format = this.getSs58Format('onAccountChange callback');
       }
 
-      cb(accounts.map(({ address }) => changeAddressFormat(address, ss58Format)));
+      let callbackAccounts;
+      if (callbackWithMeta) {
+        callbackAccounts = mapAccounts(this.extension.name, accounts, ss58Format);
+      } else {
+        callbackAccounts = accounts.map(({ address }) => changeAddressFormat(address, ss58Format));
+      }
+
+      cb(callbackAccounts);
     });
   }
 
@@ -120,5 +132,13 @@ export class BrowserExtensionSigningManager implements SigningManager {
     }
 
     return format;
+  }
+
+  /**
+   * Returns the list of all available extensions
+   */
+  public static getExtensionList(): string[] {
+    const extensions = getExtensions();
+    return Object.keys(extensions);
   }
 }
