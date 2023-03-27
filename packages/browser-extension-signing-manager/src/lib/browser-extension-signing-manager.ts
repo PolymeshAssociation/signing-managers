@@ -120,9 +120,14 @@ export class BrowserExtensionSigningManager implements SigningManager {
    * Subscribes via callback to a change in the extension's selected network (i.e. going from Testnet to Mainnet)
    *
    * The callback will be called with the new network information
+   *
+   * @note No callback is called for network agnostic extensions
    */
   public onNetworkChange(cb: (networkInfo: NetworkInfo) => void): UnsubCallback {
-    return this.extension.network.subscribe(cb);
+    if (this.extension.network) {
+      this.extension.network.subscribe(cb);
+    }
+    return () => undefined;
   }
 
   /**
