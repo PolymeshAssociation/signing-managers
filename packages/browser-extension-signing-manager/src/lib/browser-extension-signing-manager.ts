@@ -154,4 +154,17 @@ export class BrowserExtensionSigningManager implements SigningManager {
     const extensions = getExtensions();
     return Object.keys(extensions);
   }
+
+  /**
+   * Returns the details of current network to which the extension is connected. Returns `null` for network agnostic extensions
+   */
+  public async getCurrentNetwork(): Promise<NetworkInfo | null> {
+    if (this.extension.network) {
+      return this.extension.network.get();
+    }
+
+    console.log(`The '${this.extension.name}' extension is network agnostic`);
+
+    return null;
+  }
 }
