@@ -24,10 +24,18 @@ export class BrowserExtensionSigningManager implements SigningManager {
   public static async create(args: {
     appName: string;
     extensionName?: string;
+    ss58Format?: number;
   }): Promise<BrowserExtensionSigningManager> {
-    const { appName, extensionName = 'polywallet' } = args;
+    const { appName, extensionName = 'polywallet', ss58Format } = args;
     const extension = await enableWeb3Extension(appName, extensionName);
-    return new BrowserExtensionSigningManager(extension as Extension);
+
+    const signingManager = new BrowserExtensionSigningManager(extension as Extension);
+
+    if (ss58Format) {
+      signingManager.setSs58Format(ss58Format);
+    }
+
+    return signingManager;
   }
 
   private constructor(private readonly extension: Extension) {}

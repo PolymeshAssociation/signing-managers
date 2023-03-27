@@ -63,7 +63,6 @@ export async function enableWeb3Extension(
   originName: string,
   extensionName = 'polywallet'
 ): Promise<InjectedExtension> {
-  console.log('here');
   if (!originName.trim().length) {
     throw new Error('You must pass a name for your app to enable the given extension');
   }
