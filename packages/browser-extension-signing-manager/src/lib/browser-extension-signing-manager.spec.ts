@@ -4,7 +4,7 @@ const getExtensionsMock = jest.fn();
 import { InjectedAccount } from '@polkadot/extension-inject/types';
 import { PolkadotSigner } from '@polymeshassociation/signing-manager-types';
 
-import { Extension } from '../types';
+import { Extension, NetworkInfo } from '../types';
 import { changeAddressFormat, mapAccounts } from '../utils';
 import { BrowserExtensionSigningManager } from './browser-extension-signing-manager';
 
@@ -16,10 +16,12 @@ jest.mock('../utils', () => ({
 
 describe('BrowserExtensionSigningManager Class', () => {
   let signingManager: BrowserExtensionSigningManager;
+  let networkAgnosticSigningManager: BrowserExtensionSigningManager;
   let args: { appName: string; extensionName?: string };
   const accountsGetStub = jest.fn();
   const accountsSubscribeStub = jest.fn();
   const networkSubscribeStub = jest.fn();
+  const getNetworkStub = jest.fn();
   let extensionName: string;
 
   const accounts: InjectedAccount[] = [
@@ -46,18 +48,31 @@ describe('BrowserExtensionSigningManager Class', () => {
   });
 
   beforeEach(async () => {
-    enableWeb3ExtensionMock.mockResolvedValue({
-      name: extensionName,
+    const extensionDetails = {
       accounts: {
         get: accountsGetStub,
         subscribe: accountsSubscribeStub,
       },
-      network: {
-        subscribe: networkSubscribeStub,
-        get: jest.fn(),
-      },
       version: '1.5.5',
       signer: 'signer' as unknown as PolkadotSigner,
+    };
+    enableWeb3ExtensionMock.mockResolvedValueOnce({
+      name: 'randomName',
+      ...extensionDetails,
+    } as Extension);
+    networkAgnosticSigningManager = await BrowserExtensionSigningManager.create({
+      appName: 'testDApp',
+      extensionName: 'randomName',
+    });
+    networkAgnosticSigningManager.setSs58Format(42);
+
+    enableWeb3ExtensionMock.mockResolvedValue({
+      name: extensionName,
+      network: {
+        subscribe: networkSubscribeStub,
+        get: getNetworkStub,
+      },
+      ...extensionDetails,
     } as Extension);
     signingManager = await BrowserExtensionSigningManager.create(args);
     signingManager.setSs58Format(42);
@@ -65,11 +80,13 @@ describe('BrowserExtensionSigningManager Class', () => {
 
   describe('method: create', () => {
     it('should create instance of BrowserExtensionSigningManager', async () => {
-      expect(enableWeb3ExtensionMock).toHaveBeenCalledTimes(1);
       expect(enableWeb3ExtensionMock).toHaveBeenCalledWith(args.appName, args.extensionName);
       enableWeb3ExtensionMock.mockClear();
 
-      await BrowserExtensionSigningManager.create({ appName: 'someOtherApp' });
+      await BrowserExtensionSigningManager.create({
+        appName: 'someOtherApp',
+        ss58Format: 42,
+      });
       expect(enableWeb3ExtensionMock).toHaveBeenCalledTimes(1);
       expect(enableWeb3ExtensionMock).toHaveBeenCalledWith('someOtherApp', extensionName);
     });
@@ -202,6 +219,13 @@ describe('BrowserExtensionSigningManager Class', () => {
 
       expect(callback).toHaveBeenCalledWith(newNetwork);
     });
+
+    it('should do nothing for network agnostic extensions', () => {
+      const callback = jest.fn();
+      networkAgnosticSigningManager.onNetworkChange(callback);
+
+      expect(callback).toHaveBeenCalledTimes(0);
+    });
   });
 
   describe('method: getExtensionList', () => {
@@ -218,6 +242,38 @@ describe('BrowserExtensionSigningManager Class', () => {
         extensionName,
         'talisman',
       ]);
+    });
+  });
+
+  describe('method: getCurrentNetwork', () => {
+    let logSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      logSpy = jest.spyOn(console, 'log');
+    });
+
+    afterEach(() => {
+      logSpy.mockRestore();
+    });
+
+    it('should return the current network to which the extension is connected', async () => {
+      const networkInfo: NetworkInfo = {
+        name: 'testnet',
+        label: 'testnet',
+        wssUrl: 'wss://testnet-rpc.polymesh.live',
+      };
+      getNetworkStub.mockResolvedValue(networkInfo);
+
+      const result = await signingManager.getCurrentNetwork();
+      expect(result).toEqual(networkInfo);
+      expect(logSpy).toHaveBeenCalledTimes(0);
+    });
+
+    it('should return null for network agnostic extensions', async () => {
+      const result = await networkAgnosticSigningManager.getCurrentNetwork();
+      expect(result).toBeNull();
+      expect(logSpy).toHaveBeenCalledTimes(1);
+      expect(logSpy).toHaveBeenCalledWith(`The 'randomName' extension is network agnostic`);
     });
   });
 });
