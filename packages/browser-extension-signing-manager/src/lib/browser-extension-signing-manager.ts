@@ -33,13 +33,21 @@ export class BrowserExtensionSigningManager implements SigningManager {
     genesisHash?: string;
     accountType?: string;
   }): Promise<BrowserExtensionSigningManager> {
-    const { appName, extensionName = 'polywallet', ss58Format } = args;
+    const { appName, extensionName = 'polywallet', ss58Format, genesisHash, accountType } = args;
     const extension = await enableWeb3Extension(appName, extensionName);
 
     const signingManager = new BrowserExtensionSigningManager(extension as Extension);
 
     if (ss58Format) {
       signingManager.setSs58Format(ss58Format);
+    }
+
+    if (genesisHash) {
+      signingManager.setGenesisHash(genesisHash);
+    }
+
+    if (accountType) {
+      signingManager.setAccountType(accountType);
     }
 
     return signingManager;
@@ -74,7 +82,7 @@ export class BrowserExtensionSigningManager implements SigningManager {
   private getWeb3Accounts(accounts: InjectedAccount[]): InjectedAccount[] {
     return accounts.filter(
       account =>
-        (!account.type || !this._accountType || this._accountType.includes(account.type)) &&
+        (!account.type || !this._accountType || this._accountType === account.type) &&
         (!account.genesisHash || !this._genesisHash || account.genesisHash === this._genesisHash)
     );
   }
