@@ -68,7 +68,7 @@ export async function enableWeb3Extension(
   }
 
   if (!extensionName.trim().length) {
-    throw new Error(`Extension '${extensionName}' not found`);
+    throw new Error('extensionName cannot be empty');
   }
 
   return documentReadyPromise(() =>
@@ -94,7 +94,9 @@ export async function enableWeb3Extension(
   );
 }
 
-// internal helper to map from Array<InjectedAccount> -> Array<InjectedAccountWithMeta>
+/**
+ * Maps Array<InjectedAccount> -> Array<InjectedAccountWithMeta>
+ */
 export function mapAccounts(
   source: string,
   list: InjectedAccount[],

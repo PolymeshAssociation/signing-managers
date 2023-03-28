@@ -71,8 +71,7 @@ export class BrowserExtensionSigningManager implements SigningManager {
   /**
    * Returns the list of account available for the extension. Filters the list of accounts based on genesis hash and account type
    */
-  private async getWeb3Accounts(): Promise<InjectedAccount[]> {
-    const accounts = await this.extension.accounts.get();
+  private getWeb3Accounts(accounts: InjectedAccount[]): InjectedAccount[] {
     return accounts.filter(
       account =>
         (!account.type || !this._accountType || this._accountType.includes(account.type)) &&
@@ -88,10 +87,11 @@ export class BrowserExtensionSigningManager implements SigningManager {
   public async getAccounts(): Promise<string[]> {
     const ss58Format = this.getSs58Format('getAccounts');
 
-    const accounts = await this.getWeb3Accounts();
+    const accounts = await this.extension.accounts.get();
+    const filteredAccounts = this.getWeb3Accounts(accounts);
 
     // we make sure the addresses are returned in the correct SS58 format
-    return accounts.map(({ address }) => changeAddressFormat(address, ss58Format));
+    return filteredAccounts.map(({ address }) => changeAddressFormat(address, ss58Format));
   }
 
   /**
@@ -102,9 +102,10 @@ export class BrowserExtensionSigningManager implements SigningManager {
   public async getAccountsWithMeta(): Promise<InjectedAccountWithMeta[]> {
     const ss58Format = this.getSs58Format('getAccounts');
 
-    const accounts = await this.getWeb3Accounts();
+    const accounts = await this.extension.accounts.get();
+    const filteredAccounts = this.getWeb3Accounts(accounts);
 
-    return mapAccounts(this.extension.name, accounts, ss58Format);
+    return mapAccounts(this.extension.name, filteredAccounts, ss58Format);
   }
 
   /**
@@ -137,11 +138,15 @@ export class BrowserExtensionSigningManager implements SigningManager {
         ss58Format = this.getSs58Format('onAccountChange callback');
       }
 
+      const filteredAccounts = this.getWeb3Accounts(accounts);
+
       let callbackAccounts;
       if (callbackWithMeta) {
-        callbackAccounts = mapAccounts(this.extension.name, accounts, ss58Format);
+        callbackAccounts = mapAccounts(this.extension.name, filteredAccounts, ss58Format);
       } else {
-        callbackAccounts = accounts.map(({ address }) => changeAddressFormat(address, ss58Format));
+        callbackAccounts = filteredAccounts.map(({ address }) =>
+          changeAddressFormat(address, ss58Format)
+        );
       }
 
       cb(callbackAccounts);
