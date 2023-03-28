@@ -1,4 +1,4 @@
-import { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
+import { InjectedAccount, InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
 import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
 
 import { Extension, NetworkInfo, UnsubCallback } from '../types';
@@ -6,12 +6,17 @@ import { changeAddressFormat, enableWeb3Extension, getExtensions, mapAccounts } 
 
 export class BrowserExtensionSigningManager implements SigningManager {
   private _ss58Format?: number;
+  private _genesisHash?: string;
+  private _accountType?: string;
 
   /**
    * Create a Signing Manager that connects to a browser extension
    *
    * @param args.appName - name of the dApp attempting to connect to the extension
    * @param args.extensionName - name of the extension to be used (optional, defaults to 'polywallet')
+   * @param args.ss58Format - SS58 format for the extension in which the returned addresses will be encoded(optional)
+   * @param args.genesisHash - genesis hash to be used in filtering the accounts returned by the extension
+   * @param args.accountType - account type to be used in filtering the accounts returned by the extension
    *
    * @note if this is the first time the user is interacting with the dApp using that specific extension,
    *   they will be prompted by the extension to add the dApp to the allowed list
@@ -25,6 +30,8 @@ export class BrowserExtensionSigningManager implements SigningManager {
     appName: string;
     extensionName?: string;
     ss58Format?: number;
+    genesisHash?: string;
+    accountType?: string;
   }): Promise<BrowserExtensionSigningManager> {
     const { appName, extensionName = 'polywallet', ss58Format } = args;
     const extension = await enableWeb3Extension(appName, extensionName);
@@ -48,6 +55,32 @@ export class BrowserExtensionSigningManager implements SigningManager {
   }
 
   /**
+   * Set the genesis hash which will be used in filtering the accounts returned by the extension
+   */
+  public setGenesisHash(genesisHash: string): void {
+    this._genesisHash = genesisHash;
+  }
+
+  /**
+   * Set the account type which will be used in filtering the accounts returned by the extension
+   */
+  public setAccountType(accountType: string): void {
+    this._accountType = accountType;
+  }
+
+  /**
+   * Returns the list of account available for the extension. Filters the list of accounts based on genesis hash and account type
+   */
+  private async getWeb3Accounts(): Promise<InjectedAccount[]> {
+    const accounts = await this.extension.accounts.get();
+    return accounts.filter(
+      account =>
+        (!account.type || !this._accountType || this._accountType.includes(account.type)) &&
+        (!account.genesisHash || !this._genesisHash || account.genesisHash === this._genesisHash)
+    );
+  }
+
+  /**
    * Return the addresses of all Accounts in the Browser Wallet Extension
    *
    * @throws if called before calling `setSs58Format`. Normally, `setSs58Format` will be called by the SDK when instantiated
@@ -55,7 +88,7 @@ export class BrowserExtensionSigningManager implements SigningManager {
   public async getAccounts(): Promise<string[]> {
     const ss58Format = this.getSs58Format('getAccounts');
 
-    const accounts = await this.extension.accounts.get();
+    const accounts = await this.getWeb3Accounts();
 
     // we make sure the addresses are returned in the correct SS58 format
     return accounts.map(({ address }) => changeAddressFormat(address, ss58Format));
@@ -69,9 +102,8 @@ export class BrowserExtensionSigningManager implements SigningManager {
   public async getAccountsWithMeta(): Promise<InjectedAccountWithMeta[]> {
     const ss58Format = this.getSs58Format('getAccounts');
 
-    const accounts = await this.extension.accounts.get();
+    const accounts = await this.getWeb3Accounts();
 
-    // we make sure the addresses are returned in the correct SS58 format
     return mapAccounts(this.extension.name, accounts, ss58Format);
   }
 

@@ -35,7 +35,7 @@ describe('BrowserExtensionSigningManager Class', () => {
       name: 'ACCOUNT 2',
       address: '5HQLVKFYkytr9HisQRWoUArUWw8YNWUmhLdXztRFjqysiNUx',
       genesisHash: 'someHash',
-      type: 'ed25519',
+      type: 'sr25519',
     },
   ];
 
@@ -113,6 +113,15 @@ describe('BrowserExtensionSigningManager Class', () => {
       expect(signingManager.getAccounts()).rejects.toThrow(
         "Cannot call 'getAccounts' before calling 'setSs58Format'. Did you forget to use this Signing Manager to connect with the Polymesh SDK?"
       );
+    });
+
+    it('should return accounts filtered by genesisHash and accountType', async () => {
+      accountsGetStub.mockResolvedValue(accounts);
+
+      networkAgnosticSigningManager.setGenesisHash('someHash');
+      networkAgnosticSigningManager.setAccountType('ed25519');
+      const result = await networkAgnosticSigningManager.getAccounts();
+      expect(result.length).toEqual(1);
     });
   });
 
