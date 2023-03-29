@@ -170,7 +170,7 @@ export class BrowserExtensionSigningManager implements SigningManager {
    */
   public onNetworkChange(cb: (networkInfo: NetworkInfo) => void): UnsubCallback {
     if (this.extension.network) {
-      this.extension.network.subscribe(cb);
+      return this.extension.network.subscribe(cb);
     }
     return () => undefined;
   }
