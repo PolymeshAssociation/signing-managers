@@ -3,5 +3,7 @@
   "version": "1.2.3",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "main": "./index.js",
+  "typings": "./index.d.ts"
 }
