@@ -1,3 +1,14 @@
+# [1.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.1.5...@polymeshassociation/browser-extension-signing-manager@1.2.0) (2023-03-31)
+
+
+### Features
+
+* **browser-extension-signing-manager:** add `genesisHash` and `accountType` as optional parameters to `create` method ([bac1ff8](https://github.com/PolymeshAssociation/signing-managers/commit/bac1ff832ea3f9d140f003cdc3210624f2f57ff7))
+* **browser-extension-signing-manager:** add `getCurrentNetwork` method ([b5bf260](https://github.com/PolymeshAssociation/signing-managers/commit/b5bf26087f2f03c61961039fe1fc36154f3b31d5))
+* **browser-extension-signing-manager:** add optional `ss58Format` arg while creation ([d2ec62d](https://github.com/PolymeshAssociation/signing-managers/commit/d2ec62d1a840b7ceda8d66b78d9b58e68e6e1c7f))
+* **browser-extension-signing-manager:** modify `onNetworkChange` to handle newtork agnositc extensions ([7a64a98](https://github.com/PolymeshAssociation/signing-managers/commit/7a64a988018dea3e7b0a7152ef537cd4b17f21e3))
+* **browser-extension-signing-manager:** multiple extensions support ([cfb05c2](https://github.com/PolymeshAssociation/signing-managers/commit/cfb05c2bfd47f11d700e425d8d9b79b71ec5f4bf))
+
 ## [1.1.5](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.1.4...@polymeshassociation/browser-extension-signing-manager@1.1.5) (2023-03-17)
 
 
