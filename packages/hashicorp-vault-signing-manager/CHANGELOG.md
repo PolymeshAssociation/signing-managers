@@ -1,3 +1,10 @@
+## [1.1.9](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.8...@polymeshassociation/hashicorp-vault-signing-manager@1.1.9) (2023-04-02)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.4 [skip ci] ([238a049](https://github.com/PolymeshAssociation/signing-managers/commit/238a0495817317172bce4ad64be9bc4dbc9654e0))
+
 ## [1.1.8](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.7...@polymeshassociation/hashicorp-vault-signing-manager@1.1.8) (2023-03-17)
 
 
