@@ -11,7 +11,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@polymeshassociation/signing-manager-types": "^1.2.3"
+    "@polymeshassociation/signing-manager-types": "^1.2.4"
   },
   "peerDependencies": {
     "@polymeshassociation/polymesh-sdk": ">=15.0.0"
