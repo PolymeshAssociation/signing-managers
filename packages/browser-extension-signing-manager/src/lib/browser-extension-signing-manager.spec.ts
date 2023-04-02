@@ -115,11 +115,11 @@ describe('BrowserExtensionSigningManager Class', () => {
       );
     });
 
-    it('should return accounts filtered by genesisHash and accountType', async () => {
+    it('should return accounts filtered by genesisHash and accountTypes', async () => {
       accountsGetStub.mockResolvedValue(accounts);
 
       networkAgnosticSigningManager.setGenesisHash('someHash');
-      networkAgnosticSigningManager.setAccountType('ed25519');
+      networkAgnosticSigningManager.setAccountTypes(['ed25519']);
       const result = await networkAgnosticSigningManager.getAccounts();
       expect(result.length).toEqual(1);
     });
