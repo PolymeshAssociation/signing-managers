@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.3...@polymeshassociation/signing-manager-types@1.2.4) (2023-04-02)
+
+
+### Bug Fixes
+
+* **types:** update types package.json main field ([e836f40](https://github.com/PolymeshAssociation/signing-managers/commit/e836f4099d931dedd869aa440a53b98138e68405))
+
 ## [1.2.3](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.2...@polymeshassociation/signing-manager-types@1.2.3) (2023-03-17)
 
 
