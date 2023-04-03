@@ -1,3 +1,23 @@
+# [1.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.2.1...@polymeshassociation/browser-extension-signing-manager@1.3.0) (2023-04-03)
+
+
+### Bug Fixes
+
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.0.0 [skip ci] ([f77c44a](https://github.com/PolymeshAssociation/signing-managers/commit/f77c44af6c8559d48ce09f8301ceb7a581de07b5))
+
+
+### Features
+
+* **browser-extension-signing-manager:** add support for multiple account types while creating browser signing manager ([adadfc0](https://github.com/PolymeshAssociation/signing-managers/commit/adadfc0fe3427ad945fd0e343103ff2051cf0bec))
+
+
+### BREAKING CHANGES
+
+* **browser-extension-signing-manager:** - `setAccountType` has been renamed to `setAccountTypes` and takes
+`KeypairType[]` as parameter
+- `accountType` param of `create` method of `BrowserExtensionSigningManger` has been changed to
+`accountTypes` of type `KeypairType[]`
+
 ## [1.2.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.2.0...@polymeshassociation/browser-extension-signing-manager@1.2.1) (2023-04-02)
 
 
