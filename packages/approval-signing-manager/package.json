@@ -1,6 +1,6 @@
 {
   "name": "@polymeshassociation/approval-signing-manager",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "main": "./index.js",
   "typings": "./index.d.ts",
   "repository": {
