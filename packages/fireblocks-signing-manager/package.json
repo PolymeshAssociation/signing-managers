@@ -11,7 +11,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@polymeshassociation/signing-manager-types": "^1.2.4",
+    "@polymeshassociation/signing-manager-types": "^2.0.0",
     "fireblocks-sdk": "^2.5.3"
   },
   "peerDependencies": {
