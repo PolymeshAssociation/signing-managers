@@ -1,3 +1,5 @@
+# [2.0.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.4...@polymeshassociation/signing-manager-types@2.0.0) (2023-04-03)
+
 ## [1.2.4](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.3...@polymeshassociation/signing-manager-types@1.2.4) (2023-04-02)
 
 
