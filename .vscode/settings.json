@@ -10,6 +10,7 @@
     "commitlint",
     "hashicorp",
     "idempotency",
+    "Keypair",
     "nrwl",
     "Parens",
     "pathinfo",

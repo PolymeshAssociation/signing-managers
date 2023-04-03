@@ -1,4 +1,5 @@
 import { InjectedAccount, InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
+import { KeypairType } from '@polkadot/util-crypto/types';
 import { PolkadotSigner, SigningManager } from '@polymeshassociation/signing-manager-types';
 
 import { Extension, NetworkInfo, UnsubCallback } from '../types';
@@ -7,7 +8,7 @@ import { changeAddressFormat, enableWeb3Extension, getExtensions, mapAccounts } 
 export class BrowserExtensionSigningManager implements SigningManager {
   private _ss58Format?: number;
   private _genesisHash?: string;
-  private _accountType?: string;
+  private _accountTypes?: KeypairType[];
 
   /**
    * Create a Signing Manager that connects to a browser extension
@@ -16,7 +17,7 @@ export class BrowserExtensionSigningManager implements SigningManager {
    * @param args.extensionName - name of the extension to be used (optional, defaults to 'polywallet')
    * @param args.ss58Format - SS58 format for the extension in which the returned addresses will be encoded(optional)
    * @param args.genesisHash - genesis hash to be used in filtering the accounts returned by the extension
-   * @param args.accountType - account type to be used in filtering the accounts returned by the extension
+   * @param args.accountTypes - account types to be used in filtering the accounts returned by the extension
    *
    * @note if this is the first time the user is interacting with the dApp using that specific extension,
    *   they will be prompted by the extension to add the dApp to the allowed list
@@ -31,9 +32,9 @@ export class BrowserExtensionSigningManager implements SigningManager {
     extensionName?: string;
     ss58Format?: number;
     genesisHash?: string;
-    accountType?: string;
+    accountTypes?: KeypairType[];
   }): Promise<BrowserExtensionSigningManager> {
-    const { appName, extensionName = 'polywallet', ss58Format, genesisHash, accountType } = args;
+    const { appName, extensionName = 'polywallet', ss58Format, genesisHash, accountTypes } = args;
     const extension = await enableWeb3Extension(appName, extensionName);
 
     const signingManager = new BrowserExtensionSigningManager(extension as Extension);
@@ -46,8 +47,8 @@ export class BrowserExtensionSigningManager implements SigningManager {
       signingManager.setGenesisHash(genesisHash);
     }
 
-    if (accountType) {
-      signingManager.setAccountType(accountType);
+    if (accountTypes) {
+      signingManager.setAccountTypes(accountTypes);
     }
 
     return signingManager;
@@ -72,8 +73,8 @@ export class BrowserExtensionSigningManager implements SigningManager {
   /**
    * Set the account type which will be used in filtering the accounts returned by the extension
    */
-  public setAccountType(accountType: string): void {
-    this._accountType = accountType;
+  public setAccountTypes(accountTypes: KeypairType[]): void {
+    this._accountTypes = accountTypes;
   }
 
   /**
@@ -82,7 +83,7 @@ export class BrowserExtensionSigningManager implements SigningManager {
   private getWeb3Accounts(accounts: InjectedAccount[]): InjectedAccount[] {
     return accounts.filter(
       account =>
-        (!account.type || !this._accountType || this._accountType === account.type) &&
+        (!account.type || !this._accountTypes || this._accountTypes.includes(account.type)) &&
         (!account.genesisHash || !this._genesisHash || account.genesisHash === this._genesisHash)
     );
   }
