@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@2.0.0...@polymeshassociation/fireblocks-signing-manager@2.1.0) (2023-05-15)
+
+
+### Bug Fixes
+
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.1.0 [skip ci] ([cb2cfcf](https://github.com/PolymeshAssociation/signing-managers/commit/cb2cfcf068fbae462ba906b299cc4a94842402ae))
+
+
+### Features
+
+* update polkadot deps to match latest polymesh SDK versions ([#40](https://github.com/PolymeshAssociation/signing-managers/issues/40)) ([dae9908](https://github.com/PolymeshAssociation/signing-managers/commit/dae99085a3c691bcc7a4ea2b0fe3b753f52c07a5))
+
 # [2.0.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@1.0.6...@polymeshassociation/fireblocks-signing-manager@2.0.0) (2023-04-03)
 
 
