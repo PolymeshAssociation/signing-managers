@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@2.0.0...@polymeshassociation/signing-manager-types@2.1.0) (2023-05-15)
+
+
+### Features
+
+* update polkadot deps to match latest polymesh SDK versions ([#40](https://github.com/PolymeshAssociation/signing-managers/issues/40)) ([dae9908](https://github.com/PolymeshAssociation/signing-managers/commit/dae99085a3c691bcc7a4ea2b0fe3b753f52c07a5))
+
 # [2.0.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.4...@polymeshassociation/signing-manager-types@2.0.0) (2023-04-03)
 
 ## [1.2.4](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@1.2.3...@polymeshassociation/signing-manager-types@1.2.4) (2023-04-02)
