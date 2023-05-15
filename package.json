@@ -14,10 +14,10 @@
   },
   "private": true,
   "dependencies": {
-    "@polkadot/api": "^8.0.2",
+    "@polkadot/api": "^9.14.2",
     "@polkadot/extension-dapp": "^0.44.7",
-    "@polkadot/util": "^9.0.1",
-    "@polkadot/util-crypto": "^9.0.1",
+    "@polkadot/util": "^10.4.2",
+    "@polkadot/util-crypto": "^10.4.2",
     "cross-fetch": "^3.1.5",
     "lodash": "^4.17.21",
     "tslib": "^2.0.0"
