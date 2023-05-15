@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.3.0...@polymeshassociation/browser-extension-signing-manager@1.4.0) (2023-05-15)
+
+
+### Bug Fixes
+
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.1.0 [skip ci] ([49a772a](https://github.com/PolymeshAssociation/signing-managers/commit/49a772a0427f674f65a62460f702ca01f7391c73))
+
+
+### Features
+
+* update polkadot deps to match latest polymesh SDK versions ([#40](https://github.com/PolymeshAssociation/signing-managers/issues/40)) ([dae9908](https://github.com/PolymeshAssociation/signing-managers/commit/dae99085a3c691bcc7a4ea2b0fe3b753f52c07a5))
+
 # [1.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.2.1...@polymeshassociation/browser-extension-signing-manager@1.3.0) (2023-04-03)
 
 
