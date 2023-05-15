@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@2.0.0...@polymeshassociation/hashicorp-vault-signing-manager@2.1.0) (2023-05-15)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.1.0 [skip ci] ([69ca0c5](https://github.com/PolymeshAssociation/signing-managers/commit/69ca0c595bad2b4b3689c42128d27d69e2887838))
+
+
+### Features
+
+* update polkadot deps to match latest polymesh SDK versions ([#40](https://github.com/PolymeshAssociation/signing-managers/issues/40)) ([dae9908](https://github.com/PolymeshAssociation/signing-managers/commit/dae99085a3c691bcc7a4ea2b0fe3b753f52c07a5))
+
 # [2.0.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@1.1.9...@polymeshassociation/hashicorp-vault-signing-manager@2.0.0) (2023-04-03)
 
 
