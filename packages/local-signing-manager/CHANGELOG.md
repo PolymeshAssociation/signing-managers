@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@2.0.0...@polymeshassociation/local-signing-manager@2.1.0) (2023-05-15)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.1.0 [skip ci] ([749e570](https://github.com/PolymeshAssociation/signing-managers/commit/749e5701246ecb0b01ef940907ae5b881d9c5172))
+
+
+### Features
+
+* update polkadot deps to match latest polymesh SDK versions ([#40](https://github.com/PolymeshAssociation/signing-managers/issues/40)) ([dae9908](https://github.com/PolymeshAssociation/signing-managers/commit/dae99085a3c691bcc7a4ea2b0fe3b753f52c07a5))
+
 # [2.0.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@1.4.4...@polymeshassociation/local-signing-manager@2.0.0) (2023-04-03)
 
 
