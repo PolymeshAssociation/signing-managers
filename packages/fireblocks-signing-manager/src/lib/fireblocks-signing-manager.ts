@@ -100,12 +100,12 @@ export class FireblocksSigningManager implements SigningManager {
    * @hidden
    */
   private constructor(args: Omit<CreateParams, 'derivationPaths'>) {
-    const { url, apiKey, secretPath } = args;
+    const { url, apiKey, secret } = args;
 
     const registry = new TypeRegistry();
     registry.setSignedExtensions(signedExtensions);
 
-    this.fireblocksClient = new Fireblocks({ url, apiKey, secretPath });
+    this.fireblocksClient = new Fireblocks({ url, apiKey, secret });
     this.externalSigner = new FireblocksSigner(this.fireblocksClient, registry);
   }
 

@@ -10,7 +10,7 @@ jest.mock('fs');
 describe('Fireblocks class', () => {
   const url = 'http://example.com';
   const apiKey = 'someToken';
-  const secretPath = './some-secret.key';
+  const secret = 'someSecret';
 
   const defaultKey = {
     status: 0,
@@ -34,7 +34,7 @@ describe('Fireblocks class', () => {
   let fireblocks: Fireblocks;
 
   beforeEach(() => {
-    fireblocks = new Fireblocks({ url, apiKey, secretPath });
+    fireblocks = new Fireblocks({ url, apiKey, secret });
   });
 
   describe('method: fetchAllKeys', () => {

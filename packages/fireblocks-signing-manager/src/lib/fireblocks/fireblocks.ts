@@ -8,7 +8,6 @@ import {
   TransactionResponse,
   TransactionStatus,
 } from 'fireblocks-sdk';
-import { readFileSync } from 'fs';
 
 import { DerivationPath, KeyInfo, NoTransactionSignature } from './types';
 
@@ -21,10 +20,8 @@ export class Fireblocks {
   public fireblocksSdk: FireblocksSDK;
   private addressBook: Record<HexString, PublicKeyResonse> = {};
 
-  public constructor(args: { url: string; apiKey: string; secretPath: string }) {
-    const { secretPath, apiKey, url } = args;
-
-    const secret = readFileSync(secretPath, 'utf8');
+  public constructor(args: { url: string; apiKey: string; secret: string }) {
+    const { secret, apiKey, url } = args;
 
     this.fireblocksSdk = new FireblocksSDK(secret, apiKey, url);
   }

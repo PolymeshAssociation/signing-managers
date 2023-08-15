@@ -36,7 +36,7 @@ const fireblocksKeys: PublicKeyResonse[] = [
 
 const url = 'http://example.com';
 const apiKey = 'API-KEY';
-const secretPath = './secret.key';
+const secret = 'someSecret';
 const ss58Format = 42;
 
 describe('FireblocksSigningManager Class', () => {
@@ -46,7 +46,7 @@ describe('FireblocksSigningManager Class', () => {
     signingManager = await FireblocksSigningManager.create({
       url,
       apiKey,
-      secretPath,
+      secret,
       derivationPaths: [],
     });
 
@@ -58,7 +58,7 @@ describe('FireblocksSigningManager Class', () => {
       const manager = await FireblocksSigningManager.create({
         url,
         apiKey,
-        secretPath,
+        secret,
         derivationPaths: [],
       });
 
@@ -78,7 +78,7 @@ describe('FireblocksSigningManager Class', () => {
         FireblocksSigningManager.create({
           url,
           apiKey,
-          secretPath,
+          secret,
           derivationPaths,
         })
       ).rejects.toThrow(expectedError);
@@ -122,7 +122,7 @@ describe('FireblocksSigningManager Class', () => {
     let fireblocks: Fireblocks;
 
     beforeEach(() => {
-      fireblocks = new Fireblocks({ url, apiKey, secretPath });
+      fireblocks = new Fireblocks({ url, apiKey, secret });
       registry = new TypeRegistry();
       signer = new FireblocksSigner(fireblocks, registry);
     });

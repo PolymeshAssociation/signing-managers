@@ -4,7 +4,7 @@ Polymesh SDK (v14+) compatible signing manager that interacts with [Fireblocks](
 
 ## Usage
 
-You will need a Fireblocks Account and setup access for the API. This involves generating an API Key as well as a secret file to authenticate with.
+You will need a Fireblocks Account and setup access for the API. This involves generating an API Key as well as a secret to authenticate with.
 
 Also, you will need to ask for Fireblocks to enable "raw signing" for your account. You should understand the risks and why raw signing is not enabled by default.
 
@@ -18,7 +18,7 @@ Note these derived keys will need to join as a Secondary key, or have a CDD clai
 const signingManager = await FireblocksSigningManager.create({
   url: 'https://api.fireblocks.io',
   apiToken: 'API_TOKEN',
-  secretPath: './path/to/secret.key',
+  secret: 'abc...',
   derivationPaths: [[44, 595, 0, 0, 0]], // derive mainnet key with the "default" Fireblocks account
 });
 

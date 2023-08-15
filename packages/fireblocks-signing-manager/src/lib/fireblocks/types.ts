@@ -27,9 +27,9 @@ export interface CreateParams {
    */
   apiKey: string;
   /**
-   * Path to a file containing the secret file for interacting with the Fireblocks API
+   * An account secret necessary to authenticate with the Fireblocks API
    */
-  secretPath: string;
+  secret: string;
   /**
    * (optional) Derivation paths to initialize Accounts upon creation. Accounts can also be added dynamically by calling `deriveAccount` on the signing manager
    */
