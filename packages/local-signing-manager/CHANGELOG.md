@@ -1,3 +1,10 @@
+# [3.0.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@2.1.0...@polymeshassociation/local-signing-manager@3.0.0) (2023-08-16)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.0.0 [skip ci] ([c22991b](https://github.com/PolymeshAssociation/signing-managers/commit/c22991b8cfaf8534c425c3d19a58d6e3af16551d))
+
 # [2.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@2.0.0...@polymeshassociation/local-signing-manager@2.1.0) (2023-05-15)
 
 
