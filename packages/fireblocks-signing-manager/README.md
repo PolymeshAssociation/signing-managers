@@ -18,7 +18,7 @@ Note these derived keys will need to join as a Secondary key, or have a CDD clai
 const signingManager = await FireblocksSigningManager.create({
   url: 'https://api.fireblocks.io',
   apiToken: 'API_TOKEN',
-  secret: 'abc...',
+  secret: 'someKey', // private key for authentication. can be read from a file with:  `readFileSync('/some/path', 'UTF8)`
   derivationPaths: [[44, 595, 0, 0, 0]], // derive mainnet key with the "default" Fireblocks account
 });
 
