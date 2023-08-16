@@ -1,3 +1,10 @@
+# [3.0.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@2.1.0...@polymeshassociation/approval-signing-manager@3.0.0) (2023-08-16)
+
+
+### Bug Fixes
+
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.0.0 [skip ci] ([a9dd650](https://github.com/PolymeshAssociation/signing-managers/commit/a9dd6504d93219b40ff6d2eec48f1a435ad496e6))
+
 # [2.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@2.0.0...@polymeshassociation/approval-signing-manager@2.1.0) (2023-05-15)
 
 
