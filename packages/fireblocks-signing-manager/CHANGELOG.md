@@ -1,3 +1,21 @@
+# [2.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@2.1.0...@polymeshassociation/fireblocks-signing-manager@2.2.0) (2023-08-16)
+
+
+### Bug Fixes
+
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.0.0 [skip ci] ([9e34f23](https://github.com/PolymeshAssociation/signing-managers/commit/9e34f238fe299a80a0faecd67f97abd46069aa0f))
+
+
+### Features
+
+* **fireblocks-signing-manager:** allow secret to passed directly instead of requiring a file ([04a12e5](https://github.com/PolymeshAssociation/signing-managers/commit/04a12e52cad410f29c1a6793ccb5d0953c2e06b1))
+
+
+### BREAKING CHANGES
+
+* **fireblocks-signing-manager:** `secretPath` is now `secret`. To maintain old behavior use `fs.readFileSync` and
+pass the secret to the constructor instead of the path
+
 # [2.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@2.0.0...@polymeshassociation/fireblocks-signing-manager@2.1.0) (2023-05-15)
 
 
