@@ -1,3 +1,10 @@
+# [2.0.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.4.0...@polymeshassociation/browser-extension-signing-manager@2.0.0) (2023-08-16)
+
+
+### Bug Fixes
+
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.0.0 [skip ci] ([d630059](https://github.com/PolymeshAssociation/signing-managers/commit/d63005971dcc826e79ead8825f99fa7aa4bbd4a3))
+
 # [1.4.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@1.3.0...@polymeshassociation/browser-extension-signing-manager@1.4.0) (2023-05-15)
 
 
