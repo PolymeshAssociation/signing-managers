@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@2.2.0...@polymeshassociation/fireblocks-signing-manager@2.2.1) (2023-08-21)
+
+
+### Documentation
+
+* **fireblocks-signing-manager:** update readme with example reading from file ([a4ebd43](https://github.com/PolymeshAssociation/signing-managers/commit/a4ebd43c2f54b7e79ce668a7704aa507741ee5d7))
+
 # [2.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@2.1.0...@polymeshassociation/fireblocks-signing-manager@2.2.0) (2023-08-16)
 
 
