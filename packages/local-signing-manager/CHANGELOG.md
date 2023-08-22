@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@3.0.0...@polymeshassociation/local-signing-manager@3.0.1) (2023-08-22)
+
+
+### Performance Improvements
+
+* **local-signing-manager:** require newer polkadot peer dependencies ([cc5cf8c](https://github.com/PolymeshAssociation/signing-managers/commit/cc5cf8c6cebd96a7d33b149a5a9decee3bd8e7b2))
+
 # [3.0.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@2.1.0...@polymeshassociation/local-signing-manager@3.0.0) (2023-08-16)
 
 
