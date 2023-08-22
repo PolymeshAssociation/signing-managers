@@ -14,9 +14,9 @@
     "@polymeshassociation/signing-manager-types": "^3.0.0"
   },
   "peerDependencies": {
-    "@polkadot/api": "^8.0.2",
-    "@polkadot/util": "^9.0.1",
-    "@polkadot/util-crypto": "^9.0.1",
+    "@polkadot/api": "^9.14.2",
+    "@polkadot/util": "^10.4.2",
+    "@polkadot/util-crypto": "10.4.2",
     "@polymeshassociation/polymesh-sdk": ">=15.0.0"
   }
 }
