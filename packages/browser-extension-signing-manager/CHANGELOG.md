@@ -1,3 +1,15 @@
+# [2.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@2.1.0...@polymeshassociation/browser-extension-signing-manager@2.2.0) (2023-09-06)
+
+
+### Bug Fixes
+
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.2.0 [skip ci] ([212d27f](https://github.com/PolymeshAssociation/signing-managers/commit/212d27f6d08fb9ba3ad1d7e5bb6fb1756db28e35))
+
+
+### Features
+
+* update extension-dapp dependency to latest ([e5c5465](https://github.com/PolymeshAssociation/signing-managers/commit/e5c546571bfb7ffd63b25af357f9117ac6f20f92))
+
 # [2.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@2.0.0...@polymeshassociation/browser-extension-signing-manager@2.1.0) (2023-09-06)
 
 
