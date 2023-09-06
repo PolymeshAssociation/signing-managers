@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@3.0.0...@polymeshassociation/signing-manager-types@3.1.0) (2023-09-06)
+
+
+### Features
+
+* trigger update deps release ([d8b935a](https://github.com/PolymeshAssociation/signing-managers/commit/d8b935ab13c5909ceda4f9b2a93dd4145bd7fb84))
+
 # [3.0.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@2.1.0...@polymeshassociation/signing-manager-types@3.0.0) (2023-08-16)
 
 # [2.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@2.0.0...@polymeshassociation/signing-manager-types@2.1.0) (2023-05-15)
