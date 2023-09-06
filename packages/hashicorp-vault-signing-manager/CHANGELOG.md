@@ -1,3 +1,15 @@
+# [3.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@3.1.0...@polymeshassociation/hashicorp-vault-signing-manager@3.2.0) (2023-09-06)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.2.0 [skip ci] ([73a35fd](https://github.com/PolymeshAssociation/signing-managers/commit/73a35fd6f581f57b548d93c826287dbe4309ac7c))
+
+
+### Features
+
+* update extension-dapp dependency to latest ([e5c5465](https://github.com/PolymeshAssociation/signing-managers/commit/e5c546571bfb7ffd63b25af357f9117ac6f20f92))
+
 # [3.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@3.0.0...@polymeshassociation/hashicorp-vault-signing-manager@3.1.0) (2023-09-06)
 
 
