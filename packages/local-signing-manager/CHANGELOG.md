@@ -1,3 +1,15 @@
+# [3.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@3.1.0...@polymeshassociation/local-signing-manager@3.2.0) (2023-09-06)
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.2.0 [skip ci] ([baa280c](https://github.com/PolymeshAssociation/signing-managers/commit/baa280c82861b09f6f3b7dded48e3ce2843b0642))
+
+
+### Features
+
+* update extension-dapp dependency to latest ([e5c5465](https://github.com/PolymeshAssociation/signing-managers/commit/e5c546571bfb7ffd63b25af357f9117ac6f20f92))
+
 # [3.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@3.0.1...@polymeshassociation/local-signing-manager@3.1.0) (2023-09-06)
 
 
