@@ -1,3 +1,15 @@
+# [3.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@3.1.0...@polymeshassociation/approval-signing-manager@3.2.0) (2023-09-06)
+
+
+### Bug Fixes
+
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.2.0 [skip ci] ([926f671](https://github.com/PolymeshAssociation/signing-managers/commit/926f671bf93754d69e24def212696e703a919967))
+
+
+### Features
+
+* update extension-dapp dependency to latest ([e5c5465](https://github.com/PolymeshAssociation/signing-managers/commit/e5c546571bfb7ffd63b25af357f9117ac6f20f92))
+
 # [3.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@3.0.0...@polymeshassociation/approval-signing-manager@3.1.0) (2023-09-06)
 
 
