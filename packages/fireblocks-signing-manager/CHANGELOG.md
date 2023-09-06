@@ -1,3 +1,15 @@
+# [2.4.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@2.3.0...@polymeshassociation/fireblocks-signing-manager@2.4.0) (2023-09-06)
+
+
+### Bug Fixes
+
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.2.0 [skip ci] ([6bb8973](https://github.com/PolymeshAssociation/signing-managers/commit/6bb897326b78bef14a70d8b8468885c7e2c3aaae))
+
+
+### Features
+
+* update extension-dapp dependency to latest ([e5c5465](https://github.com/PolymeshAssociation/signing-managers/commit/e5c546571bfb7ffd63b25af357f9117ac6f20f92))
+
 # [2.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@2.2.1...@polymeshassociation/fireblocks-signing-manager@2.3.0) (2023-09-06)
 
 
