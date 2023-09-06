@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@3.1.0...@polymeshassociation/signing-manager-types@3.2.0) (2023-09-06)
+
+
+### Features
+
+* update extension-dapp dependency to latest ([e5c5465](https://github.com/PolymeshAssociation/signing-managers/commit/e5c546571bfb7ffd63b25af357f9117ac6f20f92))
+
 # [3.1.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@3.0.0...@polymeshassociation/signing-manager-types@3.1.0) (2023-09-06)
 
 
