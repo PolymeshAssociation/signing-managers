@@ -1,6 +1,5 @@
 import { HexString } from '@polkadot/util/types';
 import fetch from 'cross-fetch';
-import { flatten, map } from 'lodash';
 
 import {
   GetKeyResponse,
@@ -55,7 +54,7 @@ export class HashicorpVault {
 
     const allKeys = await Promise.all(keys.map(name => this.fetchKeysByName(name)));
 
-    return flatten(allKeys);
+    return allKeys.flat();
   }
 
   /**
@@ -77,15 +76,17 @@ export class HashicorpVault {
       data: { keys },
     }: GetKeyResponse = await response.json();
 
-    return map(keys, ({ public_key: publicKey }, version) => {
-      const hexKey = Buffer.from(publicKey, 'base64').toString('hex');
+    return Object.entries(keys)
+      .filter(([, { name }]) => name === 'ed25519') // N.B response "name" is the encryption type
+      .map(([version, { public_key: publicKey }]) => {
+        const hexKey = Buffer.from(publicKey, 'base64').toString('hex');
 
-      return {
-        publicKey: `0x${hexKey}`,
-        version: Number(version),
-        name,
-      };
-    });
+        return {
+          publicKey: `0x${hexKey}`,
+          version: Number(version),
+          name,
+        };
+      });
   }
 
   /**

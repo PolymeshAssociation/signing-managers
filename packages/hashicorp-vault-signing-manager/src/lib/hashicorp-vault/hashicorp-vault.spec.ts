@@ -53,9 +53,11 @@ describe('HashicorpVault class', () => {
               keys: {
                 '1': {
                   public_key: 'cqWlP2oERZqOjtJmzASNt/jI0/qsAgT5ntWTQAutY2w=',
+                  name: 'ed25519',
                 },
                 '2': {
                   public_key: '7CYkynab5bxXzSPw8djAag9orAalfgA1U2HUUACvfCg=',
+                  name: 'ed25519',
                 },
               },
             },
@@ -67,6 +69,7 @@ describe('HashicorpVault class', () => {
               keys: {
                 '1': {
                   public_key: 'GvM3BzqsB8JiK6OThUhQNBz/ES1dY4De8j7jI7DUiAI=',
+                  name: 'ed25519',
                 },
               },
             },
@@ -114,9 +117,11 @@ describe('HashicorpVault class', () => {
               /* eslint-disable @typescript-eslint/naming-convention */
               '1': {
                 public_key: 'cqWlP2oERZqOjtJmzASNt/jI0/qsAgT5ntWTQAutY2w=',
+                name: 'ed25519',
               },
               '2': {
                 public_key: '7CYkynab5bxXzSPw8djAag9orAalfgA1U2HUUACvfCg=',
+                name: 'ed25519',
               },
               /* eslint-enable @typescript-eslint/naming-convention */
             },
