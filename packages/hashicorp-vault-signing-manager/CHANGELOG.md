@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@3.2.0...@polymeshassociation/hashicorp-vault-signing-manager@3.2.1) (2024-04-16)
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** ignore non ed25519 keys to prevent a runtime crash ([8c8c845](https://github.com/PolymeshAssociation/signing-managers/commit/8c8c845aae0341d65c0ff9d782d24b1477a4f14f))
+
 # [3.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@3.1.0...@polymeshassociation/hashicorp-vault-signing-manager@3.2.0) (2023-09-06)
 
 
