@@ -1,6 +1,7 @@
 import { HexString } from '@polkadot/util/types';
 import fetch from 'cross-fetch';
 
+import { SignerTimeoutError } from '../../types';
 import {
   GetKeyResponse,
   ListKeysResponse,
@@ -8,6 +9,8 @@ import {
   SignResponse,
   VaultKey,
 } from './types';
+
+const TIMEOUT = 30 * 1000;
 
 export class HashicorpVault {
   private headers: { 'X-Vault-Token': string };
@@ -34,12 +37,9 @@ export class HashicorpVault {
    * Retrieve all public keys (hex) stored in the Vault with their respective names and versions
    */
   public async fetchAllKeys(): Promise<VaultKey[]> {
-    const { headers } = this;
+    const url = this.getUrl('keys');
 
-    const response = await fetch(this.getUrl('keys'), {
-      method: 'LIST',
-      headers,
-    });
+    const response = await this.fetch(url, 'LIST');
 
     // Vault returns 404 for empty lists for [ease of implementation](https://github.com/hashicorp/vault/issues/1365#issuecomment-216369253)
     if (response.status === 404) {
@@ -63,12 +63,8 @@ export class HashicorpVault {
    * @param name - name of the key for which to fetch the public keys
    */
   public async fetchKeysByName(name: string): Promise<VaultKey[]> {
-    const { headers } = this;
-
-    const response = await fetch(this.getUrl('keys', name), {
-      method: 'GET',
-      headers,
-    });
+    const url = this.getUrl('keys', name);
+    const response = await this.fetch(url, 'GET');
 
     await this.assertResponseOk(response);
 
@@ -97,13 +93,7 @@ export class HashicorpVault {
    * @param data - data that will be signed
    */
   public async signData(name: string, data: SignRequestPayload): Promise<HexString> {
-    const { headers } = this;
-
-    const response = await fetch(this.getUrl('sign', name), {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers,
-    });
+    const response = await this.fetch(this.getUrl('sign', name), 'POST', data);
 
     await this.assertResponseOk(response);
 
@@ -118,6 +108,39 @@ export class HashicorpVault {
     const hexSignature = Buffer.from(strippedSignature, 'base64').toString('hex');
 
     return `0x00${hexSignature}`;
+  }
+
+  private async fetch(url: string, method: string, body?: unknown): Promise<Response> {
+    const { headers } = this;
+    const controller = new AbortController();
+    const timer = setTimeout(() => {
+      controller.abort();
+    }, TIMEOUT);
+
+    try {
+      const response = await fetch(url, {
+        method,
+        body: body ? JSON.stringify(body) : undefined,
+        headers,
+        signal: controller.signal,
+      });
+
+      return response;
+    } catch (error) {
+      if (controller.signal.aborted) {
+        throw new SignerTimeoutError({
+          message: 'Hashicorp Vault request timed out',
+          data: {
+            timeoutSeconds: TIMEOUT / 1000,
+            url,
+          },
+        });
+      } else {
+        throw error;
+      }
+    } finally {
+      clearTimeout(timer);
+    }
   }
 
   /**

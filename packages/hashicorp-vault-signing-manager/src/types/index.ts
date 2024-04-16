@@ -6,3 +6,16 @@ export interface AddressedVaultKey extends VaultKey {
    */
   address: string;
 }
+
+export class SignerTimeoutError extends Error {
+  public data?: Record<string, unknown>;
+
+  /**
+   * @hidden
+   */
+  constructor({ message, data }: { message?: string; data?: Record<string, unknown> }) {
+    super(message);
+
+    this.data = data;
+  }
+}
