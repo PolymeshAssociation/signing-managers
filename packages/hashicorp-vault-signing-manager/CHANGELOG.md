@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@3.2.1...@polymeshassociation/hashicorp-vault-signing-manager@3.3.0) (2024-05-02)
+
+
+### Features
+
+* **hashicorp-vault-signing-manager:** add 30 second timeout for vault signing manager ([82f02a1](https://github.com/PolymeshAssociation/signing-managers/commit/82f02a18c678b1c161b9af6d67cbcdc358ba8f3e))
+
 ## [3.2.1](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@3.2.0...@polymeshassociation/hashicorp-vault-signing-manager@3.2.1) (2024-04-16)
 
 
