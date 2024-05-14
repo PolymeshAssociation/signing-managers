@@ -129,7 +129,7 @@ describe('FireblocksSigningManager Class', () => {
 
     describe('method signPayload', () => {
       it('should return a signed payload and an incremental ID', async () => {
-        const payload = {
+        const payload: SignerPayloadJSON = {
           specVersion: '0x00000bba',
           transactionVersion: '0x00000002',
           address: encodeAddress(`0x${fireblocksKeys[0].publicKey}`, ss58Format),

@@ -117,7 +117,7 @@ describe('class VaultSigner', () => {
 
   describe('method signPayload', () => {
     it('should return a signed payload and an incremental ID', async () => {
-      const payload = {
+      const payload: SignerPayloadJSON = {
         specVersion: '0x00000bb9',
         transactionVersion: '0x00000002',
         address: accounts[0].address,
