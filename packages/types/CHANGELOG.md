@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@3.2.0...@polymeshassociation/signing-manager-types@3.3.0) (2024-05-14)
+
+
+### Features
+
+* update polkadot dependencies ([d2f1883](https://github.com/PolymeshAssociation/signing-managers/commit/d2f18838ef44ea1090e6af2a2c70598f4ac2fd71))
+
 # [3.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@3.1.0...@polymeshassociation/signing-manager-types@3.2.0) (2023-09-06)
 
 
