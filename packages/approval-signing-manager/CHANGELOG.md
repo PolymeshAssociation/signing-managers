@@ -1,3 +1,15 @@
+# [3.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@3.2.0...@polymeshassociation/approval-signing-manager@3.3.0) (2024-05-14)
+
+
+### Bug Fixes
+
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.3.0 [skip ci] ([faf491c](https://github.com/PolymeshAssociation/signing-managers/commit/faf491c99b58a7c3ff1d60d401e53f8d4e39fc41))
+
+
+### Features
+
+* update polkadot dependencies ([d2f1883](https://github.com/PolymeshAssociation/signing-managers/commit/d2f18838ef44ea1090e6af2a2c70598f4ac2fd71))
+
 # [3.2.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@3.1.0...@polymeshassociation/approval-signing-manager@3.2.0) (2023-09-06)
 
 
