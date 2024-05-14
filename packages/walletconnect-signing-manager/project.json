@@ -1,0 +1,51 @@
+{
+  "root": "packages/walletconnect-signing-manager",
+  "sourceRoot": "packages/walletconnect-signing-manager/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/walletconnect-signing-manager",
+        "tsConfig": "packages/walletconnect-signing-manager/tsconfig.lib.json",
+        "packageJson": "packages/walletconnect-signing-manager/package.json",
+        "main": "packages/walletconnect-signing-manager/src/index.ts",
+        "assets": ["packages/walletconnect-signing-manager/*.md"],
+        "srcRootForCompilationRoot": "packages/walletconnect-signing-manager/src"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/walletconnect-signing-manager/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/walletconnect-signing-manager"],
+      "options": {
+        "jestConfig": "packages/walletconnect-signing-manager/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "release": {
+      "executor": "@ng-easy/builders:semantic-release",
+      "configurations": {
+        "local": {
+          "force": true
+        }
+      }
+    },
+    "run-local": {
+      "executor": "./tools/executors/run-local:run-local",
+      "options": {
+        "runInBrowser": false,
+        "path": "packages/walletconnect-signing-manager/sandbox/index.ts",
+        "port": 9000
+      }
+    }
+  },
+  "tags": []
+}

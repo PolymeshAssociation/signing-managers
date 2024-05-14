@@ -14,6 +14,7 @@ module.exports = {
         'hashicorp-vault-signing-manager',
         'approval-signing-manager',
         'fireblocks-signing-manager',
+        'walletconnect-signing-manager',
       ],
     ],
   },

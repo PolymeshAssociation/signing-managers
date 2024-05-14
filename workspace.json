@@ -6,6 +6,7 @@
     "fireblocks-signing-manager": "packages/fireblocks-signing-manager",
     "hashicorp-vault-signing-manager": "packages/hashicorp-vault-signing-manager",
     "local-signing-manager": "packages/local-signing-manager",
+    "walletconnect-signing-manager": "packages/walletconnect-signing-manager",
     "types": "packages/types"
   }
 }

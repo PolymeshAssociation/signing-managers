@@ -1,0 +1,24 @@
+{
+  "name": "@polymeshassociation/walletconnect-signing-manager",
+  "version": "0.1.0",
+  "main": "./index.js",
+  "typings": "./index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PolymeshAssociation/signing-managers.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@polymeshassociation/signing-manager-types": "^3.3.0",
+    "@walletconnect/modal": "^2.6.2",
+    "@walletconnect/sign-client": "2.13.0"
+  },
+  "devDependencies": {
+    "@walletconnect/types": "2.13.0"
+  },
+  "peerDependencies": {
+    "@polymeshassociation/polymesh-sdk": ">=15.0.0"
+  }
+}
