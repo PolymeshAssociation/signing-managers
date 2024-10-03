@@ -1,6 +1,6 @@
 # SigningManagers
 
-Monorepo for Polymesh SDK compatible Signing Managers.
+Monorepo for Polymesh SDK compatible Signing Managers. A signing manager abstracts key signing operations to provide a uniform interface for a variety of key storage solutions
 
 ## Projects
 
@@ -10,6 +10,7 @@ Monorepo for Polymesh SDK compatible Signing Managers.
 | **Browser Extension Signing Manager** | [`@polymeshassociation/browser-extension-signing-manager`](https://npmjs.com/package/@polymeshassociation/browser-extension-signing-manager) | [![npm latest version](https://img.shields.io/npm/v/@polymeshassociation/browser-extension-signing-manager/latest.svg)](https://www.npmjs.com/package/@polymeshassociation/browser-extension-signing-manager) | [![README](https://img.shields.io/badge/README--green.svg)](/packages/browser-extension-signing-manager/README.md) [![CHANGELOG](https://img.shields.io/badge/CHANGELOG--orange.svg)](/packages/browser-extension-signing-manager/CHANGELOG.md) |
 | **Hashicorp Vault Signing Manager**   | [`@polymeshassociation/hashicorp-vault-signing-manager`](https://npmjs.com/package/@polymeshassociation/hashicorp-vault-signing-manager)     | [![npm latest version](https://img.shields.io/npm/v/@polymeshassociation/hashicorp-vault-signing-manager/latest.svg)](https://www.npmjs.com/package/@polymeshassociation/hashicorp-vault-signing-manager)     | [![README](https://img.shields.io/badge/README--green.svg)](/packages/hashicorp-vault-signing-manager/README.md) [![CHANGELOG](https://img.shields.io/badge/CHANGELOG--orange.svg)](/packages/hashicorp-vault-signing-manager/CHANGELOG.md)     |
 | **Fireblocks Signing Manager**        | [`@polymeshassociation/fireblocks-signing-manager`](https://npmjs.com/package/@polymeshassociation/fireblocks-signing-manager)               | [![npm latest version](https://img.shields.io/npm/v/@polymeshassociation/fireblocks-signing-manager/latest.svg)](https://www.npmjs.com/package/@polymeshassociation/fireblocks-signing-manager)               | [![README](https://img.shields.io/badge/README--green.svg)](/packages/fireblocks-signing-manager/README.md) [![CHANGELOG](https://img.shields.io/badge/CHANGELOG--orange.svg)](/packages/fireblocks-signing-manager/CHANGELOG.md)               |
+| **Azure Signing Manager**        | [`@polymeshassociation/azure-signing-manager`](https://npmjs.com/package/@polymeshassociation/azure-signing-manager)               | [![npm latest version](https://img.shields.io/npm/v/@polymeshassociation/azure-signing-manager/latest.svg)](https://www.npmjs.com/package/@polymeshassociation/azure-signing-manager)               | [![README](https://img.shields.io/badge/README--green.svg)](/packages/azure-signing-manager/README.md) [![CHANGELOG](https://img.shields.io/badge/CHANGELOG--orange.svg)](/packages/azure-signing-manager/CHANGELOG.md)               |
 
 ## Scripts
 

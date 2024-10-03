@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@polymeshassociation/approval-signing-manager": ["packages/approval-signing-manager/src"],
+      "@polymeshassociation/azure-signing-manager": ["packages/azure-signing-manager/src"],
       "@polymeshassociation/browser-extension-signing-manager": [
         "packages/browser-extension-signing-manager/src"
       ],

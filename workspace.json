@@ -2,11 +2,12 @@
   "version": 2,
   "projects": {
     "approval-signing-manager": "packages/approval-signing-manager",
+    "azure-signing-manager": "packages/azure-signing-manager",
     "browser-extension-signing-manager": "packages/browser-extension-signing-manager",
     "fireblocks-signing-manager": "packages/fireblocks-signing-manager",
     "hashicorp-vault-signing-manager": "packages/hashicorp-vault-signing-manager",
     "local-signing-manager": "packages/local-signing-manager",
-    "walletconnect-signing-manager": "packages/walletconnect-signing-manager",
-    "types": "packages/types"
+    "types": "packages/types",
+    "walletconnect-signing-manager": "packages/walletconnect-signing-manager"
   }
 }
