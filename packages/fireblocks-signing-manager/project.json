@@ -1,10 +1,12 @@
 {
-  "root": "packages/fireblocks-signing-manager",
+  "name": "@polymeshassociation/fireblocks-signing-manager",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/fireblocks-signing-manager/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nx/node:package",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/fireblocks-signing-manager",
@@ -16,14 +18,14 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/fireblocks-signing-manager/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["coverage/packages/fireblocks-signing-manager"],
       "options": {
         "jestConfig": "packages/fireblocks-signing-manager/jest.config.js",
@@ -31,12 +33,7 @@
       }
     },
     "release": {
-      "executor": "@ng-easy/builders:semantic-release",
-      "configurations": {
-        "local": {
-          "force": true
-        }
-      }
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release"
     },
     "run-local": {
       "executor": "./tools/executors/run-local:run-local",
@@ -45,7 +42,12 @@
         "path": "packages/fireblocks-signing-manager/sandbox/index.ts",
         "port": 9000
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits"
+      }
     }
-  },
-  "tags": []
+  }
 }

@@ -61,12 +61,7 @@ export default async function (tree: Tree, schema: Schema) {
     };
 
     projectConfig.targets.release = {
-      executor: '@ng-easy/builders:semantic-release',
-      configurations: {
-        local: {
-          force: true,
-        },
-      },
+      executor: '@theunderscorer/nx-semantic-release:semantic-release',
     };
 
     projectConfig.targets['run-local'] = {

@@ -1,15 +1,15 @@
 {
-  "extends": "@nrwl/workspace/presets/core.json",
+  "extends": "@nx/workspace/presets/core.json",
   "npmScope": "signing-managers",
   "affected": {
     "defaultBase": "main"
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nx/workspace"
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nx/workspace/tasks-runners/default",
       "options": {
         "cacheableOperations": ["build", "lint", "test", "e2e"]
       }

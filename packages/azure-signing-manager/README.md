@@ -1,7 +1,6 @@
 # azure-signing-manager
 
-Polymesh SDK compatible signing manager. This allows Polymesh transactions to be signed with keys in an Microsoft Azure [key vault](https://azure.microsoft.com/en-us/products/key-vault). The keys must be "EC"
-type and use curve "P-256K". The signing manager will ignore any other type.
+Polymesh SDK compatible signing manager. This allows Polymesh transactions to be signed with keys in an Microsoft Azure [key vault](https://azure.microsoft.com/en-us/products/key-vault). The keys must be "EC" type and use curve "P-256K". The signing manager will ignore any other type.
 
 ## Usage
 
@@ -36,15 +35,7 @@ interface {
 }
 ```
 
-For now it is recommended to have a key vault dedicated to Polymesh keys. Please open an issue if you performing the additional work is worth having thousands of keys stored.
-
-For Reference - Azure key vault pricing ($USD), October 2024:
-```
-First 250 keys 	        $5 per key per month
-From 251 – 1,500 keys 	$2.50 per key per month
-From 1,501 – 4,000 keys $0.90 per key per month
-4,001+ keys 	          $0.40 per key per month
-```
+For now it is recommended to have a key vault dedicated to Polymesh keys and to keep them to a limited number. Please open an issue if you desire thousands of keys stored in an Azure key vault.
 
 ## Running unit tests
 

@@ -35,7 +35,7 @@ jobs:
       - name: install dependencies
         run: yarn --frozen-lockfile
       - name: build and release
-        run: yarn nx run-many --all --target=release --parallel=1
+        run: yarn nx run-many --all --target=version --parallel=false
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}

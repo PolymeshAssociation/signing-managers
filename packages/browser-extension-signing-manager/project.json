@@ -1,10 +1,12 @@
 {
-  "root": "packages/browser-extension-signing-manager",
+  "name": "@polymeshassociation/browser-extension-signing-manager",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/browser-extension-signing-manager/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nx/node:package",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/browser-extension-signing-manager",
@@ -16,26 +18,18 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/browser-extension-signing-manager/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["coverage/packages/browser-extension-signing-manager"],
       "options": {
         "jestConfig": "packages/browser-extension-signing-manager/jest.config.js",
         "passWithNoTests": true
-      }
-    },
-    "release": {
-      "executor": "@ng-easy/builders:semantic-release",
-      "configurations": {
-        "local": {
-          "force": true
-        }
       }
     },
     "run-local": {
@@ -45,7 +39,12 @@
         "path": "packages/browser-extension-signing-manager/sandbox/index.ts",
         "port": 9000
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventionalcommits"
+      }
     }
-  },
-  "tags": []
+  }
 }
