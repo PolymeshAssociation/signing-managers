@@ -1,27 +1,57 @@
 {
-  "extends": "@nrwl/workspace/presets/core.json",
-  "npmScope": "signing-managers",
-  "affected": {
-    "defaultBase": "main"
+  "targetDefaults": {
+    "build": {
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "test": {
+      "cache": true
+    },
+    "e2e": {
+      "cache": true
+    },
+    "release": {
+      "dependsOn": ["^release"]
+    }
   },
-  "cli": {
-    "defaultCollection": "@nrwl/workspace"
+  "workspaceLayout": {
+    "libsDir": "packages"
   },
+  "plugins": [
+    {
+      "plugin": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        },
+        "build": {
+          "targetName": "tsc:build",
+          "configName": "tsconfig.lib.json"
+        }
+      }
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "eslint:lint"
+      }
+    }
+  ],
+  "extends": "@nx/workspace/presets/core.json",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+      "runner": "@nx/workspace/tasks-runners/default",
+      "options": {}
     }
   },
   "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ],
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^default"]
+    },
     "release": [
       {
         "target": "build",
@@ -32,5 +62,6 @@
         "projects": "dependencies"
       }
     ]
-  }
+  },
+  "defaultBase": "main"
 }

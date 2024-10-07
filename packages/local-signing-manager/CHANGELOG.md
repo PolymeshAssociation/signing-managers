@@ -1,3 +1,58 @@
+# Changelog
+
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## 1.0.0 (2024-10-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **local-signing-manager,hashicorp-vault-signing-manager,browser-extension-signing-manager:** support SDK v15
+
+### Features
+
+* **config:** init monorepo ([594fbaa](https://github.com/PolymeshAssociation/signing-managers/commit/594fbaab2d2fdc4f7159db83658e70f89efd9713))
+* **local-signing-manager,hashicorp-vault-signing-manager,browser-extension-signing-manager:** update polkadot peer deps ([2906b08](https://github.com/PolymeshAssociation/signing-managers/commit/2906b088981de1e7a5f5e0041c2a06607fba5bfb))
+* **local-signing-manager,hashicorp-vault-signing-manager,browser-extension-signing-manager:** update SDK peer deps ([830ab06](https://github.com/PolymeshAssociation/signing-managers/commit/830ab06373d5e516aba8f8868682ccaae08886e0))
+* **local-signing-manager:** add `derivationPath` for account ([#33](https://github.com/PolymeshAssociation/signing-managers/issues/33)) ([af131b6](https://github.com/PolymeshAssociation/signing-managers/commit/af131b6cf02cffed08fff0b9f91fc28ec28a389a))
+* **local-signing-manager:** add account creation utilities ([19dd42b](https://github.com/PolymeshAssociation/signing-managers/commit/19dd42b0a19db8f1d4ed6a4f83f472f4c1ddef41))
+* **local-signing-manager:** allow `ed25519` to be specified in `create` ([#31](https://github.com/PolymeshAssociation/signing-managers/issues/31)) ([0c4b205](https://github.com/PolymeshAssociation/signing-managers/commit/0c4b20510f484584ffe0db89350ec9833e191955))
+* release initial versions ([0c49e44](https://github.com/PolymeshAssociation/signing-managers/commit/0c49e441b4e68df3a9cc3985b11ade0de0a0f2a3))
+* update polkadot dependencies ([d2f1883](https://github.com/PolymeshAssociation/signing-managers/commit/d2f18838ef44ea1090e6af2a2c70598f4ac2fd71))
+* use association npm for dependencies ([64ac247](https://github.com/PolymeshAssociation/signing-managers/commit/64ac247ffc67fdd359bf1da73ad2df39d0b536ad))
+
+
+### Bug Fixes
+
+* **local-signing-manager:** :arrow_up: update @polymathnetwork/signing-manager-types to 1.0.0 [skip ci] ([8bdcc8f](https://github.com/PolymeshAssociation/signing-managers/commit/8bdcc8f8030fda8d4f628109c93ff0c63404ea0f))
+* **local-signing-manager:** :arrow_up: update @polymathnetwork/signing-manager-types to 1.0.1 [skip ci] ([e9d49eb](https://github.com/PolymeshAssociation/signing-managers/commit/e9d49eb92a42cc9018138aeeb0e361ac298758c5))
+* **local-signing-manager:** :arrow_up: update @polymathnetwork/signing-manager-types to 1.0.2 [skip ci] ([ce8c2ab](https://github.com/PolymeshAssociation/signing-managers/commit/ce8c2ab617ae77cbe29240fada338c28039e1de3))
+* **local-signing-manager:** :arrow_up: update @polymathnetwork/signing-manager-types to 1.0.3 [skip ci] ([d199e2c](https://github.com/PolymeshAssociation/signing-managers/commit/d199e2c10ced2e0fff0dfb62d429972bf96d7941))
+* **local-signing-manager:** :arrow_up: update @polymathnetwork/signing-manager-types to 2.0.0 [skip ci] ([5cb8559](https://github.com/PolymeshAssociation/signing-managers/commit/5cb855938227e3d352cb87aabb4aca04c8209aeb))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.0.0 [skip ci] ([d53cb97](https://github.com/PolymeshAssociation/signing-managers/commit/d53cb97f94b630690ca3330491df8852446a2574))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.1.0 [skip ci] ([44dcf46](https://github.com/PolymeshAssociation/signing-managers/commit/44dcf46f31baf67e1ecd2b5057762fda535007c8))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.1.1 [skip ci] ([befd969](https://github.com/PolymeshAssociation/signing-managers/commit/befd969c049bd13c1a0c4d5d656fc1f9f78a6bd6))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.0 [skip ci] ([9cdd028](https://github.com/PolymeshAssociation/signing-managers/commit/9cdd028ea3198aae84a307e282749f3573b30e41))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([f6aae6c](https://github.com/PolymeshAssociation/signing-managers/commit/f6aae6cd263f973647dcd262f23d98295c875397))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.2 [skip ci] ([123f154](https://github.com/PolymeshAssociation/signing-managers/commit/123f154dd477d34ecaee94096ba84de1fa4a9603))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.3 [skip ci] ([d350ca1](https://github.com/PolymeshAssociation/signing-managers/commit/d350ca1358e26bb1ac76d5515d637651f35036f3))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.4 [skip ci] ([57cb2ca](https://github.com/PolymeshAssociation/signing-managers/commit/57cb2cae0508fc5fc3a981df2068501331c5c184))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.0.0 [skip ci] ([4baf42e](https://github.com/PolymeshAssociation/signing-managers/commit/4baf42e631ea115a8de623bc8800b36c5a764831))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.1.0 [skip ci] ([749e570](https://github.com/PolymeshAssociation/signing-managers/commit/749e5701246ecb0b01ef940907ae5b881d9c5172))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.0.0 [skip ci] ([c22991b](https://github.com/PolymeshAssociation/signing-managers/commit/c22991b8cfaf8534c425c3d19a58d6e3af16551d))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.1.0 [skip ci] ([1f6a72d](https://github.com/PolymeshAssociation/signing-managers/commit/1f6a72da0f969f445697712fbb06ff8b017a32ac))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.2.0 [skip ci] ([baa280c](https://github.com/PolymeshAssociation/signing-managers/commit/baa280c82861b09f6f3b7dded48e3ce2843b0642))
+* **local-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.3.0 [skip ci] ([7df1ae7](https://github.com/PolymeshAssociation/signing-managers/commit/7df1ae7c9d009a3fbc9ec4e9ff51dac2c83f150c))
+* **local-signing-manager:** enclose method name in single quotes ([1028267](https://github.com/PolymeshAssociation/signing-managers/commit/1028267b9c5ab8a7f6bb4b277b30525beacacdde))
+* **local-signing-manager:** refine error messages when SS58 format isn't set ([f7db481](https://github.com/PolymeshAssociation/signing-managers/commit/f7db4811a46814b10a27c1e22251b9205a4df0c5))
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
+
+### Performance Improvements
+
+* **local-signing-manager:** require newer polkadot peer dependencies ([cc5cf8c](https://github.com/PolymeshAssociation/signing-managers/commit/cc5cf8c6cebd96a7d33b149a5a9decee3bd8e7b2))
+
 # [3.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/local-signing-manager@3.2.0...@polymeshassociation/local-signing-manager@3.3.0) (2024-05-14)
 
 

@@ -27,7 +27,6 @@
         "packages/hashicorp-vault-signing-manager/src"
       ],
       "@polymeshassociation/local-signing-manager": ["packages/local-signing-manager/src"],
-      "@polymeshassociation/signing-manager-types": ["packages/types/src"],
       "@polymeshassociation/walletconnect-signing-mananger": [
         "packages/walletconnect-signing-manager/src"
       ]

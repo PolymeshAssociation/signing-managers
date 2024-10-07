@@ -1,3 +1,55 @@
+# Changelog
+
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## 1.0.0 (2024-10-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **local-signing-manager,hashicorp-vault-signing-manager,browser-extension-signing-manager:** support SDK v15
+
+### Features
+
+* **hashicorp-vault-signing-manager:** add 30 second timeout for vault signing manager ([82f02a1](https://github.com/PolymeshAssociation/signing-managers/commit/82f02a18c678b1c161b9af6d67cbcdc358ba8f3e))
+* **hashicorp-vault-signing-manager:** add method to expose vault key info ([d9c3913](https://github.com/PolymeshAssociation/signing-managers/commit/d9c3913ebc4b87dfe597edf393f0780442a8a2cf))
+* **hashicorp-vault-signing-manager:** implement signing manager ([f811dbc](https://github.com/PolymeshAssociation/signing-managers/commit/f811dbc3cd7ce0ca01a392f643a2e1aa5af51cc4))
+* **hashicorp-vault-signing-manager:** initialize package ([15397b2](https://github.com/PolymeshAssociation/signing-managers/commit/15397b2220eaf50aa284c1e699158372ac21e7a4))
+* **local-signing-manager,hashicorp-vault-signing-manager,browser-extension-signing-manager:** update SDK peer deps ([830ab06](https://github.com/PolymeshAssociation/signing-managers/commit/830ab06373d5e516aba8f8868682ccaae08886e0))
+* update polkadot dependencies ([d2f1883](https://github.com/PolymeshAssociation/signing-managers/commit/d2f18838ef44ea1090e6af2a2c70598f4ac2fd71))
+* use association npm for dependencies ([64ac247](https://github.com/PolymeshAssociation/signing-managers/commit/64ac247ffc67fdd359bf1da73ad2df39d0b536ad))
+
+
+### Bug Fixes
+
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymathnetwork/signing-manager-types to 2.0.0 [skip ci] ([5cfa157](https://github.com/PolymeshAssociation/signing-managers/commit/5cfa157d7b66427d40e824b6509fc95b01473df7))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.0.0 [skip ci] ([e2a8d02](https://github.com/PolymeshAssociation/signing-managers/commit/e2a8d02e0e50db3c452e3e129e58d4bfa5241ec7))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.1.0 [skip ci] ([5cbc4db](https://github.com/PolymeshAssociation/signing-managers/commit/5cbc4dbd38722fe3ca028f356a35fd14d2f85e22))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.1.1 [skip ci] ([1bdfe3e](https://github.com/PolymeshAssociation/signing-managers/commit/1bdfe3ee1f3f1751ab0598090e2d4be7f169f2a2))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.0 [skip ci] ([058dd89](https://github.com/PolymeshAssociation/signing-managers/commit/058dd891d260e099a76d2a595fe93153f154f45c))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([4f09bd8](https://github.com/PolymeshAssociation/signing-managers/commit/4f09bd8f47d0f5f74b1e1b07c669fb57cba23ba8))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.2 [skip ci] ([4f90c6f](https://github.com/PolymeshAssociation/signing-managers/commit/4f90c6ffe8c25607f4f33b34e2cdd88e40767373))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.3 [skip ci] ([50cefc6](https://github.com/PolymeshAssociation/signing-managers/commit/50cefc61fc9cb0ec811ff2ae5161e45c2ad82ff5))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.4 [skip ci] ([238a049](https://github.com/PolymeshAssociation/signing-managers/commit/238a0495817317172bce4ad64be9bc4dbc9654e0))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.0.0 [skip ci] ([f223d27](https://github.com/PolymeshAssociation/signing-managers/commit/f223d2773fe410f578e0ed33542aa1dfddfe3f52))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.1.0 [skip ci] ([69ca0c5](https://github.com/PolymeshAssociation/signing-managers/commit/69ca0c595bad2b4b3689c42128d27d69e2887838))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.0.0 [skip ci] ([5c5389e](https://github.com/PolymeshAssociation/signing-managers/commit/5c5389e7151a1fe760620574f55f768dd4d9bbb9))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.1.0 [skip ci] ([b01491e](https://github.com/PolymeshAssociation/signing-managers/commit/b01491e3cb83babf8f7cca0dfa6c12db972e29c4))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.2.0 [skip ci] ([73a35fd](https://github.com/PolymeshAssociation/signing-managers/commit/73a35fd6f581f57b548d93c826287dbe4309ac7c))
+* **hashicorp-vault-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.3.0 [skip ci] ([86699e1](https://github.com/PolymeshAssociation/signing-managers/commit/86699e139f9901c7532287fd24c09c057265f40e))
+* **hashicorp-vault-signing-manager:** fetchAllKeys returns empty list instead of 404 when no keys are present ([#26](https://github.com/PolymeshAssociation/signing-managers/issues/26)) ([011dbb0](https://github.com/PolymeshAssociation/signing-managers/commit/011dbb000178430df08eef2c4e2116b830db4838))
+* **hashicorp-vault-signing-manager:** fix long message signing ([#18](https://github.com/PolymeshAssociation/signing-managers/issues/18)) ([c25ead8](https://github.com/PolymeshAssociation/signing-managers/commit/c25ead80fecb681bac72af1a0cd3247aff0d5801))
+* **hashicorp-vault-signing-manager:** ignore non ed25519 keys to prevent a runtime crash ([8c8c845](https://github.com/PolymeshAssociation/signing-managers/commit/8c8c845aae0341d65c0ff9d782d24b1477a4f14f))
+* **hashicorp-vault-signing-manager:** use proper return type for `signData` ([96b0eeb](https://github.com/PolymeshAssociation/signing-managers/commit/96b0eeb9d1bc7c09946be27bea4ac6a11e3bd9c3))
+* **local-signing-manager,browser-extension-signing-manager,hashicorp-vault-signing-manager:** use proper types version ([41ccc15](https://github.com/PolymeshAssociation/signing-managers/commit/41ccc15678c2a017474d9eef64eaf4c47366ecf3))
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
+
+### Performance Improvements
+
+* **hashicorp-vault-signing-manager:** cache keys to avoid repeated lookups ([#29](https://github.com/PolymeshAssociation/signing-managers/issues/29)) ([39c34f4](https://github.com/PolymeshAssociation/signing-managers/commit/39c34f43ffdb979b985c551939a49fc60ed5d08d))
+
 # [3.4.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/hashicorp-vault-signing-manager@3.3.0...@polymeshassociation/hashicorp-vault-signing-manager@3.4.0) (2024-05-14)
 
 

@@ -84,6 +84,7 @@ export interface KeyRecordWithOwner extends KeyRecord {
   ownerId: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export type Headers = { Authorization: string; 'Content-Type': 'application/json' };
 
 export enum ApprovalStatus {

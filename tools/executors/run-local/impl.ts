@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
-import { ExecutorContext } from '@nrwl/devkit';
+import { ExecutorContext } from '@nx/devkit';
 import Webpack, { Configuration } from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';

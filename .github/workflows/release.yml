@@ -1,0 +1,53 @@
+name: release
+
+on:
+  push:
+    branches: [main, beta, alpha]
+
+jobs:
+  lint-and-test:
+    name: Linting and testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: install dependencies
+        run: yarn --frozen-lockfile
+      - name: lint and test
+        uses: mansagroup/nrwl-nx-action@v3
+        with:
+          targets: lint,test
+  release:
+    name: Building and releasing project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Setup Git
+        run: |
+          git config user.name "Eric Richardson"
+          git config user.email "eric@polymesh.network"
+      - name: install dependencies
+        run: yarn --frozen-lockfile
+      - name: build and release
+        run: |
+         PRE_RELEASE_OPTION=""
+         if [ "${{ github.ref }}" == "refs/heads/alpha" ]; then
+          PRE_RELEASE_OPTION="--preRelease preid=alpha"
+         elif [ "${{ github.ref }}" == "refs/heads/beta" ]; then
+          PRE_RELEASE_OPTION="--preRelease preid=beta"
+         fi
+
+         yarn nx run-many --all --target=release --parallel=1 $PRE_RELEASE_OPTION
+        env:
+          CI: true
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          NPM_TOKEN: ${{ secrets.ASSOCIATION_NPM_TOKEN }}

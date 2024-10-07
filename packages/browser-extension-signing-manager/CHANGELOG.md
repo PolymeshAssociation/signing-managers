@@ -1,3 +1,52 @@
+# Changelog
+
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## 1.0.0 (2024-10-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **browser-extension-signing-manager:** - `setAccountType` has been renamed to `setAccountTypes` and takes
+`KeypairType[]` as parameter
+- `accountType` param of `create` method of `BrowserExtensionSigningManger` has been changed to
+`accountTypes` of type `KeypairType[]`
+* **local-signing-manager,hashicorp-vault-signing-manager,browser-extension-signing-manager:** support SDK v15
+
+### Features
+
+* **browser-extension-signing-manager:** add `genesisHash` and `accountType` as optional parameters to `create` method ([bac1ff8](https://github.com/PolymeshAssociation/signing-managers/commit/bac1ff832ea3f9d140f003cdc3210624f2f57ff7))
+* **browser-extension-signing-manager:** add `getCurrentNetwork` method ([b5bf260](https://github.com/PolymeshAssociation/signing-managers/commit/b5bf26087f2f03c61961039fe1fc36154f3b31d5))
+* **browser-extension-signing-manager:** add optional `ss58Format` arg while creation ([d2ec62d](https://github.com/PolymeshAssociation/signing-managers/commit/d2ec62d1a840b7ceda8d66b78d9b58e68e6e1c7f))
+* **browser-extension-signing-manager:** add support for multiple account types while creating browser signing manager ([adadfc0](https://github.com/PolymeshAssociation/signing-managers/commit/adadfc0fe3427ad945fd0e343103ff2051cf0bec))
+* **browser-extension-signing-manager:** implement the browser extension signing manager ([8c7e972](https://github.com/PolymeshAssociation/signing-managers/commit/8c7e97206b251eda6e56f99326e1b6bf1c2a604d))
+* **browser-extension-signing-manager:** modify `onNetworkChange` to handle newtork agnositc extensions ([7a64a98](https://github.com/PolymeshAssociation/signing-managers/commit/7a64a988018dea3e7b0a7152ef537cd4b17f21e3))
+* **browser-extension-signing-manager:** multiple extensions support ([cfb05c2](https://github.com/PolymeshAssociation/signing-managers/commit/cfb05c2bfd47f11d700e425d8d9b79b71ec5f4bf))
+* **local-signing-manager,hashicorp-vault-signing-manager,browser-extension-signing-manager:** update SDK peer deps ([830ab06](https://github.com/PolymeshAssociation/signing-managers/commit/830ab06373d5e516aba8f8868682ccaae08886e0))
+* use association npm for dependencies ([64ac247](https://github.com/PolymeshAssociation/signing-managers/commit/64ac247ffc67fdd359bf1da73ad2df39d0b536ad))
+
+
+### Bug Fixes
+
+* **browser-extension-signing-manager:** :arrow_up: update @polymathnetwork/signing-manager-types to 1.0.2 [skip ci] ([923e011](https://github.com/PolymeshAssociation/signing-managers/commit/923e01195c5956f527ebb301cb524cc9b57e66c5))
+* **browser-extension-signing-manager:** :arrow_up: update @polymathnetwork/signing-manager-types to 1.0.3 [skip ci] ([ed09c68](https://github.com/PolymeshAssociation/signing-managers/commit/ed09c6899b5e77e526b81895628cf8071149d9bd))
+* **browser-extension-signing-manager:** :arrow_up: update @polymathnetwork/signing-manager-types to 2.0.0 [skip ci] ([83bc1e2](https://github.com/PolymeshAssociation/signing-managers/commit/83bc1e24550ffa2ca980c547ae71cf85a26f903d))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.0.0 [skip ci] ([ce1b4ce](https://github.com/PolymeshAssociation/signing-managers/commit/ce1b4ce35dcc83b98d12973537a6ab67ec6f7680))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.1.0 [skip ci] ([7363fe5](https://github.com/PolymeshAssociation/signing-managers/commit/7363fe5dfe43fe686dae3d7f0c5a14d2cf1702be))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.1.1 [skip ci] ([176af64](https://github.com/PolymeshAssociation/signing-managers/commit/176af644a76a1cd43e8717100d08c250bf748ceb))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.0 [skip ci] ([cce05bd](https://github.com/PolymeshAssociation/signing-managers/commit/cce05bdb71127d5bf2a17f9c2d75191c066b2511))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([c18fb9e](https://github.com/PolymeshAssociation/signing-managers/commit/c18fb9e2f93a1a68553f2064d6a5a6949458babc))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.2 [skip ci] ([f7f6445](https://github.com/PolymeshAssociation/signing-managers/commit/f7f6445a9a56b96a8bc1e70860f4ae9c3fe34f8c))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.3 [skip ci] ([124fade](https://github.com/PolymeshAssociation/signing-managers/commit/124fade2e5a5e2b26ea8370f889f662dd07d1d39))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.4 [skip ci] ([39a4096](https://github.com/PolymeshAssociation/signing-managers/commit/39a4096d305262911cb34a4ac3ea8237aa833471))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.0.0 [skip ci] ([f77c44a](https://github.com/PolymeshAssociation/signing-managers/commit/f77c44af6c8559d48ce09f8301ceb7a581de07b5))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.1.0 [skip ci] ([49a772a](https://github.com/PolymeshAssociation/signing-managers/commit/49a772a0427f674f65a62460f702ca01f7391c73))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.0.0 [skip ci] ([d630059](https://github.com/PolymeshAssociation/signing-managers/commit/d63005971dcc826e79ead8825f99fa7aa4bbd4a3))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.1.0 [skip ci] ([c1be3f8](https://github.com/PolymeshAssociation/signing-managers/commit/c1be3f8783d993ec71e386649623511b5527437a))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.2.0 [skip ci] ([212d27f](https://github.com/PolymeshAssociation/signing-managers/commit/212d27f6d08fb9ba3ad1d7e5bb6fb1756db28e35))
+* **browser-extension-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.3.0 [skip ci] ([a585d59](https://github.com/PolymeshAssociation/signing-managers/commit/a585d59c1fd6327faa3f2479b451bc048995f0ed))
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+
 # [2.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/browser-extension-signing-manager@2.2.0...@polymeshassociation/browser-extension-signing-manager@2.3.0) (2024-05-14)
 
 

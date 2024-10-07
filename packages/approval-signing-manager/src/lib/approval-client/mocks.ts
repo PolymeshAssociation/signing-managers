@@ -19,6 +19,7 @@ export class MockApprovalClient {
 
   private headers: Headers = {
     Authorization: 'mockApiKey',
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     'Content-Type': 'application/json',
   };
 

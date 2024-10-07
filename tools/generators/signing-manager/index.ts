@@ -1,5 +1,5 @@
-import { formatFiles, installPackagesTask, readJson, Tree, updateJson } from '@nrwl/devkit';
-import { libraryGenerator } from '@nrwl/node';
+import { formatFiles, installPackagesTask, readJson, Tree, updateJson } from '@nx/devkit';
+import { libraryGenerator } from '@nx/node';
 import requireFromString from 'require-from-string';
 
 interface Schema {
@@ -60,12 +60,10 @@ export default async function (tree: Tree, schema: Schema) {
       srcRootForCompilationRoot: srcPath,
     };
 
-    projectConfig.targets.release = {
-      executor: '@ng-easy/builders:semantic-release',
-      configurations: {
-        local: {
-          force: true,
-        },
+    projectConfig.targets.version = {
+      executor: '@jscutlery/semver:version',
+      options: {
+        preset: 'conventionalcommits',
       },
     };
 
