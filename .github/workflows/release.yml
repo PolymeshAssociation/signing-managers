@@ -41,14 +41,7 @@ jobs:
         run: yarn --frozen-lockfile
       - name: build and release
         run: |
-         PRE_RELEASE_OPTION=""
-         if [ "${{ github.ref }}" == "refs/heads/alpha" ]; then
-          PRE_RELEASE_OPTION="--preRelease preid=alpha"
-         elif [ "${{ github.ref }}" == "refs/heads/beta" ]; then
-          PRE_RELEASE_OPTION="--preRelease preid=beta"
-         fi
-
-         yarn nx run-many --all --target=release --parallel=1 $PRE_RELEASE_OPTION
+         yarn nx run-many --all --target=semantic-release --parallel=false
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
