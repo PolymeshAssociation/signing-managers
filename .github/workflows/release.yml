@@ -32,14 +32,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18.x'
+          registry-url: "https://registry.npmjs.org"
       - name: Setup Git
         run: |
           git config user.name "Eric Richardson"
           git config user.email "eric@polymesh.network"
       - name: install dependencies
         run: yarn --frozen-lockfile
-      - name: authorize npm publish
-        run: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/.npmrc
       - name: build and release
         run: |
          PRE_RELEASE_OPTION=""
@@ -53,4 +52,4 @@ jobs:
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-          NPM_TOKEN: ${{ secrets.ASSOCIATION_NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.ASSOCIATION_NPM_TOKEN }}
