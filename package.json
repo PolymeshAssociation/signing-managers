@@ -22,10 +22,6 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "13.2.3",
-    "@angular-devkit/core": "^13.2.3",
-    "@angular/compiler": "13.2.3",
-    "@angular/compiler-cli": "^13.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-transform-modules-commonjs": "^7.16.8",
     "@babel/plugin-transform-runtime": "^7.17.0",
