@@ -46,6 +46,7 @@
         "github": true,
         "changelog": true,
         "npm": true,
+        "git": false,
         "tagFormat": "@polymeshassociation/approval-signing-manager@${version}",
         "branches": [
           { "name": "main" },
