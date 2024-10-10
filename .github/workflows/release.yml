@@ -41,7 +41,9 @@ jobs:
         run: yarn --frozen-lockfile
       - name: build and release
         run: |
-         yarn nx run-many --all --target=semantic-release --parallel=false
+         yarn nx run @polymeshassociation/azure-signing-manager:semantic-release
+        # TODO use: yarn nx run-many --all --target=semantic-release --parallel=false
+
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
