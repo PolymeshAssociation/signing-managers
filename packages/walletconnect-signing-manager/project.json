@@ -46,7 +46,7 @@
         "github": true,
         "changelog": true,
         "npm": true,
-        "tagFormat": "@polymeshassociation/walletconnect-signing-manager@{VERSION}",
+        "tagFormat": "@polymeshassociation/walletconnect-signing-manager@${version}",
         "branches": [
           { "name": "main" },
           { "name": "beta", "prerelease": true },

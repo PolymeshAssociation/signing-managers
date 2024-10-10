@@ -46,7 +46,7 @@
         "github": true,
         "changelog": true,
         "npm": true,
-        "tagFormat": "@polymeshassociation/signing-manager-types@{VERSION}",
+        "tagFormat": "@polymeshassociation/signing-manager-types@${version}",
         "branches": [
           { "name": "main" },
           { "name": "beta", "prerelease": true },

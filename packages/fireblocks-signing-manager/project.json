@@ -46,7 +46,7 @@
         "github": true,
         "changelog": true,
         "npm": true,
-        "tagFormat": "@polymeshassociation/fireblocks-signing-manager@{VERSION}",
+        "tagFormat": "@polymeshassociation/fireblocks-signing-manager@${version}",
         "branches": [
           { "name": "main" },
           { "name": "beta", "prerelease": true },
