@@ -1,3 +1,22 @@
+# Changelog
+
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## 0.1.0 (2024-10-08)
+
+
+### Features
+
+* **config:** init monorepo ([594fbaa](https://github.com/PolymathNetwork/signing-managers/commit/594fbaab2d2fdc4f7159db83658e70f89efd9713))
+* release initial versions ([0c49e44](https://github.com/PolymathNetwork/signing-managers/commit/0c49e441b4e68df3a9cc3985b11ade0de0a0f2a3))
+* **types:** add signed extensions const ([#28](https://github.com/PolymathNetwork/signing-managers/issues/28)) ([e235f54](https://github.com/PolymathNetwork/signing-managers/commit/e235f5494061e3812325f0f232d439b2386973f6))
+* **types:** remove unused files ([c974401](https://github.com/PolymathNetwork/signing-managers/commit/c974401d843df53f788d998684bd3b005d2d10e7))
+
+
+### Bug Fixes
+
+* **types:** update types package.json main field ([e836f40](https://github.com/PolymathNetwork/signing-managers/commit/e836f4099d931dedd869aa440a53b98138e68405))
+
 # [3.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/signing-manager-types@3.2.0...@polymeshassociation/signing-manager-types@3.3.0) (2024-05-14)
 
 

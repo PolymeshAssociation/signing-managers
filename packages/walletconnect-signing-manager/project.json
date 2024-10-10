@@ -1,10 +1,12 @@
 {
-  "root": "packages/walletconnect-signing-manager",
+  "name": "@polymeshassociation/walletconnect-signing-manager",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/walletconnect-signing-manager/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/walletconnect-signing-manager",
@@ -16,26 +18,18 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/walletconnect-signing-manager/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/walletconnect-signing-manager"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/walletconnect-signing-manager"],
       "options": {
         "jestConfig": "packages/walletconnect-signing-manager/jest.config.js",
         "passWithNoTests": true
-      }
-    },
-    "release": {
-      "executor": "@ng-easy/builders:semantic-release",
-      "configurations": {
-        "local": {
-          "force": true
-        }
       }
     },
     "run-local": {
@@ -45,7 +39,22 @@
         "path": "packages/walletconnect-signing-manager/sandbox/index.ts",
         "port": 9000
       }
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "github": true,
+        "changelog": true,
+        "npm": true,
+        "git": false,
+        "tagFormat": "@polymeshassociation/walletconnect-signing-manager@${version}",
+        "branches": [
+          { "name": "main" },
+          { "name": "beta", "prerelease": true },
+          { "name": "alpha", "prerelease": true }
+        ],
+        "buildTarget": "build"
+      }
     }
-  },
-  "tags": []
+  }
 }

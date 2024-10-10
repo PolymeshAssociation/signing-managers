@@ -13,6 +13,7 @@ import {
 const TIMEOUT = 30 * 1000;
 
 export class HashicorpVault {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   private headers: { 'X-Vault-Token': string };
 
   /**
@@ -20,6 +21,7 @@ export class HashicorpVault {
    */
   constructor(private readonly url: string, token: string) {
     this.headers = {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       'X-Vault-Token': token,
     };
   }

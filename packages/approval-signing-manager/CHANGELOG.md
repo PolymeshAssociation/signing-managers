@@ -1,3 +1,35 @@
+# Changelog
+
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## 0.1.0 (2024-10-08)
+
+
+### Features
+
+* **approval-signing-manager:** create approval signing manager ([#17](https://github.com/PolymeshAssociation/signing-managers/issues/17)) ([c53fe73](https://github.com/PolymeshAssociation/signing-managers/commit/c53fe7387e22d139b1d4701bd57456df0c922ad0))
+* update polkadot dependencies ([d2f1883](https://github.com/PolymeshAssociation/signing-managers/commit/d2f18838ef44ea1090e6af2a2c70598f4ac2fd71))
+
+
+### Bug Fixes
+
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.1.1 [skip ci] ([ac7c407](https://github.com/PolymeshAssociation/signing-managers/commit/ac7c407ce28d17a9d791dbfba3ff154a61542888))
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.0 [skip ci] ([5f1aa0c](https://github.com/PolymeshAssociation/signing-managers/commit/5f1aa0ce7ecb6f9a2d852fb14a72ba7895ba2de9))
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([2c7fda3](https://github.com/PolymeshAssociation/signing-managers/commit/2c7fda3a095ad449d0c8ca85248469279c9a32de))
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.2 [skip ci] ([aff71f2](https://github.com/PolymeshAssociation/signing-managers/commit/aff71f2e7ab13069717fefc7940e1aebf5af13bb))
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.3 [skip ci] ([cd094fc](https://github.com/PolymeshAssociation/signing-managers/commit/cd094fc259d8c42a396788a2960ee4e4af8045db))
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.4 [skip ci] ([cbd0d47](https://github.com/PolymeshAssociation/signing-managers/commit/cbd0d470ac4fa655db74dcb38aa1685f3c0abe00))
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.0.0 [skip ci] ([ebd762c](https://github.com/PolymeshAssociation/signing-managers/commit/ebd762c511405210f677db798bd9d14fdbf2f845))
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.1.0 [skip ci] ([8811f8d](https://github.com/PolymeshAssociation/signing-managers/commit/8811f8dd8b1b7a2e3cda13700047f37fb1d898b7))
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.0.0 [skip ci] ([a9dd650](https://github.com/PolymeshAssociation/signing-managers/commit/a9dd6504d93219b40ff6d2eec48f1a435ad496e6))
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.1.0 [skip ci] ([be42c30](https://github.com/PolymeshAssociation/signing-managers/commit/be42c301f5620a96b5064ad7808c1e66fdb75826))
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.2.0 [skip ci] ([926f671](https://github.com/PolymeshAssociation/signing-managers/commit/926f671bf93754d69e24def212696e703a919967))
+* **approval-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.3.0 [skip ci] ([faf491c](https://github.com/PolymeshAssociation/signing-managers/commit/faf491c99b58a7c3ff1d60d401e53f8d4e39fc41))
+* **approval-signing-manager:** hash large payloads before requesting signature ([7cea739](https://github.com/PolymeshAssociation/signing-managers/commit/7cea73957b9ec502936b51139df032c8fa8d2a44))
+* **approval-signing-manager:** remove debug console.log statement ([#19](https://github.com/PolymeshAssociation/signing-managers/issues/19)) ([7c1f5db](https://github.com/PolymeshAssociation/signing-managers/commit/7c1f5dbe48128c41294375517527b9571ef14c65))
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
 # [3.3.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/approval-signing-manager@3.2.0...@polymeshassociation/approval-signing-manager@3.3.0) (2024-05-14)
 
 

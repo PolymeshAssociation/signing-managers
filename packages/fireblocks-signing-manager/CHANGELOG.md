@@ -1,3 +1,37 @@
+# Changelog
+
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## 1.0.0 (2024-10-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **fireblocks-signing-manager:** `secretPath` is now `secret`. To maintain old behavior use `fs.readFileSync` and
+pass the secret to the constructor instead of the path
+
+### Features
+
+* **fireblocks-signing-manager:** allow secret to passed directly instead of requiring a file ([04a12e5](https://github.com/PolymeshAssociation/signing-managers/commit/04a12e52cad410f29c1a6793ccb5d0953c2e06b1))
+* update polkadot dependencies ([d2f1883](https://github.com/PolymeshAssociation/signing-managers/commit/d2f18838ef44ea1090e6af2a2c70598f4ac2fd71))
+
+
+### Bug Fixes
+
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.0 [skip ci] ([d0340f2](https://github.com/PolymeshAssociation/signing-managers/commit/d0340f20dbc08802ff593fe3be6ca58420293d05))
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.1 [skip ci] ([e19ac5a](https://github.com/PolymeshAssociation/signing-managers/commit/e19ac5a75ae875e90a937aef3e3b7ca80708d818))
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.2 [skip ci] ([df156e1](https://github.com/PolymeshAssociation/signing-managers/commit/df156e16fd815a54576a4754c4f8873f289ec301))
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.3 [skip ci] ([c7d6804](https://github.com/PolymeshAssociation/signing-managers/commit/c7d68048726c90285920d660b8fdcb6f1cd17d0a))
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 1.2.4 [skip ci] ([3503b6b](https://github.com/PolymeshAssociation/signing-managers/commit/3503b6b13f2c457cf27e22584ea67e26a2222454))
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.0.0 [skip ci] ([b0f6178](https://github.com/PolymeshAssociation/signing-managers/commit/b0f617870be00960fcf233a3e15a5a03321926c0))
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 2.1.0 [skip ci] ([cb2cfcf](https://github.com/PolymeshAssociation/signing-managers/commit/cb2cfcf068fbae462ba906b299cc4a94842402ae))
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.0.0 [skip ci] ([9e34f23](https://github.com/PolymeshAssociation/signing-managers/commit/9e34f238fe299a80a0faecd67f97abd46069aa0f))
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.1.0 [skip ci] ([c6edcd9](https://github.com/PolymeshAssociation/signing-managers/commit/c6edcd94ca0db5b2f32cb2761039ea1d8a6078f7))
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.2.0 [skip ci] ([6bb8973](https://github.com/PolymeshAssociation/signing-managers/commit/6bb897326b78bef14a70d8b8468885c7e2c3aaae))
+* **fireblocks-signing-manager:** :arrow_up: update @polymeshassociation/signing-manager-types to 3.3.0 [skip ci] ([817eb5d](https://github.com/PolymeshAssociation/signing-managers/commit/817eb5d7100f620708c80245e9e90c74e1c8eeeb))
+* main field in package.json to reference index.js correctly ([#36](https://github.com/PolymeshAssociation/signing-managers/issues/36)) ([66e8c44](https://github.com/PolymeshAssociation/signing-managers/commit/66e8c44ecc306b168a17e382b95996afa5853b8e))
+* use shared signed extensions to prevent StoreCallMetadata warning ([#30](https://github.com/PolymeshAssociation/signing-managers/issues/30)) ([db6e15a](https://github.com/PolymeshAssociation/signing-managers/commit/db6e15a2ae25ff97b749a292940ba9f12a37acdb))
+
 # [2.5.0](https://github.com/PolymeshAssociation/signing-managers/compare/@polymeshassociation/fireblocks-signing-manager@2.4.0...@polymeshassociation/fireblocks-signing-manager@2.5.0) (2024-05-14)
 
 

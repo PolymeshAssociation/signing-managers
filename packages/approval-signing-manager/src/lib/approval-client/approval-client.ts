@@ -46,6 +46,7 @@ export class ApprovalClient {
   ) {
     this.headers = {
       Authorization: apiKey,
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       'Content-Type': 'application/json',
     };
     this.pollingInterval = pollingInterval * 1000; // convert to milliseconds

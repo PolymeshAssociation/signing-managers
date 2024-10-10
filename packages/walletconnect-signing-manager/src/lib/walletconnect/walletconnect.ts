@@ -4,6 +4,7 @@ import { SignClient } from '@walletconnect/sign-client';
 import type { SessionTypes } from '@walletconnect/types';
 
 import { WalletConnectSigner } from './signer';
+// eslint-disable-next-line @typescript-eslint/naming-convention
 import type {
   BaseWallet,
   UnsubCallback,

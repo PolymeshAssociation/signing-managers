@@ -1,3 +1,14 @@
+# Changelog
+
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## 0.1.0 (2024-10-08)
+
+
+### Features
+
+* **walletconnect-signing-manager:** add wallet connect signing manager ([c240c88](https://github.com/PolymeshAssociation/signing-managers/commit/c240c888cc741139038c052298d7ad13fa8843c0))
+
 # 1.0.0 (2024-05-30)
 
 

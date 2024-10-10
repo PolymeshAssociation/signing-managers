@@ -1,41 +1,34 @@
 {
-  "root": "packages/local-signing-manager",
+  "name": "@polymeshassociation/local-signing-manager",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/local-signing-manager/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/local-signing-manager",
         "tsConfig": "packages/local-signing-manager/tsconfig.lib.json",
         "packageJson": "packages/local-signing-manager/package.json",
         "main": "packages/local-signing-manager/src/index.ts",
-        "assets": ["packages/local-signing-manager/*.md"],
-        "srcRootForCompilationRoot": "packages/local-signing-manager/src"
+        "assets": ["packages/local-signing-manager/*.md"]
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/local-signing-manager/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/local-signing-manager"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/local-signing-manager"],
       "options": {
         "jestConfig": "packages/local-signing-manager/jest.config.js",
         "passWithNoTests": true
-      }
-    },
-    "release": {
-      "executor": "@ng-easy/builders:semantic-release",
-      "configurations": {
-        "local": {
-          "force": true
-        }
       }
     },
     "run-local": {
@@ -45,7 +38,22 @@
         "path": "packages/local-signing-manager/sandbox/index.ts",
         "port": 9000
       }
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "github": true,
+        "changelog": true,
+        "npm": true,
+        "git": false,
+        "tagFormat": "@polymeshassociation/local-signing-manager@${version}",
+        "branches": [
+          { "name": "main" },
+          { "name": "beta", "prerelease": true },
+          { "name": "alpha", "prerelease": true }
+        ],
+        "buildTarget": "build"
+      }
     }
-  },
-  "tags": []
+  }
 }

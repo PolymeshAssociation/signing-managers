@@ -1,8 +1,6 @@
 name: CI
 
 on:
-  push:
-    branches: [main, beta, alpha]
   pull_request:
     types: [assigned, opened, synchronize, reopened]
 
@@ -11,35 +9,18 @@ jobs:
     name: Linting and testing
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
         with:
           node-version: '18.x'
       - name: install dependencies
         run: yarn --frozen-lockfile
       - name: lint and test
-        uses: mansagroup/nrwl-nx-action@v2
+        uses: mansagroup/nrwl-nx-action@v3
         with:
           targets: lint,test
-          maxParallel: 3
-
-  release:
-    name: Building and releasing project
-    runs-on: ubuntu-latest
-    needs: [lint-and-test]
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '18.x'
-      - name: install dependencies
-        run: yarn --frozen-lockfile
-      - name: build and release
-        run: yarn nx run-many --all --target=release --parallel=1
-        env:
-          CI: true
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-          NPM_TOKEN: ${{ secrets.ASSOCIATION_NPM_TOKEN }}
 
   check-fast-forward:
     name: Check if fast forwarding is possible

@@ -1,10 +1,12 @@
 {
-  "root": "packages/hashicorp-vault-signing-manager",
+  "name": "@polymeshassociation/hashicorp-vault-signing-manager",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/hashicorp-vault-signing-manager/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/node:package",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/hashicorp-vault-signing-manager",
@@ -16,26 +18,18 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/hashicorp-vault-signing-manager/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/hashicorp-vault-signing-manager"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/hashicorp-vault-signing-manager"],
       "options": {
         "jestConfig": "packages/hashicorp-vault-signing-manager/jest.config.js",
         "passWithNoTests": true
-      }
-    },
-    "release": {
-      "executor": "@ng-easy/builders:semantic-release",
-      "configurations": {
-        "local": {
-          "force": true
-        }
       }
     },
     "run-local": {
@@ -45,7 +39,22 @@
         "path": "packages/hashicorp-vault-signing-manager/sandbox/index.ts",
         "port": 9000
       }
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "github": true,
+        "changelog": true,
+        "npm": true,
+        "git": false,
+        "tagFormat": "@polymeshassociation/hashicorp-signing-manager@${version}",
+        "branches": [
+          { "name": "main" },
+          { "name": "beta", "prerelease": true },
+          { "name": "alpha", "prerelease": true }
+        ],
+        "buildTarget": "build"
+      }
     }
-  },
-  "tags": []
+  }
 }

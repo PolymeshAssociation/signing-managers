@@ -15,6 +15,7 @@ module.exports = {
         'approval-signing-manager',
         'fireblocks-signing-manager',
         'walletconnect-signing-manager',
+        'azure-signing-manager',
       ],
     ],
   },
