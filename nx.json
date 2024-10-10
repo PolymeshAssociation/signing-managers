@@ -12,8 +12,8 @@
     "e2e": {
       "cache": true
     },
-    "release": {
-      "dependsOn": ["^release"]
+    "semantic-release": {
+      "dependsOn": ["^semantic-release"]
     }
   },
   "workspaceLayout": {
@@ -52,13 +52,13 @@
       "dependsOn": ["^build"],
       "inputs": ["default", "^default"]
     },
-    "release": [
+    "semantic-release": [
       {
         "target": "build",
         "projects": "self"
       },
       {
-        "target": "release",
+        "target": "semantic-release",
         "projects": "dependencies"
       }
     ]
