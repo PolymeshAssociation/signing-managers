@@ -13,7 +13,7 @@ import {
 const TIMEOUT = 30 * 1000;
 
 export class HashicorpVault {
-  private headers: { 'X-Vault-Token': string; 'X-Vault-Namespace'?: string };
+  private readonly headers: { 'X-Vault-Token': string; 'X-Vault-Namespace'?: string };
 
   /**
    * @hidden
