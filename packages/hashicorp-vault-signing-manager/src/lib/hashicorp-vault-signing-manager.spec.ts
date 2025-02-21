@@ -16,6 +16,7 @@ jest.mock('./hashicorp-vault', () => ({
 
 const url = 'http://vault/v1/transit';
 const token = 'someAuthToken';
+const namespace = 'admin';
 const accounts = [
   {
     name: 'Alice',
@@ -54,6 +55,7 @@ describe('HashicorpVaultSigningManager Class', () => {
     signingManager = new HashicorpVaultSigningManager({
       url,
       token,
+      namespace,
     });
 
     signingManager.setSs58Format(42);

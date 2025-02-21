@@ -132,14 +132,15 @@ export class HashicorpVaultSigningManager implements SigningManager {
    *
    * @param args.url - points to where the Vault's transit engine is hosted (usually `<base-url>/v1/transit`)
    * @param args.token - authentication token used for signing
+   * @param args.namespace - optional namespace value to be used (required only when using Vault Enterprise or HCP Vault Dedicated cluster. Read more - https://developer.hashicorp.com/vault/api-docs#namespaces)
    */
-  public constructor(args: { url: string; token: string }) {
-    const { url, token } = args;
+  public constructor(args: { url: string; token: string; namespace?: string }) {
+    const { url, token, namespace } = args;
 
     const registry = new TypeRegistry();
     registry.setSignedExtensions(signedExtensions);
 
-    this.vault = new HashicorpVault(url, token);
+    this.vault = new HashicorpVault(url, token, namespace);
     this.externalSigner = new VaultSigner(this.vault, registry);
   }
 

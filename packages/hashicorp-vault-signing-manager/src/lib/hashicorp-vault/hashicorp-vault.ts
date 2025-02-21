@@ -13,15 +13,18 @@ import {
 const TIMEOUT = 30 * 1000;
 
 export class HashicorpVault {
-  private headers: { 'X-Vault-Token': string };
+  private headers: { 'X-Vault-Token': string; 'X-Vault-Namespace'?: string };
 
   /**
    * @hidden
    */
-  constructor(private readonly url: string, token: string) {
+  constructor(private readonly url: string, token: string, namespace?: string) {
     this.headers = {
       'X-Vault-Token': token,
     };
+    if (namespace) {
+      this.headers['X-Vault-Namespace'] = namespace;
+    }
   }
 
   /**

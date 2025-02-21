@@ -14,6 +14,8 @@ const signingManager = new HashicorpVaultSigningManager({
   url: 'https://my-hosted-vault.io/v1/transit',
   // authentication token
   token: 'willNeverTell',
+  // namespace value to be used with enterprise version of Vault. Read more - https://developer.hashicorp.com/vault/api-docs#namespaces
+  namespace: 'admin',
 });
 
 const polymesh = await Polymesh.connect({
