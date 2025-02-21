@@ -11,6 +11,7 @@ const fetchStub = fetch as jest.Mock;
 describe('HashicorpVault class', () => {
   const url = 'http://localhost';
   const token = 'someToken';
+  const namespace = 'admin';
 
   const expectedKeys: VaultKey[] = [
     {
@@ -33,7 +34,7 @@ describe('HashicorpVault class', () => {
   let vault: HashicorpVault;
 
   beforeEach(() => {
-    vault = new HashicorpVault(url, token);
+    vault = new HashicorpVault(url, token, namespace);
   });
 
   describe('method: fetchAllKeys', () => {
