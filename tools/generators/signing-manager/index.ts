@@ -61,7 +61,7 @@ export default async function (tree: Tree, schema: Schema) {
     };
 
     projectConfig.targets.release = {
-      executor: '@ng-easy/builders:semantic-release',
+      executor: '@jscutlery/semver:version',
       configurations: {
         local: {
           force: true,
