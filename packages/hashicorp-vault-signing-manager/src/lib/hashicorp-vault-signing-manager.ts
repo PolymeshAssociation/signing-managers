@@ -123,8 +123,8 @@ export class VaultSigner implements PolkadotSigner {
   }
 }
 export class HashicorpVaultSigningManager implements SigningManager {
-  private externalSigner: VaultSigner;
-  private vault: HashicorpVault;
+  private readonly externalSigner: VaultSigner;
+  private readonly vault: HashicorpVault;
   private _ss58Format?: number;
 
   /**
