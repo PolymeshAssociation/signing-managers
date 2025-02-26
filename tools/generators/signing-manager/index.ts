@@ -61,7 +61,7 @@ export default async function (tree: Tree, schema: Schema) {
     };
 
     projectConfig.targets.release = {
-      executor: '@ng-easy/builders:semantic-release',
+      executor: '@ng-builders/semrel:release',
       configurations: {
         local: {
           force: true,

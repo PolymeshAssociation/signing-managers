@@ -5,7 +5,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/node:package",
-      "outputs": ["{options.outputPath}"],      
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/types",
         "tsConfig": "packages/types/tsconfig.lib.json",
@@ -28,10 +28,10 @@
       "options": {
         "jestConfig": "packages/types/jest.config.js",
         "passWithNoTests": true
-      }      
+      }
     },
     "release": {
-      "executor": "@ng-easy/builders:semantic-release",
+      "executor": "@ng-builders/semrel:release",
       "configurations": {
         "local": {
           "force": true
@@ -41,7 +41,7 @@
     "run-local": {
       "executor": "./tools/executors/run-local:run-local",
       "options": {
-        "runInBrowser": false,        
+        "runInBrowser": false,
         "path": "packages/types/sandbox/index.ts",
         "port": 9000
       }

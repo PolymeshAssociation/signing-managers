@@ -31,7 +31,7 @@
       }
     },
     "release": {
-      "executor": "@ng-easy/builders:semantic-release",
+      "executor": "@ng-builders/semrel:release",
       "configurations": {
         "local": {
           "force": true
