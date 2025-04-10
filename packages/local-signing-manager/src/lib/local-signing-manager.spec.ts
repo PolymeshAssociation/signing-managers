@@ -41,6 +41,14 @@ describe('LocalSigningManager Class', () => {
         address: '5Cg3MNhhuPD5UUjXjjKNszzXic5KMDwMpUansgPVqb9KoE54',
         publicKey: hexToU8a('0x1af337073aac07c2622ba393854850341cff112d5d6380def23ee323b0d48802'),
       },
+      {
+        privateKey: {
+          json: '{"encoded":"540qWXx7PN+JmuCnrXXsxzBFPSgavHIFEM3vQpVmOiEAgAAAAQAAAAgAAAA5CUfqVp2IkydBvqE1ljRtVnNo7lDaAMGzSrk9RJL1ZtTBufjhMJyvC438/tU4vocHzb3onnK1/nzLSOspN/urPsugz9jd4SuBOFUVvW5VDp6qPK5vK46HN+EcUPtDeTOUT68my+ytAHZeWbVV3BlgktUx0IJChLIsFiee7oIl2EaXS3CzSwXAHe6BVbPzjd46nkUyMHAiOyKtc3R1","encoding":{"content":["pkcs8","sr25519"],"type":["scrypt","xsalsa20-poly1305"],"version":"3"},"address":"5Fo3MgTD6kbiPQ5LX2judwZ6gELXGRULuKP6KyS1MXMg3zD8","meta":{"name":"test","whenCreated":1744307722523}}',
+          password: '12345678',
+        },
+        address: '5Fo3MgTD6kbiPQ5LX2judwZ6gELXGRULuKP6KyS1MXMg3zD8',
+        publicKey: hexToU8a('0x1af337073aac07c2622ba393854850341cff112d5d6380def23ee323b0d48802'),
+      },
     ];
   });
 

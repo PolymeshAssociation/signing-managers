@@ -199,6 +199,10 @@ export class LocalSigningManager implements SigningManager {
         ? `${account.mnemonic}${account.derivationPath}`
         : account.mnemonic;
       address = keyring.addFromUri(accountMnemonic).address;
+    } else if ('json' in account && 'password' in account) {
+      const pair = keyring.createFromJson(JSON.parse(account.json));
+      pair.unlock(account.password);
+      address = keyring.addPair(pair).address;
     } else {
       const seedInU8a = hexToU8a(account.seed);
 

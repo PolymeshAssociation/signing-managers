@@ -1,7 +1,12 @@
 /**
  * URI|mnemonic|hex representation of a private key
  */
-export type PrivateKey = ({ uri: string } | { mnemonic: string } | { seed: string }) & {
+export type PrivateKey = (
+  | { uri: string }
+  | { mnemonic: string }
+  | { seed: string }
+  | { json: string; password: string }
+) & {
   /**
    * (optional) specify a derivation path for the secret. As a result, multiple accounts can be created with a single secret
    *
