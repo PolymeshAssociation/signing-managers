@@ -1,4 +1,6 @@
-# SigningManagers
+# SigningManagers (Deprecated)
+
+**Deprecation Note:** The signing managers have been split into separate repository. See [signing-manager-types](https://github.com/PolymeshAssociation/signing-managers) for the most recent versions
 
 Monorepo for Polymesh SDK compatible Signing Managers.
 
